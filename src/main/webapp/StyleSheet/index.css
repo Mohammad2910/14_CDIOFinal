@@ -3,8 +3,8 @@ body {
 }
 
 h1, h2 {
-    color: white;
     text-align: center;
+    color: white;
     font-family: Cambria, serif;
 }
 
@@ -42,4 +42,20 @@ button:hover{
     grid-column: 2/3;
     grid-row: 1/2;
     background-color: lightblue;
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.FrontPagediv{
+    width: 500px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
