@@ -2,9 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>RecepterOgRåvare</title>
 </head>
+
 <body>
+
+<button onclick="myFunction()" >Opret råvare</button>
+<button onclick="<!-- noget -->" >Se alle råvarer</button>
+<button onclick="<!-- noget -->" >Ret råvare</button>
+<button onclick="<!-- noget -->" >Opret recept</button>
+<button onclick="<!-- noget -->" >Se recept</button>
+
+<div id="Opret_raavare">
+    <input type="number" placeholder="Råvare ID"><br>
+    <input type="text" placeholder="Råvare navn"><br>
+    <button onclick="<!-- Gå tilbage funktion -->">Annuller</button>
+    <button onclick="<!-- Gem råvare -->">Gem</button>
+</div>
+
+<div id="Vis_raavare">
+    <!-- her skal alle råvare vises -->
+</div>
+
+<div id="Ret_raavare">
+    <input type="number" placeholder="Råvare ID"><br>
+    <br>
+    <input type="text" placeholder="Råvare navn"><br>
+    <input type="number" placeholder="Råvare ID"><br>
+    <button onclick="<!-- Gå tilbage funktion -->">Annuller/Gå tilbage</button>
+    <button onclick="<!-- Gem råvare -->">Gem</button>
+</div>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("Opret_raavare");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 
 </body>
 </html>
