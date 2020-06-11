@@ -26,14 +26,14 @@ public class DataAccess implements IDataAccess {
     public void InsertBruger(String cpr, String navn, String initialer, String rolle) throws SQLException {
         String query = "INSERT INTO Brugere VALUES('" + cpr + "' , '" + navn + "','" + initialer + "','" + rolle + "','Aktiv')";
         Statement statement = connection.createStatement();
-        statement.executeQuery(query);
+        statement.executeUpdate(query);
     }
 
     @Override
     public void InsertRecept(int id, String navn) throws SQLException {
         String query = "INSERT INTO Brugere VALUES(" + id + ",'" + navn + "')";
         Statement statement = connection.createStatement();
-        statement.executeQuery(query);
+        statement.executeUpdate(query);
 
     }
 
@@ -41,14 +41,14 @@ public class DataAccess implements IDataAccess {
     public void InsertReceptRaavare(double nonNetto, double tolerance, int receptID, int raavareID) throws SQLException {
         String query = "INSERT INTO Brugere VALUES(" + nonNetto + "," + tolerance + "," + receptID + "," + raavareID + ")";
         Statement statement = connection.createStatement();
-        statement.executeQuery(query);
+        statement.executeUpdate(query);
     }
 
     @Override
     public void InsertProduktBatch(int produktBatchID, String produktBatchStatus, int receptID) throws SQLException {
         String query = "INSERT INTO Brugere VALUES(" + produktBatchID + ",'" + produktBatchStatus + "'," + receptID + ")";
         Statement statement = connection.createStatement();
-        statement.executeQuery(query);
+        statement.executeUpdate(query);
 
     }
 
@@ -56,14 +56,14 @@ public class DataAccess implements IDataAccess {
     public void InsertRaavareBatch(int raavareBatchID, double maengde, String leverandoer, int raavareID) throws SQLException {
         String query = "INSERT INTO Brugere VALUES(" + raavareBatchID +"," + maengde + ",'" + leverandoer + "'," + raavareID + ")";
         Statement statement = connection.createStatement();
-        statement.executeQuery(query);
+        statement.executeUpdate(query);
     }
 
     @Override
     public void InsertProduktBatchAfvejning(double tara, double netto, int raavareBatchID, String cpr, int produktBatchID) throws SQLException {
         String query = "INSERT INTO Brugere VALUES(" + tara + "," + netto + "," + raavareBatchID + ","+ ",'" + cpr + "'," + produktBatchID + ")";
         Statement statement = connection.createStatement();
-        statement.executeQuery(query);
+        statement.executeUpdate(query);
     }
 
     @Override
