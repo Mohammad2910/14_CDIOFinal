@@ -9,11 +9,11 @@
 
 <button onclick="myFunction()" >Opret råvare</button>
 <button onclick="<!-- noget -->" >Se alle råvarer</button>
-<button onclick="<!-- noget -->" >Ret råvare</button>
-<button onclick="<!-- noget -->" >Opret recept</button>
+<button onclick="myFunctionRet()" >Ret råvare</button>
+<button onclick="myFunctionRecept()" >Opret recept</button>
 <button onclick="<!-- noget -->" >Se recept</button>
 
-<div id="Opret_raavare">
+<div id="Opret_raavare" style="display: none">
     <input type="number" placeholder="Råvare ID"><br>
     <input type="text" placeholder="Råvare navn"><br>
     <button onclick="<!-- Gå tilbage funktion -->">Annuller</button>
@@ -24,7 +24,7 @@
     <!-- her skal alle råvare vises -->
 </div>
 
-<div id="Ret_raavare">
+<div id="Ret_raavare" style="display: none">
     <input type="number" placeholder="Råvare ID"><br>
     <br>
     <input type="text" placeholder="Råvare navn"><br>
@@ -33,13 +33,49 @@
     <button onclick="<!-- Gem råvare -->">Gem</button>
 </div>
 
+<div id="Opret_recept" style="display: none">
+    <input type="number" placeholder="Recept ID"><br>
+    <input type="text" placeholder="Recept navn"><br>
+    <input type="text" placeholder="Råvare navn"><br>
+    <input type="text" placeholder="Råvare mængde"><br>
+    <input type="text" placeholder="Tolerance"><br>
+    <button onclick="<!-- Gå tilbage funktion -->">Annuller</button>
+    <button onclick="<!-- Gem råvare -->">Gem</button>
+</div>
+
+<div id="Vis_recept">
+    <!-- her skal alle råvare vises -->
+</div>
+
 <script>
     function myFunction() {
         var x = document.getElementById("Opret_raavare");
         if (x.style.display === "none") {
             x.style.display = "block";
-        } else {
+        }  else {
             x.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    function myFunctionRet() {
+        var y = document.getElementById("Ret_raavare");
+        if (y.style.display === "none") {
+            y.style.display = "block";
+        } else {
+            y.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    function myFunctionRecept() {
+        var z = document.getElementById("Opret_recept");
+        if (z.style.display === "none") {
+            z.style.display = "block";
+        } else {
+            z.style.display = "none";
         }
     }
 </script>
