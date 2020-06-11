@@ -25,8 +25,8 @@ public interface IDataAccess {
     String[][] getProduktBatchAfvejning(int produktbatchID) throws SQLException;
 
 
-    void fjernBruger(String cpr) throws SQLException;
-    void redigerBruger(String cpr, String navn, String initialer, String rolle, String brugerStatus) throws SQLException;
+    void fjernBruger(String brugerCPR) throws SQLException;
+    void redigerBruger(String brugerCPR, String navn, String initialer, String rolle) throws SQLException;
     void redigerRaavare(int id, String navn) throws SQLException;
 
 

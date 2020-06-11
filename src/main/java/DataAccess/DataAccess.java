@@ -19,6 +19,9 @@ public class DataAccess implements IDataAccess {
 
     @Override
     public void InsertRaavare(int id, String navn) throws SQLException {
+        String query = "INSERT INTO råvare VALUES(" + id + ",'" + navn + "')";
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(query);
 
     }
 
@@ -139,18 +142,31 @@ public class DataAccess implements IDataAccess {
     }
 
     @Override
-    public void fjernBruger(String cpr) throws SQLException {
-
+    public void fjernBruger(String brugerCPR) throws SQLException {
+        String query = "UPDATE Brugere SET brugerStatus = 'Ikke aktiv' where cpr = brugerCPR";
+        Statement statement = connection.createStatement();
+        statement.executeQuery(query);
     }
 
     @Override
-    public void redigerBruger(String cpr, String navn, String initialer, String rolle, String brugerStatus) throws SQLException {
+    public void redigerBruger(String brugerCPR, String navn, String initialer, String rolle) throws SQLException {
+        String query = "DELETE FROM brugere where cpr = brugerCPR";
+        Statement statement = connection.createStatement();
+        statement.executeQuery(query);
+        query = "INSERT INTO brugere VALUES('" + brugerCPR + "' , '" + navn + "','" + initialer + "','" + rolle + "','Aktiv')";
+        statement = connection.createStatement();
+        statement.executeUpdate(query);
 
     }
 
     @Override
     public void redigerRaavare(int id, String navn) throws SQLException {
-
+        String query = "DELETE FROM råvare where RåvareID = id";
+        Statement statement = connection.createStatement();
+        statement.executeQuery(query);
+        query = "INSERT INTO råvare VALUES(" + id + ",'" + navn + "')";
+        statement = connection.createStatement();
+        statement.executeUpdate(query);
     }
 
 
