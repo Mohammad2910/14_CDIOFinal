@@ -26,32 +26,44 @@ public class DataAccess implements IDataAccess {
     public void InsertBruger(String cpr, String navn, String initialer, String rolle) throws SQLException {
         String query = "INSERT INTO Brugere VALUES('" + cpr + "' , '" + navn + "','" + initialer + "','" + rolle + "','Aktiv')";
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
+        statement.executeQuery(query);
     }
 
     @Override
     public void InsertRecept(int id, String navn) throws SQLException {
+        String query = "INSERT INTO Brugere VALUES(" + id + ",'" + navn + "')";
+        Statement statement = connection.createStatement();
+        statement.executeQuery(query);
 
     }
 
     @Override
-    public void InsertReceptRaavare(double nonNetto, double tolerance, int receptID, int raavareID) {
-
+    public void InsertReceptRaavare(double nonNetto, double tolerance, int receptID, int raavareID) throws SQLException {
+        String query = "INSERT INTO Brugere VALUES(" + nonNetto + "," + tolerance + "," + receptID + "," + raavareID + ")";
+        Statement statement = connection.createStatement();
+        statement.executeQuery(query);
     }
 
     @Override
     public void InsertProduktBatch(int produktBatchID, String produktBatchStatus, int receptID) throws SQLException {
+        String query = "INSERT INTO Brugere VALUES(" + produktBatchID + ",'" + produktBatchStatus + "'," + receptID + ")";
+        Statement statement = connection.createStatement();
+        statement.executeQuery(query);
 
     }
 
     @Override
     public void InsertRaavareBatch(int raavareBatchID, double maengde, String leverandoer, int raavareID) throws SQLException {
-
+        String query = "INSERT INTO Brugere VALUES(" + raavareBatchID +"," + maengde + ",'" + leverandoer + "'," + raavareID + ")";
+        Statement statement = connection.createStatement();
+        statement.executeQuery(query);
     }
 
     @Override
     public void InsertProduktBatchAfvejning(double tara, double netto, int raavareBatchID, String cpr, int produktBatchID) throws SQLException {
-
+        String query = "INSERT INTO Brugere VALUES(" + tara + "," + netto + "," + raavareBatchID + ","+ ",'" + cpr + "'," + produktBatchID + ")";
+        Statement statement = connection.createStatement();
+        statement.executeQuery(query);
     }
 
     @Override
@@ -64,42 +76,66 @@ public class DataAccess implements IDataAccess {
 
     @Override
     public String[][] getAlleRaavareinfo() throws SQLException {
-        return new String[0][];
+        String query = "SELECT * FROM Råvare";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        return outputDBString(resultSet);
     }
 
     @Override
-    public String[][] getRecept(int id, String navn) throws SQLException {
-        return new String[0][];
+    public String[][] getRecept(int id) throws SQLException {
+        String query = "SELECT * FROM Recept WHERE ReceptID =" + id;
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        return outputDBString(resultSet);
     }
 
     @Override
     public String[][] getAlleRecepter() throws SQLException {
-        return new String[0][];
+        String query = "SELECT * FROM recept";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        return outputDBString(resultSet);
     }
 
     @Override
     public String[][] getAlleRaavareBatch() throws SQLException {
-        return new String[0][];
+        String query = "SELECT * FROM råvarebatch";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        return outputDBString(resultSet);
     }
 
     @Override
-    public String[][] getRaavareBatch() throws SQLException {
-        return new String[0][];
+    public String[][] getRaavareBatch(int id) throws SQLException {
+        String query = "SELECT * FROM Recept WHERE råvarebatch =" + id;
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        return outputDBString(resultSet);
     }
 
     @Override
     public String[][] getProduktBatch(int produktbatchID) throws SQLException {
-        return new String[0][];
+        String query = "SELECT * FROM produktbatch WHERE produktbatchID =" + produktbatchID;
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        return outputDBString(resultSet);
     }
 
     @Override
     public String[][] getAlleProduktBatch() throws SQLException {
-        return new String[0][];
+        String query = "SELECT * FROM produktbatch";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        return outputDBString(resultSet);
     }
 
     @Override
     public String[][] getProduktBatchAfvejning(int produktbatchID) throws SQLException {
-        return new String[0][];
+        String query = "SELECT * FROM produktbatchafvejning WHERE produktbatchID =" + produktbatchID;
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        return outputDBString(resultSet);
     }
 
     @Override

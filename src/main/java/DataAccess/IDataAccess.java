@@ -16,10 +16,10 @@ public interface IDataAccess {
 
     String[][] getAlleBrugerinfo() throws SQLException;
     String[][] getAlleRaavareinfo() throws SQLException;
-    String[][] getRecept(int id, String navn) throws SQLException;
+    String[][] getRecept(int id) throws SQLException;
     String[][] getAlleRecepter() throws SQLException;
     String[][] getAlleRaavareBatch() throws SQLException;
-    String[][] getRaavareBatch() throws SQLException;
+    String[][] getRaavareBatch(int id) throws SQLException;
     String[][] getProduktBatch(int produktbatchID) throws SQLException;
     String[][] getAlleProduktBatch() throws SQLException;
     String[][] getProduktBatchAfvejning(int produktbatchID) throws SQLException;
