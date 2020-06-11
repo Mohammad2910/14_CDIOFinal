@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <title>AdministrationAfBatches</title>
     <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
+    <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 </head>
 <!-- center kan fjernes, fra tagsne, kun til tekst, vi burde lave en de forskellige forms som div, som bliver synlige og usynlige når knapperne trykkes på -->
+
 <body>
 <!-- Måske skal der være en meddelelse, der indikere at man er logget ind, og/eller hvem er logget ind-->
-<div style="text-align: center;">
-<button  onclick="myFunction()" >Opret råvarebatch</button>
-<button  onclick="<!-- noget -->" >Vis råvarebatch</button>
-<button  onclick="myFunctionProd()" >Opret produktbatch</button>
-<button  onclick="<!-- noget -->" >Vis produktbatch</button>
+<div style="text-align: center;" >
+<button onclick="toggleDivContent('opretRåvareBatch')">Opret råvarebatch</button>
+<button onclick="toggleDivContent('visRåvareBatch')">Vis råvarebatch</button>
+<button onclick="toggleDivContent('opretProduktBatch')">Opret produktbatch</button>
+<button onclick="toggleDivContent('visProduktBatch')">Vis produktbatch</button>
 </div>
-<div id="Opret_raavarebatch" class="center" style="display: none;">
+
+<div id="opretRåvareBatch" class="center" style="display: none;">
     <input class="center" type="number" placeholder="Råvarebatch nummer"><br>
     <input class = "center" type="number" placeholder="Råvare-ID"><br>
     <input class = "center" type="number" step="0.001" placeholder="Mængde (Angivet i kilo)"><br>
@@ -22,11 +26,11 @@
     <button class = "center " onclick="<!-- Submit råvarebatch function -->">Gem</button>
 </div>
 
-<div id="Vis_raavarebatch">
+<div id="visRåvareBatch">
     <!-- her skal alle råvarebatches vises -->
 </div>
 
-<div id="Opret produktbatch" style="display: none;">
+<div id="opretProduktBatch" style="display: none;">
     <input class="center20" type="number" placeholder="Produktbatch nummer"><br>
     <input class="center20" type="number" placeholder="Recept nummer"><br>
     <input class="center20" type="date" placeholder="Oprettelsesdato"><br>
@@ -37,33 +41,12 @@
     </select><br>
     <input class="center20" type="text" placeholder="Bruger-ID"><br>
     <input class="center20" type="number" placeholder="Råvarebatch nummer"><br>
+    <button class = "center20" onclick="<!-- Submit Produktbatch function -->">Gem</button>
 </div>
 
-<div id="Vis_produktbatch">
+<div id="visProduktBatch">
     <!-- her skal alle produktbatches vises -->
 </div>
-
-<script>
-    function myFunction() {
-        var x = document.getElementById("Opret_raavarebatch");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
-
-<script>
-    function myFunctionProd() {
-        var y = document.getElementById("Opret produktbatch");
-        if (y.style.display === "none") {
-            y.style.display = "block";
-        } else {
-            y.style.display = "none";
-        }
-    }
-</script>
 
 </body>
 
