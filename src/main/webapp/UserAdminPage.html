@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>BrugerAdministration</title>
+    <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
+    <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 </head>
+
 <body>
+<div style="text-align: center;" >
+    <button onclick="toggleDivContent('OpretBruger')">Opret bruger</button>
+    <button onclick="toggleDivContent('RedigerBruger')">Rediger bruger</button>
+    <button onclick="toggleDivContent('FjernBruger')">Fjern bruger</button>
+    <button onclick="toggleDivContent('SeAlleBrugere')">Se alle brugere</button>
+</div>
+
+<div id="OpretBruger" class="center" style="display: none;">
+    <h2>Bruger oprettelse</h2>
+    <input class="center" type="number" placeholder="Indtast bruger ID"><br>
+    <input class="center" type="text" placeholder="Angiv brugerens navn"><br>
+    <input class="center" type="text" placeholder="Angiv initialer til bruger"><br>
+    <br>
+    <button class="center" onclick="<!-- Undo function -->">Annuller/Gå tilbage</button>
+    <button class="center" onclick="<!-- Submit userinfo function -->">Gem</button>
+</div>
 
 </body>
 </html>
