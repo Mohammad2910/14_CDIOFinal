@@ -15,15 +15,15 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class AuthenticationService {
-    @Context
-    ContainerRequestContext containerRequestContext;
-
-    private AuthenticationController authenticationController = ControllerRegistry.getAuthenticationController;
-
-    @Path("login")
-    @POST
-    public String login (LoginDetails loginDetails) {
-        return authenticationController.login(loginDetails);
-    }
+//    @Context
+//    ContainerRequestContext containerRequestContext;
+//
+//    private AuthenticationController authenticationController = ControllerRegistry.getAuthenticationController;
+//
+//    @Path("login")
+//    @POST
+//    public String login (LoginDetails loginDetails) {
+//        return authenticationController.login(loginDetails);
+//    }
 
 }
