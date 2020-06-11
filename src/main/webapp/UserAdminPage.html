@@ -16,14 +16,35 @@
     <button onclick="toggleDivContent('SeAlleBrugere')">Se alle brugere</button>
 </div>
 
-<div id="OpretBruger" class="center" style="display: none;">
+<div id="OpretBruger" class="center form" style="display: none;">
     <h2>Bruger oprettelse</h2>
     <input class="center" type="number" placeholder="Indtast bruger ID"><br>
     <input class="center" type="text" placeholder="Angiv brugerens navn"><br>
     <input class="center" type="text" placeholder="Angiv initialer til bruger"><br>
     <br>
-    <button class="center" onclick="<!-- Undo function -->">Annuller/Gå tilbage</button>
     <button class="center" onclick="<!-- Submit userinfo function -->">Gem</button>
+    <button class="center" onclick="<!-- Undo function -->">Annuller/Gå tilbage</button>
+
+</div>
+
+<div id="RedigerBruger" class="center form" style="display: none;">
+    <h2>Rediger bruger</h2>
+    <input class="center" type="number" placeholder="Rediger bruger ID"><br>
+    <input class="center" type="text" placeholder="Rediger brugerens navn"><br>
+    <input class="center" type="text" placeholder="Rediger initialer til bruger"><br>
+    <br>
+    <button class="center" onclick="<!-- Submit userinfo function -->">Gem</button>
+    <button class="center" onclick="<!-- Undo function -->">Annuller/Gå tilbage</button>
+</div>
+
+<div id="FjernBruger" class="center form" style="display: none;">
+    <h2>Fjern bruger</h2>
+    <!-- Her skal alle brugere vises med en fjern knap ved siden af hver bruger -->
+</div>
+
+<div id="SeAlleBrugere" class="center form" style="display: none;">
+    <h2>Liste over alle brugere</h2>
+    <!-- Her skal alle brugere vises -->
 </div>
 
 </body>
