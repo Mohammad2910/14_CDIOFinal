@@ -23,6 +23,7 @@ public interface IDataAccess {
     String[][] getProduktBatch(int produktbatchID) throws SQLException;
     String[][] getAlleProduktBatch() throws SQLException;
     String[][] getProduktBatchAfvejning(int produktbatchID) throws SQLException;
+    String[][] getRolle(int brugerCPR) throws SQLException;
 
 
     void fjernBruger(String brugerCPR) throws SQLException;

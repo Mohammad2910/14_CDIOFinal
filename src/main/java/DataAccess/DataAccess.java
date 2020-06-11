@@ -142,6 +142,14 @@ public class DataAccess implements IDataAccess {
     }
 
     @Override
+    public String[][] getRolle(int brugerCPR) throws SQLException {
+        String query = "SELECT Rolle FROM brugere WHERE CPR =" + brugerCPR;
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        return outputDBString(resultSet);
+    }
+
+    @Override
     public void fjernBruger(String brugerCPR) throws SQLException {
         String query = "UPDATE Brugere SET brugerStatus = 'Ikke aktiv' where cpr = brugerCPR";
         Statement statement = connection.createStatement();
