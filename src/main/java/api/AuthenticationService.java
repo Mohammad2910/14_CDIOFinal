@@ -18,7 +18,7 @@ public class AuthenticationService {
     @Context
     ContainerRequestContext containerRequestContext;
 
-    private AuthenticationController authenticationController = ControllerRegistry;
+    private AuthenticationController authenticationController = ControllerRegistry.getAuthenticationController;
 
     @Path("login")
     @POST
