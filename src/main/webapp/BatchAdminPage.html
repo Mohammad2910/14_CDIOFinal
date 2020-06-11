@@ -8,11 +8,11 @@
 <!-- center kan fjernes, fra tagsne, kun til tekst, vi burde lave en de forskellige forms som div, som bliver synlige og usynlige når knapperne trykkes på -->
 <body>
 <!-- Måske skal der være en meddelelse, der indikere at man er logget ind, og/eller hvem er logget ind-->
-<div class="center">
-<button class = "center" onclick="myFunction()" >Opret råvarebatch</button>
-<button class = "center" onclick="<!-- noget -->" >Vis råvarebatch</button>
-<button class = "center" onclick="myFunctionProd()" >Opret produktbatch</button>
-<button class = "center" onclick="<!-- noget -->" >Vis produktbatch</button>
+<div style="text-align: center;">
+<button  onclick="myFunction()" >Opret råvarebatch</button>
+<button  onclick="<!-- noget -->" >Vis råvarebatch</button>
+<button  onclick="myFunctionProd()" >Opret produktbatch</button>
+<button  onclick="<!-- noget -->" >Vis produktbatch</button>
 </div>
 <div id="Opret_raavarebatch" class="center" style="display: none;">
     <input class="center" type="number" placeholder="Råvarebatch nummer"><br>
@@ -27,16 +27,16 @@
 </div>
 
 <div id="Opret produktbatch" style="display: none;">
-    <input type="number" placeholder="Produktbatch nummer"><br>
-    <input type="number" placeholder="Recept nummer"><br>
-    <input type="date" placeholder="Oprettelsesdato"><br>
-    <select id="Status" name="Status">
+    <input class="center20" type="number" placeholder="Produktbatch nummer"><br>
+    <input class="center20" type="number" placeholder="Recept nummer"><br>
+    <input class="center20" type="date" placeholder="Oprettelsesdato"><br>
+    <select class="center20" id="Status" name="Status">
         <option value="Oprettet">Oprettet</option>
         <option value="Under produktion">Under produktion</option>
         <option value="Afsluttet">Afsluttet</option>
     </select><br>
-    <input type="text" placeholder="Bruger-ID"><br>
-    <input type="number" placeholder="Råvarebatch nummer"><br>
+    <input class="center20" type="text" placeholder="Bruger-ID"><br>
+    <input class="center20" type="number" placeholder="Råvarebatch nummer"><br>
 </div>
 
 <div id="Vis_produktbatch">
