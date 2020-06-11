@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public interface IDataAccess {
 
     void InsertRaavare(int id, String navn) throws SQLException;
-    void InsertBruger(String cpr, String navn, String initialer, String rolle, String brugerStatus) throws SQLException;
+    void InsertBruger(String cpr, String navn, String initialer, String rolle) throws SQLException;
     void InsertRecept(int id, String navn) throws SQLException;
     void InsertReceptRaavare(double nonNetto, double tolerance, int receptID, int raavareID) throws SQLException;
     void InsertProduktBatch(int produktBatchID, String produktBatchStatus, int receptID) throws SQLException;

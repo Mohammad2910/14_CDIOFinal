@@ -23,8 +23,10 @@ public class DataAccess implements IDataAccess {
     }
 
     @Override
-    public void InsertBruger(String cpr, String navn, String initialer, String rolle, String brugerStatus) throws SQLException {
-
+    public void InsertBruger(String cpr, String navn, String initialer, String rolle) throws SQLException {
+        String query = "INSERT INTO Brugere VALUES('" + cpr + "' , '" + navn + "','" + initialer + "','" + rolle + "','Aktiv')";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
     }
 
     @Override
@@ -54,6 +56,10 @@ public class DataAccess implements IDataAccess {
 
     @Override
     public String[][] getAlleBrugerinfo() throws SQLException {
+        String query = "SELECT * FROM Brugere";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        return outputDBString(resultSet);
     }
 
     @Override
