@@ -1,11 +1,10 @@
 
-//Funktion til knapper for at vise div content
+//Funktion til knapper for at vise div content og vise at de er selected
 function toggleDivContent(id) {
-    var x = document.getElementById(id);
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
+    $('.form').hide();
+    $(document.getElementById(id)).show();
+    $('button').on('click', function(){
+        $('button').removeClass('selected');
+        $(this).addClass('selected');
+    });
 }
-

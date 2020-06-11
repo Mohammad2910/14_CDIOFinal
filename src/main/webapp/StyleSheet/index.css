@@ -27,6 +27,9 @@ input:hover{
 button:hover{
     background-color: aliceblue;
 }
+button.selected{
+    background-color: aliceblue;
+}
 
 #pageFrame{
     min-height: 1080px;
