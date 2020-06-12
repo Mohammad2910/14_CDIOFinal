@@ -2,52 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RecepterOgRåvare</title>
+    <title>RecepterOgRaavare</title>
     <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
     <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="text/javascript" src="js/FormKommandoer_RåvareForm.js"></script>
 </head>
 
 <body>
 <div style="text-align: center;">
-<button onclick="toggleDivContent('opretRåvare')" >Opret råvare</button>
-<button onclick="toggleDivContent('visRåvare')" >Se alle råvarer</button>
-<button onclick="toggleDivContent('retRåvare')" >Ret råvare</button>
+<button onclick="toggleDivContent('opretRaavare')" >Opret raavare</button>
+<button onclick="toggleDivContent('visRaavare')" >Se alle raavarer</button>
+<button onclick="toggleDivContent('retRaavare')" >Ret raavare</button>
 <button onclick="toggleDivContent('opretRecept')" >Opret recept</button>
 <button onclick="toggleDivContent('visRecept')" >Se recept</button>
 </div>
 
-<div id="opretRåvare" class="center form" style="display: none">
-    <input class = "center" type="number" placeholder="Råvare ID"><br>
-    <input class = "center" type="text" placeholder="Råvare navn"><br>
-    <button class = "center" onclick="<!-- Gå tilbage funktion -->">Annuller</button>
-    <button class = "center" onclick="<!-- Gem råvare -->">Gem</button>
+<div id="opretRaavare" class="center form" style="display: none">
+    <input id ="raavareId" class = "center" type="number" placeholder="Raavare ID"><br>
+    <input id ="raavareNavn" class = "center" type="text" placeholder="Raavare navn"><br>
+    <button class = "center" onclick="<!-- Gaa tilbage funktion -->">Annuller</button>
+    <button class = "center" onclick="post('raavareid','ra')">Gem</button>
 </div>
 
-<div id="visRåvare" class="center form" >
-    <!-- her skal alle råvare vises -->
+<div id="visRaavare" class="center form" >
+    <!-- her skal alle raavare vises -->
 </div>
 
-<div id="retRåvare" class="center form" style="display: none">
-    <input class = "center" type="number" placeholder="Råvare ID"><br>
-    <input class = "center" type="text" placeholder="Råvare navn"><br>
-    <input class = "center" type="number" placeholder="Råvare ID"><br>
-    <button class = "center" onclick="<!-- Gå tilbage funktion -->">Annuller/Gå tilbage</button>
-    <button class = "center" onclick="<!-- Gem råvare -->">Gem</button>
+<div id="retRaavare" class="center form" style="display: none">
+    <input class = "center" type="number" placeholder="Raavare ID"><br>
+    <input class = "center" type="text" placeholder="Raavare navn"><br>
+    <input class = "center" type="number" placeholder="Raavare ID"><br>
+    <button class = "center" onclick="<!-- Gaa tilbage funktion -->">Annuller/Gaa tilbage</button>
+    <button class = "center" onclick="<!-- Gem raavare -->">Gem</button>
 </div>
 
 <div id="opretRecept" class="center form" style="display: none">
     <input class = "center" type="number" placeholder="Recept ID"><br>
     <input class = "center" type="text" placeholder="Recept navn"><br>
-    <input class = "center" type="text" placeholder="Råvare navn"><br>
-    <input class = "center" type="text" placeholder="Råvare mængde"><br>
+    <input class = "center" type="text" placeholder="Raavare navn"><br>
+    <input class = "center" type="text" placeholder="Raavare mængde"><br>
     <input class = "center" type="text" placeholder="Tolerance"><br>
-    <button class = "center" onclick="<!-- Gå tilbage funktion -->">Annuller</button>
-    <button class = "center" onclick="<!-- Gem råvare -->">Gem</button>
+    <button class = "center" onclick="<!-- Gaa tilbage funktion -->">Annuller</button>
+    <button class = "center" onclick="<!-- Gem raavare -->">Gem</button>
 </div>
 
 <div id="visRecept" class="center form">
-    <!-- her skal alle råvare vises -->
+    <!-- her skal alle raavare vises -->
 </div>
 
 </body>

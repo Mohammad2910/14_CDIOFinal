@@ -6,7 +6,7 @@ public class DataAccess implements IDataAccess {
     private final String url = "jdbc:mysql://" + "localhost:3306" + "/webshop" + "?characterEncoding=utf8&serverTimezone=UTC";
     private final String username = "root";
     private final String password = "1234";
-    private Connection connection;
+    public Connection connection;
     private Statement statement;
 
 
@@ -22,7 +22,7 @@ public class DataAccess implements IDataAccess {
 
     @Override
     public void InsertRaavare(int id, String navn) throws SQLException {
-        String query = "INSERT INTO råvare VALUES(" + id + ",'" + navn + "')";
+        String query = "INSERT INTO raavare VALUES(" + id + ",'" + navn + "')";
         statement.executeUpdate(query);
 
     }
@@ -74,7 +74,7 @@ public class DataAccess implements IDataAccess {
 
     @Override
     public String[][] getAlleRaavareinfo() throws SQLException {
-        String query = "SELECT * FROM Råvare";
+        String query = "SELECT * FROM Raavare";
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
@@ -95,14 +95,14 @@ public class DataAccess implements IDataAccess {
 
     @Override
     public String[][] getAlleRaavareBatch() throws SQLException {
-        String query = "SELECT * FROM råvarebatch";
+        String query = "SELECT * FROM raavarebatch";
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
 
     @Override
     public String[][] getRaavareBatch(int id) throws SQLException {
-        String query = "SELECT * FROM Recept WHERE råvarebatch =" + id;
+        String query = "SELECT * FROM Recept WHERE raavarebatch =" + id;
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
@@ -151,7 +151,7 @@ public class DataAccess implements IDataAccess {
 
     @Override
     public void redigerRaavare(int id, String navn) throws SQLException {
-        String query = "UPDATE råvare SET råvarenavn = '" + navn + "' WHERE råvareID = " + id;
+        String query = "UPDATE raavare SET raavarenavn = '" + navn + "' WHERE raavareID = " + id;
         statement.executeUpdate(query);
 
     }
