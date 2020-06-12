@@ -3,15 +3,18 @@ package DataAccess;
 import java.sql.*;
 
 public class DataAccess implements IDataAccess {
-    public final String url = "jdbc:mysql://" + "localhost:3306" + "/webshop" + "?characterEncoding=utf8&serverTimezone=UTC";
-    public final String username = "root";
-    public final String password = "1234";
-    public Connection connection;
+    private final String url = "jdbc:mysql://" + "localhost:3306" + "/webshop" + "?characterEncoding=utf8&serverTimezone=UTC";
+    private final String username = "root";
+    private final String password = "1234";
+    private Connection connection;
+    private Statement statement;
 
 
 
     public DataAccess() throws SQLException {
         this.connection = DriverManager.getConnection(url, username, password);
+        this.statement = connection.createStatement();
+
     }
 
 
@@ -20,7 +23,6 @@ public class DataAccess implements IDataAccess {
     @Override
     public void InsertRaavare(int id, String navn) throws SQLException {
         String query = "INSERT INTO råvare VALUES(" + id + ",'" + navn + "')";
-        Statement statement = connection.createStatement();
         statement.executeUpdate(query);
 
     }
@@ -28,14 +30,12 @@ public class DataAccess implements IDataAccess {
     @Override
     public void InsertBruger(String cpr, String navn, String initialer, String rolle) throws SQLException {
         String query = "INSERT INTO Brugere VALUES('" + cpr + "' , '" + navn + "','" + initialer + "','" + rolle + "','Aktiv')";
-        Statement statement = connection.createStatement();
         statement.executeUpdate(query);
     }
 
     @Override
     public void InsertRecept(int id, String navn) throws SQLException {
         String query = "INSERT INTO Brugere VALUES(" + id + ",'" + navn + "')";
-        Statement statement = connection.createStatement();
         statement.executeUpdate(query);
 
     }
@@ -43,14 +43,12 @@ public class DataAccess implements IDataAccess {
     @Override
     public void InsertReceptRaavare(double nonNetto, double tolerance, int receptID, int raavareID) throws SQLException {
         String query = "INSERT INTO Brugere VALUES(" + nonNetto + "," + tolerance + "," + receptID + "," + raavareID + ")";
-        Statement statement = connection.createStatement();
         statement.executeUpdate(query);
     }
 
     @Override
     public void InsertProduktBatch(int produktBatchID, String produktBatchStatus, int receptID) throws SQLException {
         String query = "INSERT INTO Brugere VALUES(" + produktBatchID + ",'" + produktBatchStatus + "'," + receptID + ")";
-        Statement statement = connection.createStatement();
         statement.executeUpdate(query);
 
     }
@@ -58,21 +56,18 @@ public class DataAccess implements IDataAccess {
     @Override
     public void InsertRaavareBatch(int raavareBatchID, double maengde, String leverandoer, int raavareID) throws SQLException {
         String query = "INSERT INTO Brugere VALUES(" + raavareBatchID +"," + maengde + ",'" + leverandoer + "'," + raavareID + ")";
-        Statement statement = connection.createStatement();
         statement.executeUpdate(query);
     }
 
     @Override
     public void InsertProduktBatchAfvejning(double tara, double netto, int raavareBatchID, String cpr, int produktBatchID) throws SQLException {
         String query = "INSERT INTO Brugere VALUES(" + tara + "," + netto + "," + raavareBatchID + ","+ ",'" + cpr + "'," + produktBatchID + ")";
-        Statement statement = connection.createStatement();
         statement.executeUpdate(query);
     }
 
     @Override
     public String[][] getAlleBrugerinfo() throws SQLException {
         String query = "SELECT * FROM Brugere";
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
@@ -80,7 +75,6 @@ public class DataAccess implements IDataAccess {
     @Override
     public String[][] getAlleRaavareinfo() throws SQLException {
         String query = "SELECT * FROM Råvare";
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
@@ -88,7 +82,6 @@ public class DataAccess implements IDataAccess {
     @Override
     public String[][] getRecept(int id) throws SQLException {
         String query = "SELECT * FROM Recept WHERE ReceptID =" + id;
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
@@ -96,7 +89,6 @@ public class DataAccess implements IDataAccess {
     @Override
     public String[][] getAlleRecepter() throws SQLException {
         String query = "SELECT * FROM recept";
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
@@ -104,7 +96,6 @@ public class DataAccess implements IDataAccess {
     @Override
     public String[][] getAlleRaavareBatch() throws SQLException {
         String query = "SELECT * FROM råvarebatch";
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
@@ -112,7 +103,6 @@ public class DataAccess implements IDataAccess {
     @Override
     public String[][] getRaavareBatch(int id) throws SQLException {
         String query = "SELECT * FROM Recept WHERE råvarebatch =" + id;
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
@@ -120,7 +110,6 @@ public class DataAccess implements IDataAccess {
     @Override
     public String[][] getProduktBatch(int produktbatchID) throws SQLException {
         String query = "SELECT * FROM produktbatch WHERE produktbatchID =" + produktbatchID;
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
@@ -128,7 +117,6 @@ public class DataAccess implements IDataAccess {
     @Override
     public String[][] getAlleProduktBatch() throws SQLException {
         String query = "SELECT * FROM produktbatch";
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
@@ -136,7 +124,6 @@ public class DataAccess implements IDataAccess {
     @Override
     public String[][] getProduktBatchAfvejning(int produktbatchID) throws SQLException {
         String query = "SELECT * FROM produktbatchafvejning WHERE produktbatchID =" + produktbatchID;
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
@@ -144,7 +131,6 @@ public class DataAccess implements IDataAccess {
     @Override
     public String[][] getRolle(String brugerCPR) throws SQLException {
         String query = "SELECT Rolle FROM brugere WHERE CPR =" + brugerCPR;
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         return outputDBString(resultSet);
     }
@@ -152,14 +138,12 @@ public class DataAccess implements IDataAccess {
     @Override
     public void fjernBruger(String brugerCPR) throws SQLException {
         String query = "UPDATE Brugere SET brugerStatus = 'Ikke aktiv' where cpr = brugerCPR";
-        Statement statement = connection.createStatement();
         statement.executeUpdate(query);
     }
 
     @Override
     public void redigerBruger(String tidligereBrugerCpr, String brugerCPR, String navn, String initialer, String rolle) throws SQLException {
         String query = "UPDATE Brugere SET CPR = '" + brugerCPR + "', BrugerNavn = '" + navn + "', Initialer = '" + initialer + "', rolle = '" + rolle + "' WHERE CPR ='" + tidligereBrugerCpr + "'";
-        Statement statement = connection.createStatement();
         statement.executeUpdate(query);
 
 
@@ -168,7 +152,6 @@ public class DataAccess implements IDataAccess {
     @Override
     public void redigerRaavare(int id, String navn) throws SQLException {
         String query = "UPDATE råvare SET råvarenavn = '" + navn + "' WHERE råvareID = " + id;
-        Statement statement = connection.createStatement();
         statement.executeUpdate(query);
 
     }
