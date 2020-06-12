@@ -30,6 +30,7 @@ public class MySQLJDBCUtil {
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
             int columnCount = resultSetMetaData.getColumnCount();
+
             int[] columnWidths = new int[columnCount + 1]; //columnWidths[0] to be ignored
             int valueLength;
 
@@ -49,19 +50,24 @@ public class MySQLJDBCUtil {
                     }
                 }
             }
+            String[] array = new String[columnCount];
+
             //Print all attribute names
             for (int i = 1; i <= columnCount; i++) {
                 System.out.print(rightPad(resultSetMetaData.getColumnName(i), columnWidths[i]));
             }
             System.out.println();
             //Print all table rows
+
             resultSet.beforeFirst(); //Set pointer for resultSet.next()
             while (resultSet.next()) {
                 //Print all values in a row
                 for (int i = 1; i <= columnCount; i++) {
+
                     if (resultSet.getString(i) == null) {
                         System.out.print(rightPad("null", columnWidths[i]));
                     } else {
+                        array[i-1] = rightPad(resultSet.getString(i), columnWidths[i]);
                         System.out.print(rightPad(resultSet.getString(i), columnWidths[i]));
                     }
                 }
