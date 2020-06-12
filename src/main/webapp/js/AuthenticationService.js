@@ -6,6 +6,7 @@ $(document).ready(function() {
             type: "POST",
             data: {'cpr': cpr},
             success: function (result) {
+                console.log(result)
             }
         })
     });
