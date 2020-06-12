@@ -142,7 +142,7 @@ public class DataAccess implements IDataAccess {
     }
 
     @Override
-    public String[][] getRolle(int brugerCPR) throws SQLException {
+    public String[][] getRolle(String brugerCPR) throws SQLException {
         String query = "SELECT Rolle FROM brugere WHERE CPR =" + brugerCPR;
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
@@ -153,28 +153,24 @@ public class DataAccess implements IDataAccess {
     public void fjernBruger(String brugerCPR) throws SQLException {
         String query = "UPDATE Brugere SET brugerStatus = 'Ikke aktiv' where cpr = brugerCPR";
         Statement statement = connection.createStatement();
-        statement.executeQuery(query);
+        statement.executeUpdate(query);
     }
 
     @Override
-    public void redigerBruger(String brugerCPR, String navn, String initialer, String rolle) throws SQLException {
-        String query = "DELETE FROM brugere where cpr = brugerCPR";
+    public void redigerBruger(String tidligereBrugerCpr, String brugerCPR, String navn, String initialer, String rolle) throws SQLException {
+        String query = "UPDATE Brugere SET CPR = '" + brugerCPR + "', BrugerNavn = '" + navn + "', Initialer = '" + initialer + "', rolle = '" + rolle + "' WHERE CPR ='" + tidligereBrugerCpr + "'";
         Statement statement = connection.createStatement();
-        statement.executeQuery(query);
-        query = "INSERT INTO brugere VALUES('" + brugerCPR + "' , '" + navn + "','" + initialer + "','" + rolle + "','Aktiv')";
-        statement = connection.createStatement();
         statement.executeUpdate(query);
+
 
     }
 
     @Override
     public void redigerRaavare(int id, String navn) throws SQLException {
-        String query = "DELETE FROM råvare where RåvareID = id";
+        String query = "UPDATE råvare SET råvarenavn = '" + navn + "' WHERE råvareID = " + id;
         Statement statement = connection.createStatement();
-        statement.executeQuery(query);
-        query = "INSERT INTO råvare VALUES(" + id + ",'" + navn + "')";
-        statement = connection.createStatement();
         statement.executeUpdate(query);
+
     }
 
 

@@ -23,11 +23,11 @@ public interface IDataAccess {
     String[][] getProduktBatch(int produktbatchID) throws SQLException;
     String[][] getAlleProduktBatch() throws SQLException;
     String[][] getProduktBatchAfvejning(int produktbatchID) throws SQLException;
-    String[][] getRolle(int brugerCPR) throws SQLException;
+    String[][] getRolle(String brugerCPR) throws SQLException;
 
 
     void fjernBruger(String brugerCPR) throws SQLException;
-    void redigerBruger(String brugerCPR, String navn, String initialer, String rolle) throws SQLException;
+    void redigerBruger(String tidligereBrugerCPR ,String brugerCPR, String navn, String initialer, String rolle) throws SQLException;
     void redigerRaavare(int id, String navn) throws SQLException;
 
 
