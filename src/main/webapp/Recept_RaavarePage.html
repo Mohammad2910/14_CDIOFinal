@@ -6,7 +6,7 @@
     <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
     <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-    <script src="text/javascript" src="js/FormKommandoer_RåvareForm.js"></script>
+    <script type="text/javascript" src="js/FormKommandoer_RaavareForm.js"></script>
 </head>
 
 <body>
@@ -18,21 +18,23 @@
 <button onclick="toggleDivContent('visRecept')" >Se recept</button>
 </div>
 
+<form action="api/raavare/opret" method="POST">
 <div id="opretRaavare" class="center form" style="display: none">
     <input id ="raavareId" class = "center" type="number" placeholder="Raavare ID"><br>
     <input id ="raavareNavn" class = "center" type="text" placeholder="Raavare navn"><br>
     <button class = "center" onclick="<!-- Gaa tilbage funktion -->">Annuller</button>
-    <button class = "center" onclick="post('raavareid','ra')">Gem</button>
+    <button id="opret-Raavare" class = "center" >Gem</button>
 </div>
+</form>
 
 <div id="visRaavare" class="center form" >
-    <!-- her skal alle raavare vises -->
+    <h2>Liste over råvarer</h2>
+    <ul id="raavarer"></ul>
 </div>
 
 <div id="retRaavare" class="center form" style="display: none">
     <input class = "center" type="number" placeholder="Raavare ID"><br>
     <input class = "center" type="text" placeholder="Raavare navn"><br>
-    <input class = "center" type="number" placeholder="Raavare ID"><br>
     <button class = "center" onclick="<!-- Gaa tilbage funktion -->">Annuller/Gaa tilbage</button>
     <button class = "center" onclick="<!-- Gem raavare -->">Gem</button>
 </div>
