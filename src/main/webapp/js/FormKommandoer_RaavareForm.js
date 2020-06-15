@@ -24,14 +24,16 @@ $(document).ready(function(){
             raavareNavn: $raavareNavn.val(),
         };
 
+
+
         $.ajax({
             type: 'POST',
             url: 'api/raavare/opret',
             dataType: "json",
             contentType: "application/json; charset=utf-8",
-            data: String,
-            success: function(nyRaavare){
-                $raavarer.append('<li>Råvare navn: ' + nyRaavare.raavareNavn + ', Råvare ID: ' + nyRaavare.raavareId + '</li>');
+            data: raavare,
+            success: function(){
+                $raavarer.append('<li>Råvare navn: ' + raavare.raavareNavn + ', Råvare ID: ' + raavare.raavareId + '</li>');
             },
             error: function() {
                 alert('Fejl ved oprettelse af råvare');

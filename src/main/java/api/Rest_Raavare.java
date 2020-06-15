@@ -20,18 +20,18 @@ public class Rest_Raavare implements I_Rest_Raavare {
 
     @Path("opret")
     @POST
-    public void opretRaavare(String raa) {
-        System.out.println(raa);
+    public void opretRaavare(String inputs) {
+        String[] strarray = inputs.split("&");
+        RaavareDTO raavareDTO = new RaavareDTO(Integer.parseInt(strarray[0].substring(10)),strarray[1].substring(12));
+        RaavareDTO returnRaa;
+        try{
+            //returnRaa =
+            raavareBLL.opretEnkelRaavare(raavareDTO);
 
-
-//        RaavareDTO returnRaa;
-//        try{
-//            returnRaa = raavareBLL.opretEnkelRaavare(raa);
-//
-//        } catch (SQLException e) {
-//            return Response.status(400).entity("SQLException: " + e.getMessage()).build();
-//        }
-//        return Response.ok(returnRaa).build();
+        } catch (SQLException e) {
+            //return Response.status(400).entity("SQLException: " + e.getMessage()).build();
+        }
+        //return Response.ok(returnRaa).build();
     }
 
     @Path("vis")

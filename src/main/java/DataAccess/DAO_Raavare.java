@@ -11,8 +11,8 @@ public class DAO_Raavare implements I_DAL_Raavare {
 
     private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, RaavareDTO res) throws SQLException{
         try{
-            preSt.setInt(1, res.getRaavareID());
-            preSt.setString(2,res.getRaavareNavn());
+            preSt.setInt(1, res.getRåvareID());
+            preSt.setString(2,res.getRåvareNavn());
         }
         catch (SQLException e){
             throw new SQLException(e);
@@ -24,7 +24,7 @@ public class DAO_Raavare implements I_DAL_Raavare {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
-            PreparedStatement preSt = conn.prepareStatement("INSERT INTO raavare (raavareid,raavarenavn)VALUES(?,?)");
+            PreparedStatement preSt = conn.prepareStatement("INSERT INTO råvare VALUES(?,?)");
 
             setCreatePreparedStatement(preSt,enkelRaavare);
 
@@ -33,20 +33,20 @@ public class DAO_Raavare implements I_DAL_Raavare {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return laesEnkelRaavareId(enkelRaavare.getRaavareID());
+        return laesEnkelRaavareId(enkelRaavare.getRåvareID());
     }
 
 
     @Override
-    public RaavareDTO laesEnkelRaavareId(int raavareId) throws SQLException{
+    public RaavareDTO laesEnkelRaavareId(int råvareId) throws SQLException{
         RaavareDTO raa;
 
         try{
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
-            PreparedStatement preSt = conn.prepareStatement("SELECT * FROM raavare WHERE raavareid = ?");
+            PreparedStatement preSt = conn.prepareStatement("SELECT * FROM råvare WHERE råvareid = ?");
 
-            preSt.setInt(1,raavareId);
+            preSt.setInt(1,råvareId);
             ResultSet resultSet = preSt.executeQuery();
 
             resultSet.beforeFirst();

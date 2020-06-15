@@ -1,35 +1,35 @@
 package Core;
 
 public class RaavareDTO {
-    private int raavareID;
-    private String raavareNavn;
+    private int råvareID;
+    private String råvareNavn;
 
-    public RaavareDTO(int raavareID, String raavareNavn){
-        this.raavareID = raavareID;
-        this.raavareNavn = raavareNavn;
+    public RaavareDTO(int råvareID, String råvareNavn){
+        this.råvareID = råvareID;
+        this.råvareNavn = råvareNavn;
     }
 
-    public int getRaavareID() {
-        return raavareID;
+    public int getRåvareID() {
+        return råvareID;
     }
 
-    public String getRaavareNavn() {
-        return raavareNavn;
+    public String getRåvareNavn() {
+        return råvareNavn;
     }
 
-    public void setRaavareID(int raavareID) {
-        this.raavareID = raavareID;
+    public void setRåvareID(int råvareID) {
+        this.råvareID = råvareID;
     }
 
-    public void setRaavareNavn(String raavareNavn) {
-        this.raavareNavn = raavareNavn;
+    public void setRåvareNavn(String råvareNavn) {
+        this.råvareNavn = råvareNavn;
     }
 
     @Override
     public String toString() {
         return "RaavareDTO{" +
-                "raavareID=" + raavareID +
-                ", raavareNavn='" + raavareNavn + '\'' +
+                "raavareID=" + råvareID +
+                ", raavareNavn='" + råvareNavn + '\'' +
                 '}';
     }
 }
