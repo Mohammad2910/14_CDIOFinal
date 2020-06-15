@@ -17,6 +17,15 @@ button.selected{
     background-color: aliceblue;
 }
 
+button:focus{outline: 0 !important;}
+
+button{
+    border-radius: 20px;
+    border-style: solid;
+    cursor: pointer;
+
+}
+
 #pageFrame{
     min-height: 1080px;
     min-width: 1080px;
@@ -42,4 +51,12 @@ button.selected{
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+
+div {
+    height: 160px;
+    background-color: grey;
+    border: 20px grey;
+    padding: 70px;
 }
