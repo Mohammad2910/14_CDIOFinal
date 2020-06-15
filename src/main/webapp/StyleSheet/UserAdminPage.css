@@ -1,13 +1,3 @@
-body {
-    background-color: firebrick;
-}
-
-h1, h2 {
-    text-align: center;
-    color: white;
-    font-family: Cambria, serif;
-}
-
 
 /* hover styles*/
 input:hover{
