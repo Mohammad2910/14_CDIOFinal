@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>RecepterOgRåvare</title>
-    <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
+    <link rel="StyleSheet" type="text/css" href="StyleSheet/Recept_RaavarePage.css">
     <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 </head>
 
 <body>
 
-<button onclick="myFunction()" >Opret råvare</button>
-<button onclick="<!-- noget -->" >Se alle råvarer</button>
-<button onclick="myFunctionRet()" >Ret råvare</button>
-<button onclick="myFunctionRecept()" >Opret recept</button>
-<button onclick="<!-- noget -->" >Se recept</button>
+<div style = "text-align: center;">
 
-<div id="Opret_raavare" style="display: none">
+    <button onclick="myFunction()" >Opret råvare</button>
+    <button onclick="<!-- noget -->" >Se alle råvarer</button>
+    <button onclick="myFunctionRet()" >Ret råvare</button>
+    <button onclick="myFunctionRecept()" >Opret recept</button>
+    <button onclick="<!-- noget -->" >Se recept</button>
+
+</div>
+
+<div id="Opret_raavare" style="display: none" class="center">
     <input type="number" placeholder="Råvare ID"><br>
     <input type="text" placeholder="Råvare navn"><br>
     <button onclick="<!-- Gå tilbage funktion -->">Annuller</button>
@@ -27,7 +31,7 @@
     <!-- her skal alle råvare vises -->
 </div>
 
-<div id="Ret_raavare" style="display: none">
+<div id="Ret_raavare" style="display: none" >
     <input type="number" placeholder="Råvare ID"><br>
     <br>
     <input type="text" placeholder="Råvare navn"><br>
