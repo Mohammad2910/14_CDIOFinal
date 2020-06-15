@@ -30,7 +30,7 @@ public class DAO_Raavare implements I_DAL_Raavare {
 
             preSt.executeUpdate();
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return laesEnkelRaavareId(enkelRaavare.getRaavareID());
@@ -39,7 +39,7 @@ public class DAO_Raavare implements I_DAL_Raavare {
 
     @Override
     public RaavareDTO laesEnkelRaavareId(int raavareId) throws SQLException{
-        RaavareDTO raa = null;
+        RaavareDTO raa;
 
         try{
             DataAccess dataAccess = new DataAccess();
@@ -54,7 +54,7 @@ public class DAO_Raavare implements I_DAL_Raavare {
 
             raa = new RaavareDTO(resultSet.getInt(1), resultSet.getString(2));
 
-        } catch(SQLException e) {
+        } catch(SQLException | ClassNotFoundException e) {
             throw new SQLException(e);
         }
         return raa;

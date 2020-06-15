@@ -5,12 +5,10 @@ import BusinessLogic.I_BLLRaavare;
 import Core.RaavareDTO;
 
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.Console;
 import java.sql.SQLException;
 
 @Consumes(MediaType.APPLICATION_JSON)
@@ -22,14 +20,29 @@ public class Rest_Raavare implements I_Rest_Raavare {
 
     @Path("opret")
     @POST
-    public Response opretRaavare(RaavareDTO raa) {
+    public void opretRaavare(String raa) {
         System.out.println(raa);
+
+
+//        RaavareDTO returnRaa;
+//        try{
+//            returnRaa = raavareBLL.opretEnkelRaavare(raa);
+//
+//        } catch (SQLException e) {
+//            return Response.status(400).entity("SQLException: " + e.getMessage()).build();
+//        }
+//        return Response.ok(returnRaa).build();
+    }
+
+    @Path("vis")
+    @GET
+    public Response visRaavare(int raavareId) {
 
         RaavareDTO returnRaa;
         try{
-            returnRaa = raavareBLL.opretEnkelRaavare(raa);
+            returnRaa = raavareBLL.laesEnkelRaavareId(raavareId);
 
-        } catch (SQLException e) {
+        } catch (SQLException e){
             return Response.status(400).entity("SQLException: " + e.getMessage()).build();
         }
         return Response.ok(returnRaa).build();

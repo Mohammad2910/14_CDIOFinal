@@ -18,14 +18,14 @@
 <button onclick="toggleDivContent('visRecept')" >Se recept</button>
 </div>
 
-<form action="api/raavare/opret" method="POST">
 <div id="opretRaavare" class="center form" style="display: none">
+    <form method ="POST" >
     <input id ="raavareId" class = "center" type="number" placeholder="Raavare ID"><br>
     <input id ="raavareNavn" class = "center" type="text" placeholder="Raavare navn"><br>
     <button class = "center" onclick="<!-- Gaa tilbage funktion -->">Annuller</button>
-    <button id="opret-Raavare" class = "center" >Gem</button>
+    <button id="opret-Raavare" type= "button" class = "center" >Gem</button>
+    </form>
 </div>
-</form>
 
 <div id="visRaavare" class="center form" >
     <h2>Liste over råvarer</h2>

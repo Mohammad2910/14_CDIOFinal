@@ -11,7 +11,8 @@ public class DataAccess implements IDataAccess {
 
 
 
-    public DataAccess() throws SQLException {
+    public DataAccess() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
         this.connection = DriverManager.getConnection(url, username, password);
         this.statement = connection.createStatement();
 

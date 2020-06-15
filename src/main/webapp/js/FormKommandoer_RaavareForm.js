@@ -1,4 +1,4 @@
-$(function(){
+$(document).ready(function(){
     var $raavarer = $('#raavarer');
     var $raavareId = $('#raavareId');
     var $raavareNavn = $('#raavareNavn');
@@ -6,7 +6,8 @@ $(function(){
 
     $.ajax({
         type:'GET',
-        url:'/api/raavare',
+        url:'api/raavare/vis',
+        contentType: "application/json; charset=utf-8",
         success: function (raavarer) {
             $.each(raavarer, function(i, raavare){
                 $raavarer.append('<li>Råvare navn: ' + raavare.raaavareNavn +', Råvare ID: '+ raavare.raavareId + '</li>');
@@ -25,9 +26,10 @@ $(function(){
 
         $.ajax({
             type: 'POST',
-            url: '/api/raavare/opret',
+            url: 'api/raavare/opret',
             dataType: "json",
-            data: raavare,
+            contentType: "application/json; charset=utf-8",
+            data: String,
             success: function(nyRaavare){
                 $raavarer.append('<li>Råvare navn: ' + nyRaavare.raavareNavn + ', Råvare ID: ' + nyRaavare.raavareId + '</li>');
             },
