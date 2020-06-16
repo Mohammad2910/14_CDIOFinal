@@ -16,7 +16,7 @@ public class BLLRaavare implements I_BLLRaavare {
 
 
     @Override
-    public RaavareDTO redigerRaavare(String navn) throws SQLException {
+    public RaavareDTO redigerRaavare(RaavareDTO enkelRaavare) throws SQLException {
         return null;
     }
 

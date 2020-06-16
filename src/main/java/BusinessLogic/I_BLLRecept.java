@@ -1,3 +1,4 @@
+/*
 package BusinessLogic;
 
 import java.sql.SQLException;
@@ -13,3 +14,4 @@ public interface I_BLLRecept {
 
 
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package BusinessLogic;
 
 import java.sql.SQLException;
@@ -8,3 +9,4 @@ public interface I_BLLProduktBatchAfvejning {
     ProduktBatchAfvejningDTO[] visAlleProduktBatchAfvejninger(int produktBatchID) throws SQLException;
 
 }
+*/
