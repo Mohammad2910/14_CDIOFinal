@@ -10,11 +10,17 @@
 </head>
 
 <body>
+
+<h1>Gruppe 14</h1>
+
 <div style="text-align: center;" >
-    <button onclick="toggleDivContent('OpretBruger')">Opret bruger</button>
-    <button onclick="toggleDivContent('RedigerBruger')">Rediger bruger</button>
-    <button onclick="toggleDivContent('FjernBruger')">Fjern bruger</button>
-    <button onclick="toggleDivContent('SeAlleBrugere')">Se alle brugere</button>
+    <ul>
+        <li onclick="toggleDivContent('OpretBruger')"><a>Opret bruger</a></li>
+        <li onclick="toggleDivContent('RedigerBruger')"><a>Rediger bruger</a></li>
+        <li onclick="toggleDivContent('FjernBruger')"><a>Fjern bruger</a></li>
+        <li onclick="toggleDivContent('SeAlleBrugere')<!-- noget -->" ><a>Se alle brugere</a></li>
+        <li class="right" onclick="location.href='Frontpage.html'"><a>Log ud</a></li>
+    </ul>
 </div>
 
 <div id="OpretBruger" class="center form" style="display: none;">

@@ -18,10 +18,10 @@
     <ul>
         <li onclick="toggleDivContent('opretRaavare')"><a>Opret råvare</a></li>
         <li onclick="toggleDivContent('Ret_raavare')"><a>Ret råvare</a></li>
-        <li id ="vis-Raavare" onclick="<!-- noget -->" ><a>Se alle råvarer</a></li>
+        <li id ="vis-Raavare" onclick="toggleDivContent('visRaavare')<!-- noget -->" ><a>Se alle råvarer</a></li>
         <li onclick="toggleDivContent('opretRecept')"><a>Opret recept</a></li>
-        <li onclick="<!-- noget -->" ><a>Se recept</a></li>
-        <li class="left" onclick="location.href='Frontpage.html'"><a>Log ud</a></li>
+        <li onclick="toggleDivContent('visRecept')<!-- noget -->" ><a>Se recept</a></li>
+        <li class="right" onclick="location.href='Frontpage.html'"><a>Log ud</a></li>
     </ul>
 </div>
 
@@ -60,7 +60,7 @@
     <button class = "center" onclick="<!-- Gem raavare -->">Gem</button>
 </div>
 
-<div id="visRecept" class="center form">
+<div id="visRecept" class="center form" style="display: none">
     <h2>Liste over alle recepter</h2>
     <!-- her skal alle raavare vises -->
 </div>
