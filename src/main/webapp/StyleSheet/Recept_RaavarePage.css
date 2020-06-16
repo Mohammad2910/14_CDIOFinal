@@ -56,3 +56,10 @@ li a:hover {
 .right{
     float: right;
 }
+
+.align h2{
+    display: inline-block;
+}
+.align .button{
+    display: inline-block;
+}

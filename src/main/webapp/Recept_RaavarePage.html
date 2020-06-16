@@ -7,6 +7,7 @@
     <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
     <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script>type="text/javascript" src="js/FormKommandoer_RaavareForm.js"</script>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
         <li onclick="toggleDivContent('Ret_raavare')"><a>Ret råvare</a></li>
         <li id ="vis-Raavare" onclick="toggleDivContent('visRaavare')<!-- noget -->" ><a>Se alle råvarer</a></li>
         <li onclick="toggleDivContent('opretRecept')"><a>Opret recept</a></li>
-        <li onclick="toggleDivContent('visRecept')<!-- noget -->" ><a>Se recept</a></li>
+        <li  id = "vis-Alle-Recept"onclick="toggleDivContent('visRecept')<!-- noget -->" ><a>Se recepter</a></li>
         <li class="right" onclick="location.href='Frontpage.html'"><a>Log ud</a></li>
     </ul>
 </div>
@@ -74,7 +75,9 @@
 
 </div>
 
-<div id="visRecept" class="container" style="display: none">
+<div id="visRecept" class="center form" style="display: none">
+
+    <h2>Liste over recepter</h2>
 
     <form method="get">
 
