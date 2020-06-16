@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DAO_Raavare implements I_DAL_Raavare {
+public class DAO_Raavare implements IDAO_Raavare {
 
     private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, RaavareDTO res) throws SQLException{
         try{
