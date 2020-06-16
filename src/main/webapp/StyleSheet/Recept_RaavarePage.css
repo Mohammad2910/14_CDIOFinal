@@ -55,11 +55,6 @@ li a:hover {
 
 .right{
     float: right;
+    width: 169px;
 }
 
-.align h2{
-    display: inline-block;
-}
-.align .button{
-    display: inline-block;
-}

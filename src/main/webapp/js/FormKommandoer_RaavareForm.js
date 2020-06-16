@@ -36,7 +36,6 @@ $(document).ready(function() {
             alert('Fejl ved indlæsning af recepten');
         }
 
-
     });
 
 
