@@ -40,11 +40,27 @@ public class Rest_Raavare implements I_Rest_Raavare {
 
         RaavareDTO returnRaa;
         try{
-            returnRaa = raavareBLL.laesEnkelRaavareId(raavareId);
+            returnRaa = raavareBLL.visEnkelRaavareId(raavareId);
 
         } catch (SQLException e){
             return Response.status(400).entity("SQLException: " + e.getMessage()).build();
         }
         return Response.ok(returnRaa).build();
+    }
+
+    @Path("rediger")
+    @POST
+    public void redigerRaavare(String inputs) {
+        String[] strarray = inputs.split("&");
+        RaavareDTO raavareDTO = new RaavareDTO(Integer.parseInt(strarray[0].substring(10)),strarray[1].substring(12));
+        RaavareDTO returnRaa;
+        try{
+            //returnRaa =
+            raavareBLL.redigerRaavare(raavareDTO);
+
+        } catch (SQLException e) {
+            //return Response.status(400).entity("SQLException: " + e.getMessage()).build();
+        }
+        //return Response.ok(returnRaa).build();
     }
 }
