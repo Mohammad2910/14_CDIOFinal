@@ -53,8 +53,8 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             data: raavare,
             success: function () {
+                alert('Råvare oprettet!');
                 $raavarer.append('<li>Råvare navn: ' + raavare.raavareNavn + ', Råvare ID: ' + raavare.raavareId + '</li>');
-                alert('Råvare oprettet!')
             },
             error: function () {
                 alert('Fejl ved oprettelse af råvare');

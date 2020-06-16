@@ -42,8 +42,8 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             data: bruger,
             success: function () {
+                alert('Bruger oprettet!');
                 $brugere.append('<li>Bruger CPR: ' + bruger.brugerCpr + ', Bruger navn: ' + bruger.brugerNavn + ', Bruger initialer: ' + bruger.brugerIni + ', Bruger rolle: ' + bruger.brugerRolle + ', Bruger status: ' + bruger.brugerStatus + '</li>');
-                alert('Bruger oprettet!')
                 },
             error: function(){
                 alert('Fejl ved oprettelse af bruger');
