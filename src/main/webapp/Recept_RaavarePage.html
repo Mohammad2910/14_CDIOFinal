@@ -11,53 +11,57 @@
 
 <body>
 
+<h1>Gruppe 14</h1>
+
 <div style = "text-align: center;">
 
-    <button onclick="toggleDivContent('opretRaavare')" >Opret råvare</button>
-    <button onclick="<!-- noget -->" >Se alle råvarer</button>
-    <button onclick="toggleDivContent('Ret_raavare')" >Ret råvare</button>
-    <button onclick="toggleDivContent('opretRecept')" >Opret recept</button>
-    <button onclick="<!-- noget -->" >Se recept</button>
-
+    <ul>
+        <li onclick="toggleDivContent('opretRaavare')"><a>Opret råvare</a></li>
+        <li onclick="toggleDivContent('Ret_raavare')"><a>Ret råvare</a></li>
+        <li id ="vis-Raavare" onclick="<!-- noget -->" ><a>Se alle råvarer</a></li>
+        <li onclick="toggleDivContent('opretRecept')"><a>Opret recept</a></li>
+        <li onclick="<!-- noget -->" ><a>Se recept</a></li>
+        <li class="left" onclick="location.href='Frontpage.html'"><a>Log ud</a></li>
+    </ul>
 </div>
 
 
 <div id="opretRaavare" class="center form" style="display: none">
     <form method ="POST" >
+        <h2>Opret råvare</h2>
     <input id ="raavareId" class = "center" type="number" placeholder="Raavare ID"><br>
     <input id ="raavareNavn" class = "center" type="text" placeholder="Raavare navn"><br>
-    <button class = "center" onclick="<!-- Gaa tilbage funktion -->">Annuller</button>
     <button id="opret-Raavare" type= "button" class = "center" >Gem</button>
     </form>
 </div>
 
-<div id="Ret_raavare" style="display: none" >
-    <input type="number" placeholder="Råvare ID"><br>
+<div id="Ret_raavare" style="display: none" class="center form" >
+    <h2>Ret råvare</h2>
+    <input type="number" placeholder="Råvare ID" class = "center"><br>
     <br>
-    <input type="text" placeholder="Råvare navn"><br>
-    <input type="number" placeholder="Råvare ID"><br>
-    <button onclick="<!-- Gå tilbage funktion -->">Annuller/Gå tilbage</button>
-    <button onclick="<!-- Gem råvare -->">Gem</button>
+    <input type="text" placeholder="Råvare navn" class = "center"><br>
+    <input type="number" placeholder="Råvare ID" class = "center"><br>
+    <button onclick="<!-- Gem råvare -->" class = "center">Gem</button>
 </div>
 
-<div id="retRaavare" class="center form" style="display: none">
-    <input class = "center" type="number" placeholder="Raavare ID"><br>
-    <input class = "center" type="text" placeholder="Raavare navn"><br>
-    <button class = "center" onclick="<!-- Gaa tilbage funktion -->">Annuller/Gaa tilbage</button>
-    <button class = "center" onclick="<!-- Gem raavare -->">Gem</button>
+<div id = "visRaavare" class="center form" style ="display: none">
+    <h2>Liste over alle råvare</h2>
+
+
 </div>
 
 <div id="opretRecept" class="center form" style="display: none">
+    <h2>Opret recept</h2>
     <input class = "center" type="number" placeholder="Recept ID"><br>
     <input class = "center" type="text" placeholder="Recept navn"><br>
     <input class = "center" type="text" placeholder="Raavare navn"><br>
     <input class = "center" type="text" placeholder="Raavare mængde"><br>
     <input class = "center" type="text" placeholder="Tolerance"><br>
-    <button class = "center" onclick="<!-- Gaa tilbage funktion -->">Annuller</button>
     <button class = "center" onclick="<!-- Gem raavare -->">Gem</button>
 </div>
 
 <div id="visRecept" class="center form">
+    <h2>Liste over alle recepter</h2>
     <!-- her skal alle raavare vises -->
 </div>
 
