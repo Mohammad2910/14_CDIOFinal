@@ -41,6 +41,9 @@ li {
     float: left;
 }
 
+
+
+
 li a {
     display: block;
     color: white;
@@ -57,5 +60,16 @@ li a:hover {
 .right{
     float: right;
 }
+
+#visRecept {
+    width: 50%;
+    height: 70px;
+    text-align: center;
+}
+#visRecept h2 {
+    display: inline-block;
+}
+
+
 
 

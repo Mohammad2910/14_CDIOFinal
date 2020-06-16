@@ -37,32 +37,51 @@
 
 <div id="Ret_raavare" style="display: none" class="center form" >
     <h2>Ret råvare</h2>
-    <input type="number" placeholder="Råvare ID" class = "center"><br>
-    <br>
-    <input type="text" placeholder="Råvare navn" class = "center"><br>
-    <input type="number" placeholder="Råvare ID" class = "center"><br>
-    <button onclick="<!-- Gem råvare -->" class = "center">Gem</button>
+    <form method="POST">
+
+        <input type="number" placeholder="Råvare ID" class = "center"><br>
+        <br>
+        <input type="text" placeholder="Råvare navn" class = "center"><br>
+        <input type="number" placeholder="Råvare ID" class = "center"><br>
+        <button onclick="<!-- Gem råvare -->" class = "center">Gem</button>
+
+    </form>
 </div>
 
 <div id = "visRaavare" class="center form" style ="display: none">
     <h2>Liste over alle råvare</h2>
+    <form method="get">
+
+
+
+    </form>
 
 
 </div>
 
 <div id="opretRecept" class="center form" style="display: none">
     <h2>Opret recept</h2>
-    <input class = "center" type="number" placeholder="Recept ID"><br>
-    <input class = "center" type="text" placeholder="Recept navn"><br>
-    <input class = "center" type="text" placeholder="Raavare navn"><br>
-    <input class = "center" type="text" placeholder="Raavare mængde"><br>
-    <input class = "center" type="text" placeholder="Tolerance"><br>
-    <button class = "center" onclick="<!-- Gem raavare -->">Gem</button>
+    <form method="POST">
+
+        <input class = "center" type="number" placeholder="Recept ID"><br>
+        <input class = "center" type="text" placeholder="Recept navn"><br>
+        <input class = "center" type="text" placeholder="Raavare navn"><br>
+        <input class = "center" type="text" placeholder="Raavare mængde"><br>
+        <input class = "center" type="text" placeholder="Tolerance"><br>
+        <button class = "center" onclick="<!-- Gem raavare -->">Gem</button>
+
+    </form>
+
 </div>
 
-<div id="visRecept" class="center form" style="display: none">
-    <h2>Liste over alle recepter</h2>
-    <!-- her skal alle raavare vises -->
+<div id="visRecept" class="container" style="display: none">
+
+    <form method="get">
+
+
+
+    </form>
+
 </div>
 
 </body>
