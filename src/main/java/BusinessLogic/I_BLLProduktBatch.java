@@ -1,3 +1,4 @@
+/*
 package BusinessLogic;
 
 import java.sql.SQLException;
@@ -11,3 +12,4 @@ public interface I_BLLProduktBatch {
     ProduktBatchDTO[] visAlleProduktBatches() throws SQLException;
 
 }
+*/

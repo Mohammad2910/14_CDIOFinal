@@ -5,9 +5,9 @@
     <title>RecepterOgRåvare</title>
     <link rel="StyleSheet" type="text/css" href="StyleSheet/Recept_RaavarePage.css">
     <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
-    <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-    <script>type="text/javascript" src="js/FormKommandoer_RaavareForm.js"</script>
+    <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
+    <script type="text/javascript" src="js/FormKommandoer_RaavareForm.js"></script>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
 
 
 <div id="opretRaavare" class="center form" style="display: none">
-    <form method ="POST" >
+    <form method ="POST" action="api/raavare/opret" >
         <h2>Opret råvare</h2>
     <input id ="raavareId" class = "center" type="number" placeholder="Raavare ID"><br>
     <input id ="raavareNavn" class = "center" type="text" placeholder="Raavare navn"><br>

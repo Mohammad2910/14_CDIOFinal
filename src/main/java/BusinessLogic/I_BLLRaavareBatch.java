@@ -1,3 +1,4 @@
+/*
 package BusinessLogic;
 
 import java.sql.SQLException;
@@ -10,3 +11,4 @@ public interface I_BLLRaavareBatch {
     RaavareBatchDTO[] visAlleRaavareBatch() throws SQLException;
 
 }
+*/

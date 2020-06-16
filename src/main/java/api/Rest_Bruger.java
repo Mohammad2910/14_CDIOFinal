@@ -24,7 +24,8 @@ public class Rest_Bruger implements I_Rest_Bruger {
     public Response opretBruger(String inputs) {
         String[] strarray = inputs.split("&");
        //Lav JavaScripten først
-        BrugerDTO brugerDTO = new BrugerDTO(strarray[0].substring(AttrCount(strarray[0])),strarray[1].substring(AttrCount(strarray[1])),strarray[2].substring(AttrCount(strarray[2])),strarray[3].substring(AttrCount(strarray[3])),strarray[4].substring(AttrCount(strarray[4])));
+        BrugerDTO brugerDTO = new BrugerDTO(strarray[0].substring(AttrCount(strarray[0])),strarray[1].substring(AttrCount(strarray[1])),strarray[2].substring(AttrCount(strarray[2])),"Laborant","Aktiv");
+
         BrugerDTO returnBru;
         try{
             returnBru = brugerBLL.opretEnkelBruger(brugerDTO);
@@ -38,11 +39,13 @@ public class Rest_Bruger implements I_Rest_Bruger {
     public static int AttrCount(String attr){
         int count = 0;
         for (int i = 0; i < attr.length(); i++) {
-            if(attr.charAt(i) != '='){
-                count++;
+            if(attr.charAt(i) == '='){
+                System.out.println(attr.charAt(i));
+                break;
             }
+            count++;
         }
-        return count;
+        return ++count;
     }
 }
 

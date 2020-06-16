@@ -20,7 +20,7 @@ $(document).ready(function() {
                 $raavarer.append('<li>Råvare navn: ' + raavare.raavareNavn + ', Råvare ID: ' + raavare.raavareId + '</li>');
             });
         },
-        error: function (data) {
+        error: function () {
             alert('Fejl ved indlæsning af råvarer');
         },
 
@@ -54,6 +54,7 @@ $(document).ready(function() {
             data: raavare,
             success: function () {
                 $raavarer.append('<li>Råvare navn: ' + raavare.raavareNavn + ', Råvare ID: ' + raavare.raavareId + '</li>');
+                alert('Råvare oprettet!')
             },
             error: function () {
                 alert('Fejl ved oprettelse af råvare');
