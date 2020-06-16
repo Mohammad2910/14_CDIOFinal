@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>FrontLoginPage</title>
+    <link rel="StyleSheet" type="text/css" href="StyleSheet/FrontPage.css">
     <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
 </head>
 
@@ -12,6 +13,45 @@
     <input class="center" type="text" placeholder="Indtast Bruger-ID"><br>
     <button id="submit" class="center" onclick="<!-- Login function -->">Login</button>
 </div>
+
+<!-- vi mangler noget kommunikation med databasen, så vi ved hvilken div der skal display'es -->
+<div id ="admin" style="display: none">
+    <form method="get" action="/UserAdminPage.html">
+        <button type = "button" class="center">Login som Admin</button>
+    </form>
+</div>
+
+<div id ="farmaceut" style="display: none">
+    <form method="get" action="/Recept_RaavarePage.html">
+        <button type = "button" class="center">Login som farmaceut</button>
+    </form>
+    <form method="get" action="BatchAdminPage.html">
+        <button type = "button" class="center">Login som produktionsleder</button>
+    </form>
+    <form method="get" action="LaborantAfvejning.html">
+        <button type = "button" class="center">Login som laborant</button>
+    </form>
+</div>
+
+<div id ="produktionsleder" style="display: none">
+
+    <form method="get" action="BatchAdminPage.html">
+        <button type = "button" class="center">Login som produktionsleder</button>
+    </form>
+    <form method="get" action="LaborantAfvejning.html">
+        <button type = "button" class="center">Login som laborant</button>
+    </form>
+</div>
+
+<div id ="laborant" style="display: none">
+    <form method="get" action="LaborantAfvejning.html">
+        <button type = "button" class="center">Login som laborant</button>
+    </form>
+</div>
+
+
+
+
 
 
 </body>

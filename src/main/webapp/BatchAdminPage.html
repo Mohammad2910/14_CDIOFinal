@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>AdministrationAfBatches</title>
+    <link rel="StyleSheet" type="text/css" href="StyleSheet/BatchAdminPage.css">
     <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
     <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -10,25 +11,30 @@
 <!-- center kan fjernes, fra tagsne, kun til tekst, vi burde lave en de forskellige forms som div, som bliver synlige og usynlige naar knapperne trykkes paa -->
 
 <body>
+<h1>Gruppe 14</h1>
 <!-- Maaske skal der være en meddelelse, der indikere at man er logget ind, og/eller hvem er logget ind-->
 <div style="text-align: center;" >
-<button onclick="toggleDivContent('opretRaavareBatch')">Opret raavarebatch</button>
-<button onclick="toggleDivContent('visRaavareBatch')">Vis raavarebatch</button>
-<button onclick="toggleDivContent('opretProduktBatch')">Opret produktbatch</button>
-<button onclick="toggleDivContent('visProduktBatch')">Vis produktbatch</button>
+    <ul>
+        <li onclick="toggleDivContent('opretRaavareBatch')"><a>Opret råvarebatch</a></li>
+        <li onclick="toggleDivContent('visRaavareBatch')"><a>Vis råvarebatch</a></li>
+        <li onclick="toggleDivContent('opretProduktBatch')"><a>Opret produktbatch</a></li>
+        <li onclick="toggleDivContent('visProduktBatch')"><a>Vis produktbatch</a></li>
+    </ul>
 </div>
 
+
+
 <div id="opretRaavareBatch" class="center form" style="display: none;">
-    <h2>Opret raavarebatch</h2>
-    <input class="center" type="number" placeholder="Raavarebatch nummer"><br>
-    <input class = "center" type="number" placeholder="Raavare-ID"><br>
+    <h2>Opret råvarebatch</h2>
+    <input class="center" type="number" placeholder="Råvarebatch nummer"><br>
+    <input class = "center" type="number" placeholder="Råvare-ID"><br>
     <input class = "center" type="number" step="0.001" placeholder="Mængde (Angivet i kilo)"><br>
     <input class = "center" type="text" placeholder="Leverandør"><br>
     <button class = "center " onclick="<!-- Submit raavarebatch function -->">Gem</button>
 </div>
 
 <div id="visRaavareBatch" class="center form" style="display: none">
-    <h2>Liste over alle raavarebatch</h2>
+    <h2>Liste over alle råvarebatch</h2>
     <!-- her skal alle raavarebatches vises -->
 </div>
 
@@ -37,7 +43,7 @@
     <input class="center" type="number" placeholder="Produktbatch nummer"><br>
     <input class="center" type="number" placeholder="Recept nummer"><br>
     <input class="center" type="text" placeholder="Bruger-ID"><br>
-    <input class="center" type="number" placeholder="Raavarebatch nummer"><br>
+    <input class="center" type="number" placeholder="Råvarebatch nummer"><br>
     <button class = "center" onclick="<!-- Submit Produktbatch function -->">Gem</button>
 </div>
 
