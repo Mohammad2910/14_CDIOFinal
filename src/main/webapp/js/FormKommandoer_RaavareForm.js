@@ -29,7 +29,7 @@ $(document).ready(function() {
         contentType: "application/json; charset=utf-8",
         success: function (data) {
             $.each(data, function (i, recept) {
-                $recepter.append('<li>Recept ID: ' + recept.receptID + ', Recept navn: ' + recept.receptNavn + ', Råvare ID: ' + recept.raavareId + ', Råvare mængde: ' + recept.raavareMaengde + ', Tolerance: ' + recept.tolerance + '</li>');
+                $recepter.append('<li>Recept ID: ' + recept.receptID + ', Recept navn: ' + recept.receptNavn +  '</li>');
             });
         },
         error: function () {
