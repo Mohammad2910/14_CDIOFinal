@@ -32,7 +32,7 @@ $(document).ready(function() {
             brugerNavn: $brugerNavn.val(),
             brugerIni: $brugerIni.val(),
             brugerRolle: $brugerRolle.val(),
-            brugerStatus: $brugerStatus.val('Aktiv'),
+            brugerStatus: $brugerStatus.val(),
         };
 
         $.ajax({
