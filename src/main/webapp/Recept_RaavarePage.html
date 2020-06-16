@@ -2,21 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RecepterOgRaavare</title>
+    <title>RecepterOgRåvare</title>
+    <link rel="StyleSheet" type="text/css" href="StyleSheet/Recept_RaavarePage.css">
     <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
     <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-    <script type="text/javascript" src="js/FormKommandoer_RaavareForm.js"></script>
 </head>
 
 <body>
-<div style="text-align: center;">
-<button onclick="toggleDivContent('opretRaavare')" >Opret raavare</button>
-<button onclick="toggleDivContent('visRaavare')" >Se alle raavarer</button>
-<button onclick="toggleDivContent('retRaavare')" >Ret raavare</button>
-<button onclick="toggleDivContent('opretRecept')" >Opret recept</button>
-<button onclick="toggleDivContent('visRecept')" >Se recept</button>
+
+<div style = "text-align: center;">
+
+    <button onclick="myFunction()" >Opret råvare</button>
+    <button onclick="<!-- noget -->" >Se alle råvarer</button>
+    <button onclick="myFunctionRet()" >Ret råvare</button>
+    <button onclick="myFunctionRecept()" >Opret recept</button>
+    <button onclick="<!-- noget -->" >Se recept</button>
+
 </div>
+
 
 <div id="opretRaavare" class="center form" style="display: none">
     <form method ="POST" >
@@ -27,9 +31,13 @@
     </form>
 </div>
 
-<div id="visRaavare" class="center form" >
-    <h2>Liste over råvarer</h2>
-    <ul id="raavarer"></ul>
+<div id="Ret_raavare" style="display: none" >
+    <input type="number" placeholder="Råvare ID"><br>
+    <br>
+    <input type="text" placeholder="Råvare navn"><br>
+    <input type="number" placeholder="Råvare ID"><br>
+    <button onclick="<!-- Gå tilbage funktion -->">Annuller/Gå tilbage</button>
+    <button onclick="<!-- Gem råvare -->">Gem</button>
 </div>
 
 <div id="retRaavare" class="center form" style="display: none">
