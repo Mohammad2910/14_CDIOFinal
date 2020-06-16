@@ -15,9 +15,11 @@ $(document).ready(function() {
         success: function (data) {
             $.each(data, function (i, bruger) {
                 $brugere.append('<li>Bruger CPR: ' + bruger.brugerCpr + ', Bruger navn: ' + bruger.brugerNavn + ', Bruger initialer: ' + bruger.brugerIni + ', Bruger rolle: ' + bruger.brugerRolle + ', Bruger status: ' + bruger.brugerStatus + '</li>');
+
+
             });
         },
-        error: function (data) {
+        error: function () {
             alert('Fejl ved indlæsning af brugere');
         },
     });
@@ -30,7 +32,7 @@ $(document).ready(function() {
             brugerNavn: $brugerNavn.val(),
             brugerIni: $brugerIni.val(),
             brugerRolle: $brugerRolle.val(),
-            brugerStatus: $brugerStatus.val(),
+            brugerStatus: $brugerStatus.val('Aktiv'),
         };
 
         $.ajax({
@@ -41,7 +43,8 @@ $(document).ready(function() {
             data: bruger,
             success: function () {
                 $brugere.append('<li>Bruger CPR: ' + bruger.brugerCpr + ', Bruger navn: ' + bruger.brugerNavn + ', Bruger initialer: ' + bruger.brugerIni + ', Bruger rolle: ' + bruger.brugerRolle + ', Bruger status: ' + bruger.brugerStatus + '</li>');
-            },
+                alert('Bruger oprettet!')
+                },
             error: function(){
                 alert('Fejl ved oprettelse af bruger');
             }
