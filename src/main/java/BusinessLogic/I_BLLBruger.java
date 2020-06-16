@@ -1,5 +1,6 @@
 package BusinessLogic;
 
+import Core.BrugerDTO;
 import Core.RaavareDTO;
 
 import java.sql.SQLException;

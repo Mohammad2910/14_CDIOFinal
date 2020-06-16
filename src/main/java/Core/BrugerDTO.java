@@ -8,10 +8,9 @@ public class BrugerDTO {
     private String brugerNavn;
     private String ini;
     private String roller;
-    private boolean brugerStatus;
+    private String brugerStatus;
 
-
-    public BrugerDTO(String cprNr, String brugerNavn, String ini, String roller, boolean brugerStatus) {
+    public BrugerDTO(String cprNr, String brugerNavn, String ini, String roller, String brugerStatus) {
         this.cprNr = cprNr;
         this.brugerNavn = brugerNavn;
         this.ini = ini;
@@ -51,11 +50,11 @@ public class BrugerDTO {
         this.roller = roller;
     }
 
-    public boolean isBrugerStatus() {
+    public String getBrugerStatus() {
         return brugerStatus;
     }
 
-    public void setBrugerStatus(boolean brugerStatus) {
+    public void setBrugerStatus(String brugerStatus) {
         this.brugerStatus = brugerStatus;
     }
 
