@@ -21,7 +21,7 @@ public class AuthenticationService {
 
 
     @Path("login/{cpr}")
-    @GET
+    @POST //post
     public Response login (@PathParam("cpr") String input) {
         BrugerDTO returnBru;
         try {

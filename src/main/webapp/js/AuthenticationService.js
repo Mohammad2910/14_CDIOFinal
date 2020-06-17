@@ -8,15 +8,15 @@ $(document).ready(function() {
             brugerCpr: $brugerCpr.val(),
             brugerNavn: 'a',
             brugerIni: 'a',
-            brugerRolle: 'admin',
+            brugerRolle: 'admin',     // samme navn som i brugerDTO
             brugerStatus: 'aktiv',
         };
         console.log(bruger);
         $.ajax({
-            type: 'GET',
-            url: 'api/authentication/login',
+            type: 'POST',
+            url: 'api/authentication/login/' + $brugerCpr.val(),
             contentType: "application/json; charset=utf-8",
-            data: bruger,
+            //data: bruger,
             success: function (data) {
                 alert(bruger.brugerRolle);
                 console.log(data)
