@@ -3,11 +3,12 @@ $(document).ready(function() {
     var $raavareId = $('#raavareId');
     var $raavareNavn = $('#raavareNavn');
 
+    var raavare = {
+        raavareId: $raavareId.val(),
+        raavareNavn: $raavareNavn.val(),
+    };
     $('#vis-Raavare').on('click', function () {
-        var raavare = {
-            raavareId: $raavareId.val(),
-            raavareNavn: $raavareNavn.val(),
-        };
+
 
         $('#raavarer').html('');
 
@@ -29,10 +30,7 @@ $(document).ready(function() {
 
     $('#opret-Raavare').on('click', function () {
 
-        var raavare = {
-            raavareId: $raavareId.val(),
-            raavareNavn: $raavareNavn.val(),
-        };
+
 
         $.ajax({
             type: 'POST',
@@ -51,10 +49,7 @@ $(document).ready(function() {
     });
 
     $('#rediger-Raavare').on('click', function () {
-        var raavare = {
-            raavareId: $raavareId.val(),
-            raavareNavn: $raavareNavn.val(),
-        };
+
 
         $.ajax({
             type: 'POST',

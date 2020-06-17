@@ -3,11 +3,12 @@ $(document).ready(function() {
     var $receptID = $('#receptID');
     var $receptNavn = $('#receptNavn');
 
+    var recept = {
+        receptID: $receptID.val(),
+        receptNavn: $receptNavn.val(),
+    };
     $('#vis-Alle-Recept').on('click', function () {
-        var recept = {
-            receptID: $receptID.val(),
-            receptNavn: $receptNavn.val(),
-        };
+
 
         $('#recepter').html('');
 
@@ -29,10 +30,6 @@ $(document).ready(function() {
 
     $('#opret-Recept').on('click', function () {
 
-        var recept = {
-            receptID: $receptID.val(),
-            receptNavn: $receptNavn.val(),
-        };
 
         $.ajax({
             type: 'POST',
