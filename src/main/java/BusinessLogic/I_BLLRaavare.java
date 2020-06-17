@@ -3,6 +3,7 @@ package BusinessLogic;
 import Core.RaavareDTO;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface I_BLLRaavare {
     RaavareDTO opretEnkelRaavare(RaavareDTO enkelRaavare) throws SQLException;
@@ -11,7 +12,7 @@ public interface I_BLLRaavare {
 
     RaavareDTO redigerRaavare(RaavareDTO raavareDTO) throws SQLException;
 
-    RaavareDTO[] visAlleRaavare() throws  SQLException;
+    List<RaavareDTO> visAlleRaavare() throws  SQLException;
 
 
 }
