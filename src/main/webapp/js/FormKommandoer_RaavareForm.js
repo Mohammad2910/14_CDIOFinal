@@ -9,14 +9,16 @@ $(document).ready(function() {
             raavareNavn: $raavareNavn.val(),
         };
 
+        $('#raavarer').html('');
+
         $.ajax({
             type: 'GET',
             url: 'api/raavare/vis',
             contentType: "application/json; charset=utf-8",
             data: raavare,
-            success: function () {
-                $.each(raavare, function (i, raavare) {
-                    $raavarer.append('<li>Råvare navn: ' + raavare.raavareNavn + ', Råvare ID: ' + raavare.raavareId + '</li>');
+            success: function (data) {
+                $.each(data, function (i, raavare) {
+                    $raavarer.append('<li>Råvare navn: ' + raavare.raavareNavn + ', Råvare ID: ' + raavare.raavareID + '</li><br>');
                 });
             },
             error: function () {

@@ -41,7 +41,6 @@ public class Rest_Raavare implements I_Rest_Raavare {
 
         try{
             returnRaa = raavareBLL.visAlleRaavare();
-
         } catch (SQLException e){
             return Response.status(400).entity("SQLException: " + e.getMessage()).build();
         }
