@@ -4,7 +4,6 @@ $(document).ready(function() {
     var $brugerNavn = $('#brugerNavn');
     var $brugerIni = $('#brugerIni');
     var $brugerRolle = $('#brugerRolle');
-    var $brugerStatus = $('#brugerStatus');
 
 
     $.ajax({
@@ -32,23 +31,28 @@ $(document).ready(function() {
             brugerNavn: $brugerNavn.val(),
             brugerIni: $brugerIni.val(),
             brugerRolle: $brugerRolle.val(),
-            brugerStatus: $brugerStatus.val(),
+            brugerStatus: 'Aktiv',
         };
 
-        $.ajax({
-            type: 'POST',
-            url: 'api/bruger/opret',
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            data: bruger,
-            success: function () {
-                alert('Bruger oprettet!');
-                $brugere.append('<li>Bruger CPR: ' + bruger.brugerCpr + ', Bruger navn: ' + bruger.brugerNavn + ', Bruger initialer: ' + bruger.brugerIni + ', Bruger rolle: ' + bruger.brugerRolle + ', Bruger status: ' + bruger.brugerStatus + '</li>');
+        if (bruger.brugerCpr.length === 10) {
+            $.ajax({
+                type: 'POST',
+                url: 'api/bruger/opret',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: bruger,
+                success: function () {
+                    alert('Bruger oprettet!');
+                    $brugere.append('<li>Bruger CPR: ' + bruger.brugerCpr + ', Bruger navn: ' + bruger.brugerNavn + ', Bruger initialer: ' + bruger.brugerIni + ', Bruger rolle: ' + bruger.brugerRolle + ', Bruger status: ' + bruger.brugerStatus + '</li>');
                 },
-            error: function(){
-                alert('Fejl ved oprettelse af bruger');
-            }
-        });
+                error: function () {
+                    alert('Fejl ved oprettelse af bruger');
+                }
+            });
+        }
+        else {
+            alert('CPR-nummer er for kort')
+        }
     });
 
 });
