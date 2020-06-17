@@ -1,13 +1,12 @@
 package DataAccess;
 
+import BusinessLogic.BLLBruger;
+
 //public class DBAccessTestdata {
 //    public static void main(String[] args) {
 //        try{
-//            DataAccess dataAccess = new DataAccess();
-//            output(dataAccess.getAlleBrugerinfo());
-//            output(dataAccess.getAlleRaavareinfo());
-//            dataAccess.InsertBruger("1010101212","Onkel Stuart", "OS", "Admin");
-//            output(dataAccess.getAlleBrugerinfo());
+//            BLLBruger a = new BLLBruger();
+//            System.out.println(a.visEnkelBruger("1212993113"));
 //        } catch (Exception e){
 //            System.out.println(e.getMessage());
 //        }

@@ -17,8 +17,9 @@ public class BLLBruger implements I_BLLBruger {
 
     @Override
     public BrugerDTO visEnkelBruger(String CPR) throws SQLException {
-        return null;
+        return daoBru.laesEnkelBrugerId(CPR);
     }
+
 
     @Override
     public BrugerDTO redigerBruger(String gammelCPR, BrugerDTO nyeBruger) throws SQLException {

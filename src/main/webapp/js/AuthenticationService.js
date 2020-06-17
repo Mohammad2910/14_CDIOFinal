@@ -1,12 +1,29 @@
 $(document).ready(function() {
-    $('#submit').click(function () {
-        var cpr = document.getElementById('cpr').value;
+    var $brugerCpr = $('#cpr');
+
+
+
+    $('#submit').on('click', function () {
+        var bruger = {
+            brugerCpr: $brugerCpr.val(),
+            brugerNavn: 'a',
+            brugerIni: 'a',
+            brugerRolle: 'admin',
+            brugerStatus: 'aktiv',
+        };
+        console.log(bruger);
         $.ajax({
-            url: "localhost:8080/webshop/",
-            type: "POST",
-            data: {'cpr': cpr},
-            success: function (result) {
-                console.log(result)
+            type: 'GET',
+            url: 'api/authentication/login',
+            contentType: "application/json; charset=utf-8",
+            data: bruger,
+            success: function (data) {
+                alert(bruger.brugerRolle);
+                console.log(data)
+            },
+            error: function () {
+                alert('Fejl');
+
             }
         })
     });

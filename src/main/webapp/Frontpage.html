@@ -6,13 +6,16 @@
     <link rel="StyleSheet" type="text/css" href="StyleSheet/FrontPage.css">
     <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script type="text/javascript" src="js/AuthenticationService.js"></script>
 </head>
 
 <body>
 <div class="FrontPagediv">
     <h1>Angiv venligst Bruger-ID</h1> <br>
-    <input class="center" type="text" placeholder="Indtast Bruger-ID"><br>
-    <button id="submit" class="center" onclick="<!-- Login function -->">Login</button>
+    <form method="GET" action="api/authentication/login">
+    <input id="cpr" class="center" type="text" placeholder="Indtast Bruger-ID"><br>
+    <button id="submit" type="button" class="center">Login</button>
+    </form>
 </div>
 
 <!-- vi mangler noget kommunikation med databasen, så vi ved hvilken div der skal display'es -->
