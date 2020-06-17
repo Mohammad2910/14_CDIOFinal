@@ -7,14 +7,14 @@ public class BrugerDTO {
     private String cprNr;
     private String brugerNavn;
     private String ini;
-    private String roller;
+    private String rolle;
     private String brugerStatus;
 
-    public BrugerDTO(String cprNr, String brugerNavn, String ini, String roller, String brugerStatus) {
+    public BrugerDTO(String cprNr, String brugerNavn, String ini, String rolle, String brugerStatus) {
         this.cprNr = cprNr;
         this.brugerNavn = brugerNavn;
         this.ini = ini;
-        this.roller = roller;
+        this.rolle = rolle;
         this.brugerStatus = brugerStatus;
     }
 
@@ -42,12 +42,12 @@ public class BrugerDTO {
         this.ini = ini;
     }
 
-    public String getRoller() {
-        return roller;
+    public String getRolle() {
+        return rolle;
     }
 
-    public void setRoller(String roller) {
-        this.roller = roller;
+    public void setRolle(String rolle) {
+        this.rolle = rolle;
     }
 
     public String getBrugerStatus() {
@@ -64,7 +64,7 @@ public class BrugerDTO {
                 "cprNr=" + cprNr +
                 ", brugerNavn='" + brugerNavn + '\'' +
                 ", ini='" + ini + '\'' +
-                ", roller=" + roller +
+                ", rolle=" + rolle +
                 ", brugerStatus=" + brugerStatus +
                 '}';
     }

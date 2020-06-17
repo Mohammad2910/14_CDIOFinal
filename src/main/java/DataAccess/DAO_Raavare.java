@@ -32,6 +32,7 @@ public class DAO_Raavare implements IDAO_Raavare {
 
             preSt.executeUpdate();
 
+            conn.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -57,6 +58,7 @@ public class DAO_Raavare implements IDAO_Raavare {
 
             raa = new RaavareDTO(resultSet.getInt(1), resultSet.getString(2));
 
+            conn.close();
         } catch(SQLException | ClassNotFoundException e) {
             throw new SQLException(e);
         }
@@ -79,10 +81,32 @@ public class DAO_Raavare implements IDAO_Raavare {
                 raavareArray.add(new RaavareDTO(resultSet.getInt(1), resultSet.getString(2)));
             }
 
+            conn.close();
         } catch(SQLException | ClassNotFoundException e) {
             throw new SQLException(e);
         }
 
         return raavareArray;
+    }
+
+    @Override
+    public void redigerRaavare(RaavareDTO nyRaavare) throws SQLException {
+        try {
+            DataAccess dataAccess = new DataAccess();
+            Connection conn = dataAccess.connection;
+            PreparedStatement preSt = conn.prepareStatement("UPDATE råvare SET RåvareNavn = ? WHERE RåvareID = ?;");
+
+           preSt.setInt(2,nyRaavare.getRaavareID());
+           preSt.setString(1,nyRaavare.getRaavareNavn());
+
+            preSt.executeUpdate();
+
+            conn.close();
+
+
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

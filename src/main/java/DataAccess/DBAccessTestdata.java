@@ -1,16 +1,18 @@
 package DataAccess;
 
+import Core.BrugerDTO;
 import Core.RaavareDTO;
 
 import java.util.List;
-//
+
 //public class DBAccessTestdata {
 //    public static void main(String[] args) {
 //        try{
 //
-//            DAO_Raavare raavare = new DAO_Raavare();
 //
-//            output(raavare.visAlleRaavare());
+//            DAO_Bruger raavare = new DAO_Bruger();
+//
+//            raavare.fjernBruger("412");
 //
 //        } catch (Exception e){
 //            System.out.println(e.getMessage());
