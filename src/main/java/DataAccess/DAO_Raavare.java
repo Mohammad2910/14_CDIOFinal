@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DAO_Raavare implements IDAO_Raavare {
 
@@ -59,5 +61,28 @@ public class DAO_Raavare implements IDAO_Raavare {
             throw new SQLException(e);
         }
         return raa;
+    }
+
+    @Override
+    public List<RaavareDTO> visAlleRaavare() throws SQLException {
+        List<RaavareDTO> raavareArray = new ArrayList<>();
+
+        try{
+            DataAccess dataAccess = new DataAccess();
+            Connection conn = dataAccess.connection;
+            PreparedStatement preSt = conn.prepareStatement("SELECT * FROM råvare");
+
+            ResultSet resultSet = preSt.executeQuery();
+            //Rykker pointeren til default række position foran Id, derefter til rækken med ID
+            resultSet.beforeFirst();
+            while (resultSet.next()) {
+                raavareArray.add(new RaavareDTO(resultSet.getInt(1), resultSet.getString(2)));
+            }
+
+        } catch(SQLException | ClassNotFoundException e) {
+            throw new SQLException(e);
+        }
+
+        return raavareArray;
     }
 }
