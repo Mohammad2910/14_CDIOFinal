@@ -18,7 +18,7 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             data: bruger,
             success: function (data) {
-                alert(bruger.brugerRolle);
+                alert(data.brugerRolle);
                 console.log(data)
             },
             error: function () {
