@@ -18,7 +18,7 @@ $(document).ready(function() {
             data: recept,
             success: function (data) {
                 $.each(data, function (i, recept) {
-                    $recepter.append('<li>Recept navn: ' + recept.receptNavn + ', Recept ID: ' + recept.receptID + '</li><br>');
+                    $recepter.append('<li>Recept navn: ' + recept.receptNavn + '\t Recept ID: ' + recept.receptID + '</li><br>');
                 });
             },
             error: function () {
@@ -42,7 +42,7 @@ $(document).ready(function() {
             data: recept,
             success: function () {
                 alert('Recept oprettet!');
-                $recepter.append('<li>Recept navn: ' + recept.receptNavn + ', Recept ID: ' + recept.receptID + '</li>');
+                $recepter.append('<li>Recept navn: ' + recept.receptNavn + '\t Recept ID: ' + recept.receptID + '</li>');
             },
             error: function () {
                 alert('Fejl ved oprettelse af recept');

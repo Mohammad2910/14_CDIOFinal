@@ -1,6 +1,9 @@
 package BusinessLogic;
 
+import Core.ReceptDTO;
+
 import java.sql.SQLException;
+import java.util.List;
 
 public interface I_BLLRecept {
 

@@ -5,6 +5,7 @@ import BusinessLogic.BLLRecept;
 import BusinessLogic.I_BLLRaavare;
 import BusinessLogic.I_BLLRecept;
 import Core.RaavareDTO;
+import Core.ReceptDTO;
 
 
 import javax.ws.rs.*;
@@ -26,13 +27,12 @@ public class Rest_Recept implements I_Rest_Recept {
     public Response opretRecept(String inputs) {
         String[] strarray = inputs.split("&");
         ReceptDTO receptDTO = new ReceptDTO(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),checkForSpace(strarray[1].substring(AttrCount(strarray[1]))));
-        ReceptDTO returnRaa;
         try{
-            returnRaa = receptBLL.opretEnkelRecept(receptDTO);
+            receptBLL.opretEnkelRecept(receptDTO);
         } catch (SQLException e) {
             return Response.status(400).entity("SQLException: " + e.getMessage()).build();
         }
-        return Response.ok(returnRaa).build();
+        return Response.ok(receptBLL).build();
     }
 
     @Path("vis")
