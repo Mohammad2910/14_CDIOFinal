@@ -2,6 +2,7 @@ package DataAccess;
 
 import Core.BrugerDTO;
 import Core.RaavareDTO;
+import Core.ReceptRaavareDTO;
 
 import java.util.List;
 
@@ -10,17 +11,19 @@ import java.util.List;
 //        try{
 //
 //
-//            DAO_Bruger raavare = new DAO_Bruger();
+//            DAO_ReceptRaavare raavare = new DAO_ReceptRaavare();
 //
-//            raavare.fjernBruger("412");
+//            List<ReceptRaavareDTO> receptRaavareDTO = raavare.visReceptRaavare(2);
 //
+//
+//            output(receptRaavareDTO);
 //        } catch (Exception e){
 //            System.out.println(e.getMessage());
 //        }
 //    }
 ////
-//    public static void output(List<RaavareDTO> str){
-//        for (RaavareDTO d : str) {
+//    public static void output(List<ReceptRaavareDTO> str){
+//        for (ReceptRaavareDTO d : str) {
 //
 //            System.out.println(d.toString());
 //        }
