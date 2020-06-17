@@ -11,7 +11,8 @@
 </head>
 
 <body>
-
+<!-- IMPORTANT: Vi bruger kebab-case navngivning til knapper fx. "vis-Brugere"
+og vi bruger camelCase til content fx. "visBrugere" -->
 <h1>Gruppe 14</h1>
 
 <div style="text-align: center;" >
@@ -19,7 +20,7 @@
         <li onclick="toggleDivContent('OpretBruger')"><a>Opret bruger</a></li>
         <li onclick="toggleDivContent('RedigerBruger')"><a>Rediger bruger</a></li>
         <li onclick="toggleDivContent('FjernBruger')"><a>Fjern bruger</a></li>
-        <li onclick="toggleDivContent('SeAlleBrugere')<!-- noget -->" ><a>Se alle brugere</a></li>
+        <li id="vis-Brugere" onclick="toggleDivContent('SeAlleBrugere')<!-- noget -->" ><a>Se alle brugere</a></li>
         <li class="right" onclick="location.href='Frontpage.html'"><a>Log ud</a></li>
     </ul>
 </div>
@@ -50,9 +51,13 @@
     <!-- Her skal alle brugere vises med en fjern knap ved siden af hver bruger -->
 </div>
 
-<div id="SeAlleBrugere" class="center form" style="display: none;">
+<div id="visBrugere" class="center form" style="display: none;">
     <h2>Liste over alle brugere</h2>
-    <!-- Her skal alle brugere vises -->
+    <form method="GET" action="api/bruger/vis">
+        <div id="brugere">
+
+        </div>
+    </form>
 </div>
 
 </body>

@@ -5,24 +5,32 @@ $(document).ready(function() {
     var $brugerIni = $('#brugerIni');
     var $brugerRolle = $('#brugerRolle');
 
+    $('#vis-Brugere').on('click', function () {
+        var bruger = {
+            brugerCpr: $brugerCpr.val(),
+            brugerNavn: $brugerNavn.val(),
+            brugerIni: $brugerIni.val(),
+            brugerRolle: $brugerRolle.val(),
+            brugerStatus: 'Aktiv',
+        };
 
-    $.ajax({
+        $('#brugere').html('');
 
-        type: 'GET',
-        url: 'api/bruger/vis',
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            $.each(data, function (i, bruger) {
-                $brugere.append('<li>Bruger CPR: ' + bruger.brugerCpr + ', Bruger navn: ' + bruger.brugerNavn + ', Bruger initialer: ' + bruger.brugerIni + ', Bruger rolle: ' + bruger.brugerRolle + ', Bruger status: ' + bruger.brugerStatus + '</li>');
-
-
-            });
-        },
-        error: function () {
-            alert('Fejl ved indlæsning af brugere');
-        },
+        $.ajax({
+            type: 'GET',
+            url: 'api/bruger/vis',
+            contentType: "application/json; charset=utf-8",
+            data: bruger,
+            success: function (data) {
+                $.each(data, function (i, bruger) {
+                    $brugere.append('<li>Bruger CPR: ' + bruger.brugerCpr + ', Bruger navn: ' + bruger.brugerNavn + ', Bruger initialer: ' + bruger.brugerIni + ', Bruger rolle: ' + bruger.brugerRolle + ', Bruger status: ' + bruger.brugerStatus + '</li><br>');
+                });
+            },
+            error: function () {
+                alert('Fejl ved indlæsning af brugere');
+            },
+        });
     });
-
 
     $('#opret-Bruger').on('click', function () {
 
@@ -54,5 +62,4 @@ $(document).ready(function() {
             alert('CPR-nummer er for kort')
         }
     });
-
 });

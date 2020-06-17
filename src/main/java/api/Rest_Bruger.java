@@ -4,13 +4,11 @@ import BusinessLogic.BLLBruger;
 import BusinessLogic.I_BLLBruger;
 import Core.BrugerDTO;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.sql.SQLException;
+import java.util.List;
 
 
 @Consumes(MediaType.APPLICATION_JSON)
@@ -34,7 +32,17 @@ public class Rest_Bruger implements I_Rest_Bruger {
         }
         return Response.ok(returnBru).build();
     }
-
+    @Path("vis")
+    @GET
+    public Response visAlleBrugere(){
+        List<BrugerDTO> returnBru;
+        try{
+            returnBru = brugerBLL.visAlleBrugere();
+        }catch (SQLException e){
+            return Response.status(400).entity("SQLException: " + e.getMessage()).build();
+        }
+        return Response.ok(returnBru).build();
+    }
 
     public static String checkForSpace(String str){
         return str.replace("%20"," ");
