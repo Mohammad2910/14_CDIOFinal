@@ -4,6 +4,7 @@ import Core.BrugerDTO;
 import Core.RaavareDTO;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface I_BLLBruger {
     BrugerDTO opretEnkelBruger(BrugerDTO enkelBruger) throws SQLException;
@@ -12,6 +13,6 @@ public interface I_BLLBruger {
 
     BrugerDTO redigerBruger(String gammelCPR, BrugerDTO nyeBruger) throws SQLException;
 
-    BrugerDTO[] visAlleBrugere() throws  SQLException;
+    List<BrugerDTO> visAlleBrugere() throws  SQLException;
 
 }

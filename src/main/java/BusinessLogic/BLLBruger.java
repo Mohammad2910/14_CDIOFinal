@@ -6,6 +6,7 @@ import DataAccess.IDAO_Bruger;
 
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class BLLBruger implements I_BLLBruger {
     private IDAO_Bruger daoBru = new DAO_Bruger();
@@ -26,7 +27,7 @@ public class BLLBruger implements I_BLLBruger {
     }
 
     @Override
-    public BrugerDTO[] visAlleBrugere() throws SQLException {
-        return new BrugerDTO[0];
+    public List<BrugerDTO> visAlleBrugere() throws SQLException {
+        return daoBru.visAlleBrugere();
     }
 }

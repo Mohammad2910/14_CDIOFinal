@@ -52,9 +52,13 @@ li a:hover {
     background-color: #111;
 }
 
-
 .right{
     float: right;
     width: 169px;
 }
 
+#raavarer{
+    text-align: center;
+    color: white;
+    font-family: Cambria, serif;
+}
