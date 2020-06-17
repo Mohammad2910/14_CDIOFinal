@@ -1,0 +1,173 @@
+DROP SCHEMA IF EXISTS `webshop` ;
+CREATE SCHEMA IF NOT EXISTS `webshop` DEFAULT CHARACTER SET utf8 ;
+USE webshop;
+
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Table `webshop`.`Råvare`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `webshop`.`Råvare` (
+  `RåvareID` INT NOT NULL,
+  `RåvareNavn` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`RåvareID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `webshop`.`RåvareBatch`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `webshop`.`RåvareBatch` (
+  `RåvareBatchID` INT NOT NULL,
+  `Mængde` DECIMAL(10,4) NOT NULL,
+  `Leverandør` VARCHAR(50) NOT NULL,
+  `RåvareID` INT NOT NULL,
+  PRIMARY KEY (`RåvareBatchID`),
+  INDEX `fk_RåvareBatch_Råvare1_idx` (`RåvareID` ASC) VISIBLE,
+  CONSTRAINT `fk_RåvareBatch_Råvare1`
+    FOREIGN KEY (`RåvareID`)
+    REFERENCES `webshop`.`Råvare` (`RåvareID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `webshop`.`Recept`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `webshop`.`Recept` (
+  `ReceptID` INT NOT NULL,
+  `ReceptNavn` VARCHAR(50) NOT NULL,
+   PRIMARY KEY (`ReceptID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `webshop`.`ReceptRåvare`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `webshop`.`ReceptRåvare` (
+  `nonNetto` DECIMAL(10,4) NOT NULL,
+  `Tolerance` DECIMAL(3,1) NOT NULL,
+  `ReceptID` INT NOT NULL,
+  `RåvareID` INT NOT NULL,
+  PRIMARY KEY (`ReceptID`, `RåvareID`),
+  INDEX `fk_ReceptRåvare_Råvare1_idx` (`RåvareID` ASC) VISIBLE,
+  CONSTRAINT `fk_ReceptRåvare_Recept1`
+    FOREIGN KEY (`ReceptID`)
+    REFERENCES `webshop`.`Recept` (`ReceptID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ReceptRåvare_Råvare1`
+    FOREIGN KEY (`RåvareID`)
+    REFERENCES `webshop`.`Råvare` (`RåvareID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `webshop`.`ProduktBatch`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `webshop`.`ProduktBatch` (
+  `ProduktBatchID` INT NOT NULL,
+  `ProduktBatchStatus` ENUM('Ikke påbegyndt', 'Under produktion', 'Afsluttet') NOT NULL,
+  `ReceptID` INT NOT NULL,
+  PRIMARY KEY (`ProduktBatchID`),
+  INDEX `fk_ProduktBatch_Recept_idx` (`ReceptID` ASC) VISIBLE,
+  CONSTRAINT `fk_ProduktBatch_Recept`
+    FOREIGN KEY (`ReceptID`)
+    REFERENCES `webshop`.`Recept` (`ReceptID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `webshop`.`Brugere`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `webshop`.`Brugere` (
+  `CPR` VARCHAR(10) NOT NULL,
+  `BrugerNavn` VARCHAR(50) NOT NULL,
+  `Initialer` VARCHAR(10) NOT NULL,
+  `Rolle` ENUM('Admin','Produktionsleder','Farmaceut','Laborant') NOT NULL,
+  `BrugerStatus` ENUM('Aktiv', 'Ikke aktiv') NOT NULL,
+  PRIMARY KEY (`CPR`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `webshop`.`ProduktBatchAfvejning`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `webshop`.`ProduktBatchAfvejning` (
+  `Tara` DECIMAL(10,4) NOT NULL,
+  `Netto` DECIMAL(10,4) NOT NULL,
+  `RåvareBatchID` INT NOT NULL,
+  `CPR` VARCHAR(10) NOT NULL,
+  `ProduktBatchID` INT NOT NULL,
+  `AfvejetTidspunkt` TIMESTAMP DEFAULT NOW() NOT NULL,
+  PRIMARY KEY (`RåvareBatchID`, `CPR`, `ProduktBatchID`),
+  INDEX `fk_ProduktBatchAfvejning_Brugere1_idx` (`CPR` ASC) VISIBLE,
+  INDEX `fk_ProduktBatchAfvejning_ProduktBatch1_idx` (`ProduktBatchID` ASC) VISIBLE,
+  CONSTRAINT `fk_ProduktBatchAfvejning_RåvareBatch1`
+    FOREIGN KEY (`RåvareBatchID`)
+    REFERENCES `webshop`.`RåvareBatch` (`RåvareBatchID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProduktBatchAfvejning_Brugere1`
+    FOREIGN KEY (`CPR`)
+    REFERENCES `webshop`.`Brugere` (`CPR`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProduktBatchAfvejning_ProduktBatch1`
+    FOREIGN KEY (`ProduktBatchID`)
+    REFERENCES `webshop`.`ProduktBatch` (`ProduktBatchID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- TRIGGERS --
+DROP TRIGGER IF EXISTS `webshop`.`ProduktBatchAfvejning_AFTER_INSERT`;
+
+DELIMITER $$
+USE `webshop`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `webshop`.`ProduktBatchAfvejning_AFTER_INSERT` AFTER INSERT ON `ProduktBatchAfvejning` FOR EACH ROW
+BEGIN
+DECLARE vRåvareAntal integer;
+DECLARE vAfvejningAntal integer;
+SELECT COUNT(*) INTO vRåvareAntal FROM Recept NATURAL JOIN ReceptRåvare WHERE Recept.ReceptID = ReceptRåvare.ReceptID && Recept.ReceptID = (SELECT ProduktBatch.ReceptID FROM ProduktBatch); -- && (SELECT ProduktBatch.ProduktBatchID FROM ProduktBatch) = new.ProduktBatchID;
+SELECT COUNT(*) INTO vAfvejningAntal FROM ProduktBatchAfvejning GROUP BY ProduktBatchAfvejning.ProduktBatchID;
+IF vRåvareAntal = vAfvejningAntal THEN UPDATE ProduktBatch SET ProduktBatchStatus = 'Afsluttet' WHERE ProduktBatchID = new.ProduktBatchID;
+ELSE UPDATE ProduktBatch SET ProduktBatchStatus = 'Under produktion' WHERE ProduktBatchID = new.ProduktBatchID;
+END IF;
+UPDATE RåvareBatch SET Mængde = Mængde - NEW.Netto WHERE NEW.RåvareBatchID = RåvareBatchID;
+END$$
+DELIMITER ;
+
+-- INSERTS --
+INSERT INTO Råvare VALUES (1,'Æg'), (2, 'Mælk'), (3, 'Salt'),(4,'Ost');
+INSERT INTO Brugere VALUES ('1212993113','Johnny Hitler','JH','Admin','Aktiv'),('2004891337','Adolf Hitler','AH','Laborant','Ikke aktiv');
+INSERT INTO Recept VALUES (1,'Fiskefillet'), (2, 'Kage'), (3,'Ostemad');
+INSERT INTO ReceptRåvare VALUES (5.0,1.0,2,1), (3.0,0.5,2,2), (3.0,0.5,2,3);
+INSERT INTO ProduktBatch VALUES (1,'Ikke påbegyndt',2);
+INSERT INTO RåvareBatch VALUES (1,5.0,'Mærsk',1), (2,3.0,'Mærsk',2), (3,1.0,'Mærsk',3);
+INSERT INTO ProduktBatchAfvejning VALUES (0.5,5.0,1,2004891337,1,NOW());
+INSERT INTO ProduktBatchAfvejning VALUES (0.5,5.0,2,2004891337,1,NOW());
+INSERT INTO ProduktBatchAfvejning VALUES (0.5,5.0,3,2004891337,1,NOW());
+
+
+-- SELECT * FROM BRUGERE;
+
+-- SELECT * FROM ProduktBatchAfvejning;
+-- SELECT * FROM ProduktBatch;
+-- SELECT * FROM Recept;
+-- SELECT * FROM ReceptRåvare;
+-- SELECT * FROM RåvareBatch;
