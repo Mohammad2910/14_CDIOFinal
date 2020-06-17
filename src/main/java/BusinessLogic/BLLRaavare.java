@@ -5,6 +5,7 @@ import DataAccess.DAO_Raavare;
 import DataAccess.IDAO_Raavare;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class BLLRaavare implements I_BLLRaavare {
     private IDAO_Raavare daoRaa = new DAO_Raavare();
@@ -21,8 +22,8 @@ public class BLLRaavare implements I_BLLRaavare {
     }
 
     @Override
-    public RaavareDTO[] visAlleRaavare() throws SQLException {
-        return new RaavareDTO[0];
+    public List<RaavareDTO> visAlleRaavare() throws SQLException {
+        return daoRaa.visAlleRaavare();
     }
 
     @Override

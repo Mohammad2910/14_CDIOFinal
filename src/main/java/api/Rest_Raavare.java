@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.Console;
 import java.sql.SQLException;
+import java.util.List;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -35,8 +36,22 @@ public class Rest_Raavare implements I_Rest_Raavare {
 
     @Path("vis")
     @GET
-    public Response visRaavare(int raavareId) {
+    public Response visAlleRaavare() {
+        List<RaavareDTO> returnRaa;
 
+        try{
+            returnRaa = raavareBLL.visAlleRaavare();
+
+        } catch (SQLException e){
+            return Response.status(400).entity("SQLException: " + e.getMessage()).build();
+        }
+        return Response.ok(returnRaa).build();
+    }
+
+    @Path("vis/{id}")
+    @GET
+    public Response visRaavare(@PathParam("id") int raavareId) {
+        System.out.println(raavareId);
         RaavareDTO returnRaa;
         try{
             returnRaa = raavareBLL.visEnkelRaavareId(raavareId);
