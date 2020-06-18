@@ -34,7 +34,7 @@ $(document).ready(function() {
 
 
 
-    $('#opret-produktBatches').on('click', function () {
+    $('#opret-produktbatch').on('click', function () {
         var produktbatch = {
             produktbatchID: $produktbatchNummer.val(),
             produktbatchReceptNummer: $produktbatchReceptNummer.val(),

@@ -20,7 +20,7 @@ public class Rest_ProduktBatch implements I_Rest_ProduktBatch{
     public Response opretProduktBatch(String inputs) throws SQLException {
         String[] strarray = inputs.split("&");
         //Lav JavaScripten først
-        ProduktBatchDTO produktBatchDTO = new ProduktBatchDTO(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),Integer.parseInt(strarray[1].substring(AttrCount(strarray[1]))),strarray[2].substring(AttrCount(strarray[2])),strarray[3].substring(AttrCount(strarray[3])),Integer.parseInt(strarray[4].substring(AttrCount(strarray[4]))),Double.parseDouble(strarray[5].substring(AttrCount(strarray[5]))),Double.parseDouble(strarray[6].substring(AttrCount(strarray[6]))));
+        ProduktBatchDTO produktBatchDTO = new ProduktBatchDTO(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),Integer.parseInt(strarray[1].substring(AttrCount(strarray[1]))),"","",1,1,1);
         try{
             proBLL.opretProduktBatch(produktBatchDTO);
         } catch(SQLException e) {
