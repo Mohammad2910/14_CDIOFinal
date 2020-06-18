@@ -93,7 +93,7 @@ public class DAO_Bruger implements IDAO_Bruger {
     }
 
     @Override
-    public BrugerDTO redigerBruger(BrugerDTO nyBruger) throws SQLException {
+    public void redigerBruger(BrugerDTO nyBruger) throws SQLException {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
@@ -111,7 +111,6 @@ public class DAO_Bruger implements IDAO_Bruger {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return laesEnkelBrugerId(nyBruger.getCprNr());
     }
 
     @Override

@@ -65,13 +65,12 @@ public class Rest_Bruger implements I_Rest_Bruger {
         System.out.println(bru);
         String[] strarray = bru.split("&");
         BrugerDTO brugerDTO = new BrugerDTO(strarray[0].substring(AttrCount(strarray[0])),checkForSpace(strarray[1].substring(AttrCount(strarray[1]))),strarray[2].substring(AttrCount(strarray[2])),strarray[3].substring(AttrCount(strarray[3])),strarray[4].substring(AttrCount(strarray[4])));
-        BrugerDTO returnBru;
         try{
-            returnBru = brugerBLL.redigerBruger(brugerDTO);
+            brugerBLL.redigerBruger(brugerDTO);
         } catch(SQLException e) {
             return Response.status(400).entity("SQLException: " + e.getMessage()).build();
         }
-        return Response.ok(returnBru).build();
+        return Response.ok().build();
     }
 
     public static String checkForSpace(String str){

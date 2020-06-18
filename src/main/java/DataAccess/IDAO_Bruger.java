@@ -9,8 +9,6 @@ public interface IDAO_Bruger {
     BrugerDTO opretEnkelBruger(BrugerDTO enkelBruger) throws SQLException;
     BrugerDTO laesEnkelBrugerId(String cprNr) throws SQLException;
     List<BrugerDTO> visAlleBrugere() throws SQLException;
-    BrugerDTO redigerBruger(BrugerDTO nyBruger) throws SQLException;
+    void redigerBruger(BrugerDTO nyBruger) throws SQLException;
     void fjernBruger(String cprNr) throws SQLException;
-
-
 }
