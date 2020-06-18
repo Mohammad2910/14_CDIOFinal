@@ -19,7 +19,7 @@
         <li onclick="toggleDivContent('OpretBruger')"><a>Opret bruger</a></li>
         <li onclick="toggleDivContent('RedigerBruger')"><a>Rediger bruger</a></li>
         <li onclick="toggleDivContent('FjernBruger')"><a>Fjern bruger</a></li>
-        <li onclick="toggleDivContent('SeAlleBrugere')<!-- noget -->" ><a>Se alle brugere</a></li>
+        <li onclick="toggleDivContent('SeAlleBrugere')" ><a>Se alle brugere</a></li>
         <li class="right" onclick="location.href='Frontpage.html'"><a>Log ud</a></li>
     </ul>
 </div>
@@ -30,7 +30,14 @@
     <input id="brugerCpr" class="center" type="number" placeholder="Indtast bruger ID"><br>
     <input id="brugerNavn" class="center" type="text" placeholder="Angiv brugerens navn"><br>
     <input id="brugerIni" class="center" type="text" placeholder="Angiv initialer til bruger"><br>
-    <br>
+    <label class="center textOnPage" for="brugerRolle">Brugerrolle:</label> <br>
+        <select class="center" id="brugerRolle" name="roller">
+            <option value="admin">Admin</option>
+            <option value="produktionsleder">Produktionsleder</option>
+            <option value="farmaceut">Farmaceut</option>
+            <option value="laborant">Laborant</option>
+        </select>
+        <br>
     <button id="opret-Bruger" type="button" class="center" >Gem</button>
     </form>
 </div>
