@@ -28,6 +28,11 @@ public class BLLBruger implements I_BLLBruger {
     }
 
     @Override
+    public void sletBruger(String CPR) throws SQLException {
+        daoBru.fjernBruger(CPR);
+    }
+
+    @Override
     public List<BrugerDTO> visAlleBrugere() throws SQLException {
         return daoBru.visAlleBrugere();
     }

@@ -9,7 +9,7 @@ $(document).ready(function() {
             tolerance: '',
             receptID: $receptRaavareID.val(),
             raavareID: '',
-            raavareNavn: ''
+
         };
 
         $('#recepter').html('');
@@ -22,7 +22,7 @@ $(document).ready(function() {
             data: receptRaavare,
             success: function (data) {
                 $.each(data, function (i, receptRaavares) {
-                    $receptRaavarer.append('<li>Recept ID: ' + receptRaavares.receptID + ', Råvare ID: ' + receptRaavares.raavareID + ', Råvare navn: ' + receptRaavares.raavareNavn + ', Netto vægt (i kg): ' + receptRaavares.nonNetto + ', Tolerance: ' + receptRaavares.tolerance + '</li><br>');
+                    $receptRaavarer.append('<li>Recept ID: ' + receptRaavares.receptID + ', Råvare ID: ' + receptRaavares.raavareID +  ', Netto vægt (i kg): ' + receptRaavares.nonNetto + ', Tolerance: ' + receptRaavares.tolerance + '</li><br>');
                 });
             },
             error: function () {

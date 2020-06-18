@@ -4,11 +4,16 @@ $(document).ready(function() {
     var $brugerNavn = $('#brugerNavn');
     var $brugerIni = $('#brugerIni');
     var $brugerRolle = $('#brugerRolle');
+    var $sletCPR = $('#sletCPRBruger');
 
     var $redigerCpr = $('#redigerID');
     var $redigerNavn = $('#redigerNavn');
     var $redigerIni = $('#redigerIni');
     var $redigerRolle = $('#redigerRolle');
+
+
+    $('#vis-Brugere').on('click', function () {
+
 
 
 
@@ -63,6 +68,35 @@ $(document).ready(function() {
                 },
                 error: function () {
                     alert('Fejl ved oprettelse af bruger');
+                }
+            });
+        }
+        else {
+            alert('CPR-nummer er for kort')
+        }
+    });
+
+    $('#slet-Brugere').on('click', function () {
+        var bruger = {
+            brugerCpr:  $sletCPR.val(),
+            brugerNavn: '',
+            brugerIni: '',
+            brugerRolle: '',
+            brugerStatus: '',
+        };
+
+        if (bruger.brugerCpr.length === 10) {
+            $.ajax({
+                type: 'POST',
+                url: 'api/bruger/slet',
+                contentType: "application/json; charset=utf-8",
+                data: bruger,
+                success: function () {
+                    alert('Bruger slettet!');
+                },
+                error: function (e) {
+                    console.log(e);
+                    alert(e);
                 }
             });
         }
