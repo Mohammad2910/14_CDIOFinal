@@ -20,11 +20,11 @@ public class StartTomCat {
         //webcode ( hvis denne skal kører på tomcatten)
 
         //tilføjer webapp ( kan også også tilføje)
-        try {
+//        try {
             tomcat.addWebapp("/", new File("src/main/webapp").getAbsolutePath());
-        } catch (ServletException e) {
-            e.printStackTrace();
-        }
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        }
 
         try{
             // her prøver vi at starte tomcat ( ligesom at skrive startup i cmd
