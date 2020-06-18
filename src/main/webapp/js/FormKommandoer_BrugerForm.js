@@ -34,8 +34,13 @@ $(document).ready(function() {
     });
 
     $('#opret-Bruger').on('click', function () {
-
-
+        var bruger = {
+            brugerCpr: $brugerCpr.val(),
+            brugerNavn: $brugerNavn.val(),
+            brugerIni: $brugerIni.val(),
+            brugerRolle: $brugerRolle.val(),
+            brugerStatus: 'Aktiv',
+        };
 
         if (bruger.brugerCpr.length === 10) {
             $.ajax({

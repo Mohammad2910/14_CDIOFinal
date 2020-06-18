@@ -1,10 +1,8 @@
-/*
 package BusinessLogic;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface I_BLLReceptRaavare {
-    ReceptRaavareDTO opretEnkelReceptRaavare(ReceptRaavareDTO enkelReceptRaavare) throws SQLException;
-
+    List<ReceptRaavareDTO> visReceptRaavare(String receptID) throws SQLException;
 }
-*/
