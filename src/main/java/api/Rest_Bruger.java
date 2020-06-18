@@ -44,6 +44,21 @@ public class Rest_Bruger implements I_Rest_Bruger {
         return Response.ok(returnBru).build();
     }
 
+    @Path("slet")
+    @POST
+    public Response sletBruger(String cpr) {
+        String[] strarray = cpr.split("&");
+        //Lav JavaScripten først
+
+
+        try{
+            brugerBLL.sletBruger(strarray[0].substring(AttrCount(strarray[0])));
+        } catch(SQLException e) {
+            return Response.status(400).entity("SQLException: " + e.getMessage()).build();
+        }
+        return Response.ok().build();
+    }
+
     public static String checkForSpace(String str){
         return str.replace("%20"," ");
     }

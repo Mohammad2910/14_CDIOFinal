@@ -19,8 +19,8 @@ og vi bruger camelCase til content fx. "visBrugere" -->
     <ul>
         <li onclick="toggleDivContent('OpretBruger')"><a>Opret bruger</a></li>
         <li onclick="toggleDivContent('RedigerBruger')"><a>Rediger bruger</a></li>
-        <li onclick="toggleDivContent('FjernBruger')"><a>Fjern bruger</a></li>
         <li id="vis-Brugere" onclick="toggleDivContent('visBrugere')" ><a>Se alle brugere</a></li>
+        <li id="slet-Bruger" onclick="toggleDivContent('sletbruger')" ><a>Slet en bruger</a></li>
         <li class="right" onclick="location.href='Frontpage.html'"><a>Log ud</a></li>
     </ul>
 </div>
@@ -46,10 +46,6 @@ og vi bruger camelCase til content fx. "visBrugere" -->
     <button class="center" onclick="<!-- Submit userinfo function -->">Gem</button>
 </div>
 
-<div id="FjernBruger" class="center form" style="display: none;">
-    <h2>Fjern bruger</h2>
-    <!-- Her skal alle brugere vises med en fjern knap ved siden af hver bruger -->
-</div>
 
 <div id="visBrugere" class="center form" style="display: none;">
     <h2>Liste over alle brugere</h2>
@@ -58,6 +54,16 @@ og vi bruger camelCase til content fx. "visBrugere" -->
 
         </div>
     </form>
+</div>
+
+<div id="sletbruger" class="center form" style="display: none;">
+    <h2>Liste over alle brugere</h2>
+    <form method="POST" action="api/bruger/slet">
+        <button id="slet-Brugere" class="right" type="button">Slet</button>
+        <input id="sletCPRBruger" class="right" type="text" placeholder="Indtast brugerens cpr:">
+
+    </form>
+
 </div>
 
 </body>

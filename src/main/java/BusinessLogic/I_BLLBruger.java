@@ -13,6 +13,8 @@ public interface I_BLLBruger {
 
     BrugerDTO redigerBruger(String gammelCPR, BrugerDTO nyeBruger) throws SQLException;
 
+    void sletBruger(String CPR) throws SQLException;
+
     List<BrugerDTO> visAlleBrugere() throws  SQLException;
 
 }
