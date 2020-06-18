@@ -78,14 +78,14 @@ $(document).ready(function() {
             $.ajax({
                 type: 'POST',
                 url: 'api/bruger/slet',
-                dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 data: bruger,
                 success: function () {
                     alert('Bruger slettet!');
                 },
-                error: function () {
-                    alert('Fejl ved slettelse af bruger');
+                error: function (e) {
+                    console.log(e);
+                    alert(e);
                 }
             });
         }
