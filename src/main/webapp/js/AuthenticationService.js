@@ -22,6 +22,10 @@ $(document).ready(function() {
                     window.location = "/UserAdminPage.html";
                 } else if (data.roller === 'Laborant') {
                     window.location = "/LaborantAfvejning.html";
+                } else if (data.roller === 'Produktionsleder') {
+                    window.location = '/ProduktionslederLogin.html';
+                } else if (data.roller === 'Farmaceut') {
+                    window.location = '/FarmaceutLogin.html';
                 }
                 console.log(data)
             },
