@@ -7,6 +7,7 @@ $(document).ready(function() {
         raavareId: $raavareId.val(),
         raavareNavn: $raavareNavn.val(),
     };
+
     $('#vis-Raavare').on('click', function () {
 
 
@@ -30,6 +31,10 @@ $(document).ready(function() {
 
     $('#opret-Raavare').on('click', function () {
 
+        var raavare = {
+            raavareId: $raavareId.val(),
+            raavareNavn: $raavareNavn.val(),
+        };
 
 
         $.ajax({
