@@ -38,12 +38,16 @@ og vi bruger camelCase til content fx. "visBrugere" -->
 </div>
 
 <div id="RedigerBruger" class="center form" style="display: none;">
-    <h2>Rediger bruger</h2>
-    <input class="center" type="number" placeholder="Rediger bruger ID"><br>
-    <input class="center" type="text" placeholder="Rediger brugerens navn"><br>
-    <input class="center" type="text" placeholder="Rediger initialer til bruger"><br>
-    <br>
-    <button class="center" onclick="<!-- Submit userinfo function -->">Gem</button>
+    <form method="POST" action="api/bruger/rediger">
+        <h2>Rediger bruger</h2>
+        <input id="redigerID" class="center" type="number" placeholder="Indtast brugerens ID"><br>
+        <br>
+        <input id="redigerNavn" class="center" type="text" placeholder="Rediger brugerens navn"><br>
+        <input id="redigerIni" class="center" type="text" placeholder="Rediger brugerens intialer"><br>
+        <input id="redigerRolle" class="center" type="text" placeholder="Rediger brugerens rolle"><br>
+        <br>
+        <button id="rediger-Bruger" class="center">Gem</button>
+    </form>
 </div>
 
 <div id="FjernBruger" class="center form" style="display: none;">

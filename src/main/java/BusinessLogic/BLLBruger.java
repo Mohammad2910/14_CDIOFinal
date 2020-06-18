@@ -22,8 +22,8 @@ public class BLLBruger implements I_BLLBruger {
     }
 
     @Override
-    public BrugerDTO redigerBruger(String gammelCPR, BrugerDTO nyeBruger) throws SQLException {
-        return null;
+    public BrugerDTO redigerBruger(BrugerDTO nyeBruger) throws SQLException {
+        return daoBru.redigerBruger(nyeBruger);
     }
 
     @Override
