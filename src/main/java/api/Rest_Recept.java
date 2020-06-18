@@ -19,14 +19,15 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Path("recept")
 
-public class Rest_Recept implements I_Rest_Recept {
+public class Rest_Recept {
     I_BLLRecept receptBLL = new BLLRecept();
 
     @Path("opret")
     @POST
-    public Response opretRecept(String inputs) {
-        String[] strarray = inputs.split("&");
-        ReceptDTO receptDTO = new ReceptDTO(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),checkForSpace(strarray[1].substring(AttrCount(strarray[1]))));
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response opretRecept(@FormParam("receptID") int receptID,  @FormParam("receptNavn") String receptNavn) {
+//        String[] strarray = inputs.split("&");
+        ReceptDTO receptDTO = new ReceptDTO(receptID, receptNavn);
         try{
             receptBLL.opretEnkelRecept(receptDTO);
         } catch (SQLException e) {
