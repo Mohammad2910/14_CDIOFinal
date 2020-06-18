@@ -5,6 +5,14 @@ $(document).ready(function() {
     var $brugerIni = $('#brugerIni');
     var $brugerRolle = $('#brugerRolle');
 
+    var $redigerCpr = $('#redigerID');
+    var $redigerNavn = $('#redigerNavn');
+    var $redigerIni = $('#redigerIni');
+    var $redigerRolle = $('#redigerRolle');
+
+
+
+
     var bruger = {
         brugerCpr: $brugerCpr.val(),
         brugerNavn: $brugerNavn.val(),
@@ -61,5 +69,30 @@ $(document).ready(function() {
         else {
             alert('CPR-nummer er for kort')
         }
+    });
+
+    $('#rediger-Bruger').on('click', function () {
+        var redigerbruger = {
+            brugerCpr: $redigerCpr.val(),
+            brugerNavn: $redigerNavn.val(),
+            brugerIni: $redigerIni.val(),
+            brugerRolle: $redigerRolle.val(),
+            brugerStatus: 'Aktiv',
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: 'api/bruger/rediger',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: redigerbruger,
+            success: function () {
+                alert('Bruger redigeret!');
+                $brugere.append('<li>Bruger CPR: ' + redigerbruger.brugerCpr + ', Bruger navn: ' + redigerbruger.brugerNavn + ', Bruger initialer: ' + redigerbruger.brugerIni + ', Bruger rolle: ' + redigerbruger.brugerRolle + ', Bruger status: ' + redigerbruger.brugerStatus + '</li>');
+            },
+            error: function () {
+                alert('Fejl ved redigering af bruger');
+            }
+        });
     });
 });
