@@ -23,7 +23,7 @@ $(document).ready(function() {
             data: produktbatch,
             success: function (data) {
                 $.each(data, function (i, produktbatch) {
-                    $produktbatches.append('<li>Produktbatch ID: ' + produktbatch.produktBatchID + '\t Recept ID: ' + produktbatch.receptID + '</li><br>');
+                    $produktbatches.append('<li>Produktbatch ID: ' + produktbatch.produktBatchID + '\t Recept ID: ' + produktbatch.receptID + '\t Produktbatch status: ' + produktbatch.status + '</li><br>');
                 });
             },
             error: function () {
