@@ -28,7 +28,7 @@ button.selected{
 }
 
 
-ul {
+.topMenu {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -57,8 +57,16 @@ li a:hover {
     width: 169px;
 }
 
-#raavarer{
+#raavarer {
     text-align: center;
     color: white;
     font-family: Cambria, serif;
+    list-style: none;
+}
+
+#recepter {
+    text-align: center;
+    color: white;
+    font-family: Cambria, serif;
+    list-style: none;
 }

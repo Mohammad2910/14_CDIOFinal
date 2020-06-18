@@ -5,6 +5,7 @@
     <title>RecepterOgRåvare</title>
     <link rel="StyleSheet" type="text/css" href="StyleSheet/Recept_RaavarePage.css">
     <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
+    <link rel="StyleSheet" type="text/css" href="StyleSheet/ListDesign.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
     <script type="text/javascript" src="js/FormKommandoer_RaavareForm.js"></script>
@@ -18,7 +19,7 @@
 
 <div style = "text-align: center;">
 
-    <ul>
+    <ul class="topMenu">
         <li onclick="toggleDivContent('opretRaavare')"><a>Opret råvare</a></li>
         <li onclick="toggleDivContent('Ret_raavare')"><a>Ret råvare</a></li>
         <li id ="vis-Raavare" onclick="toggleDivContent('visRaavare')" ><a>Se alle råvarer</a></li>
@@ -58,7 +59,7 @@
 <div id = "visRaavare" class="center form" style ="display: none">
     <h2>Liste over alle råvare</h2>
     <form method="GET" action="api/raavare/vis">
-    <div id="raavarer">
+    <div id="raavarer" class="center">
 
     </div>
     </form>
@@ -78,7 +79,7 @@
 
 </div>
 
-<div id="visRecept" style="display: none" class="form">
+<div id="visRecept" style="display: none" class="center form">
     <h2>Liste over alle recepter</h2>
         <form method="GET" action="api/recept/vis">
             <div id="recepter" class="center">

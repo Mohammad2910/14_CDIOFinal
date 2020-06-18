@@ -19,7 +19,7 @@ $(document).ready(function() {
             data: recept,
             success: function (data) {
                 $.each(data, function (i, recept) {
-                    $recepter.append('<li>Recept navn: ' + recept.receptNavn + '\t Recept ID: ' + recept.receptID + '</li><br>');
+                    $recepter.append('<li class="ListStyle">Recept ID: ' + recept.receptID + ' | | Recept navn: ' + recept.receptNavn + '</li><br><br>');
                 });
             },
             error: function () {
