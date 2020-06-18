@@ -46,7 +46,6 @@ button{
 
 .FrontPagediv{
     width: 500px;
-
     position: fixed;
     top: 45%;
     left: 50%;
@@ -54,9 +53,8 @@ button{
 }
 
 
-div {
+.logindiv {
     height: 160px;
-    background-color: grey;
-    border: 20px grey;
+    border: 20px;
     padding: 70px;
 }
