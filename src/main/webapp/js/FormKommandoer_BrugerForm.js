@@ -57,6 +57,10 @@ $(document).ready(function() {
                 data: bruger,
                 success: function () {
                     alert('Bruger oprettet!');
+                    document.getElementById("brugerCpr").value = '';
+                    document.getElementById("brugerNavn").value = '';
+                    document.getElementById("brugerIni").value = '';
+                    document.getElementById("brugerRolle").value = "admin";
                     $brugere.append('<li>Bruger CPR: ' + bruger.brugerCpr + ', Bruger navn: ' + bruger.brugerNavn + ', Bruger initialer: ' + bruger.brugerIni + ', Bruger rolle: ' + bruger.brugerRolle + ', Bruger status: ' + bruger.brugerStatus + '</li>');
                 },
                 error: function () {
@@ -85,6 +89,7 @@ $(document).ready(function() {
                 data: bruger,
                 success: function () {
                     alert('Bruger slettet!');
+                    document.getElementById("sletCPRBruger").value = '';
                 },
                 error: function (e) {
                     console.log(e);
