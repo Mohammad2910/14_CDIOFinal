@@ -1,8 +1,10 @@
 package BusinessLogic;
 
+import Core.ReceptRaavareDTO;
+
 import java.sql.SQLException;
 import java.util.List;
 
 public interface I_BLLReceptRaavare {
-    List<ReceptRaavareDTO> visReceptRaavare(String receptID) throws SQLException;
+    List<ReceptRaavareDTO> visReceptRaavare(int receptID) throws SQLException;
 }
