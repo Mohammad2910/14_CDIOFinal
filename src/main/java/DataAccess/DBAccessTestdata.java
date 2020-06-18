@@ -2,9 +2,7 @@ package DataAccess;
 
 import BusinessLogic.BLLReceptRaavare;
 import BusinessLogic.I_BLLReceptRaavare;
-import Core.BrugerDTO;
 import Core.RaavareDTO;
-import Core.ReceptRaavareDTO;
 
 import java.util.List;
 

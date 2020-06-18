@@ -2,7 +2,6 @@ package api;
 
 import BusinessLogic.BLLReceptRaavare;
 import BusinessLogic.I_BLLReceptRaavare;
-import Core.ReceptRaavareDTO;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -19,11 +18,11 @@ public class Rest_ReceptRaavare implements I_Rest_ReceptRaavare{
 
     @Path("vis")
     @POST
-    public Response visAlleReceptRaavarer(String inputs) {
+    public Response visReceptRaavare(String inputs) {
         String[] str = inputs.split("&");
         List<ReceptRaavareDTO> returnRaa;
         try{
-            returnRaa = receptRaavareBLL.visAlleReceptRaavarer(str[2].substring(AttrCount(str[2])));
+            returnRaa = receptRaavareBLL.visReceptRaavare(str[2].substring(AttrCount(str[2])));
         } catch (SQLException e){
             return Response.status(400).entity("SQLException: " + e.getMessage()).build();
         }
