@@ -69,3 +69,22 @@ li a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+
+.ButtonStyle{
+
+    padding: 14px 50px;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    width: 500px;
+    font-size: 15px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+
+}
+
+.ButtonStyle:hover{
+    background-color: black;
+    color: white;
+}
