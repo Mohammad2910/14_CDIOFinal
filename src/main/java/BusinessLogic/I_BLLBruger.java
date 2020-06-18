@@ -11,7 +11,7 @@ public interface I_BLLBruger {
 
     BrugerDTO visEnkelBruger(String CPR) throws SQLException;
 
-    BrugerDTO redigerBruger(BrugerDTO nyeBruger) throws SQLException;
+    void redigerBruger(BrugerDTO nyeBruger) throws SQLException;
 
     List<BrugerDTO> visAlleBrugere() throws  SQLException;
 

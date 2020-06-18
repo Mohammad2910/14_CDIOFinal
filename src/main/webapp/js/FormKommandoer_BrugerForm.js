@@ -83,12 +83,14 @@ $(document).ready(function() {
         $.ajax({
             type: 'POST',
             url: 'api/bruger/rediger',
-            dataType: "json",
             contentType: "application/json; charset=utf-8",
             data: redigerbruger,
             success: function () {
                 alert('Bruger redigeret!');
-                $brugere.append('<li>Bruger CPR: ' + redigerbruger.brugerCpr + ', Bruger navn: ' + redigerbruger.brugerNavn + ', Bruger initialer: ' + redigerbruger.brugerIni + ', Bruger rolle: ' + redigerbruger.brugerRolle + ', Bruger status: ' + redigerbruger.brugerStatus + '</li>');
+                document.getElementById("redigerID").value = '';
+                document.getElementById("redigerNavn").value = '';
+                document.getElementById("redigerIni").value = '';
+                document.getElementById("redigerRolle").value = '';
             },
             error: function () {
                 alert('Fejl ved redigering af bruger');
