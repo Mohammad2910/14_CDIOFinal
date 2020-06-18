@@ -1,11 +1,13 @@
 package BusinessLogic;
 
+import Core.RaavareBatchDTO;
+
 import java.sql.SQLException;
+import java.util.List;
 
 public interface I_BLLRaavareBatch {
-    void opretEnkelRaavareBatch(RaavareBatchDTO enkelRaavareBatch) throws SQLException;
+    void opretRaavareBatch(RaavareBatchDTO enkelRaavareBatch) throws SQLException;
 
-    RaavareBatchDTO visEnkelRaavareBatch(int raavareBatchID) throws SQLException;
 
     List<RaavareBatchDTO> visAlleRaavareBatch() throws SQLException;
 

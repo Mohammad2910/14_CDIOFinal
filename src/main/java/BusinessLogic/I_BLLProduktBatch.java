@@ -1,15 +1,15 @@
-/*
 package BusinessLogic;
 
+import Core.ProduktBatchDTO;
 import java.sql.SQLException;
+import java.util.List;
 
 public interface I_BLLProduktBatch {
+    void opretProduktBatch(ProduktBatchDTO enkelProduktBatch) throws SQLException;
 
-    ProduktBatchDTO opretEnkelProduktBatch(ProduktBatchDTO enkelProduktBatch) throws SQLException;
+    List<ProduktBatchDTO> visAlleProduktBatches() throws SQLException;
 
-    ProduktBatchDTO visEnkelProduktBatch(int produktBatchID) throws SQLException;
+    List<ProduktBatchDTO> visEnkelProduktBatch(int produktBatchID) throws SQLException;
 
-    ProduktBatchDTO[] visAlleProduktBatches() throws SQLException;
 
 }
-*/

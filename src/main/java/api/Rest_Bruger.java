@@ -32,6 +32,7 @@ public class Rest_Bruger implements I_Rest_Bruger {
         }
         return Response.ok(returnBru).build();
     }
+
     @Path("vis")
     @GET
     public Response visAlleBrugere(){
