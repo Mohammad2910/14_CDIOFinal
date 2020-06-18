@@ -5,10 +5,10 @@ $(document).ready(function() {
 
     $('#submit').on('click', function () {
         var bruger = {
-            brugerCpr: $brugerCpr.val(),
+            cprNr: $brugerCpr.val(),
             brugerNavn: 'a',
-            brugerIni: 'a',
-            brugerRolle: 'admin',     // samme navn som i brugerDTO
+            ini: 'a',
+            roller: 'admin',     // samme navn som i brugerDTO
             brugerStatus: 'aktiv',
         };
         console.log(bruger);
@@ -16,13 +16,17 @@ $(document).ready(function() {
             type: 'POST',
             url: 'api/authentication/login/' + $brugerCpr.val(),
             contentType: "application/json; charset=utf-8",
-            //data: bruger,
+            data: bruger,
             success: function (data) {
-                alert(data.brugerRolle);
+                if(data.roller === 'Admin') {
+                    window.location = "/UserAdminPage.html";
+                } else if (data.roller === 'Laborant') {
+                    window.location = "/LaborantAfvejning.html";
+                }
                 console.log(data)
             },
             error: function () {
-                alert('Fejl');
+                alert('Ugyldigt cpr');
 
             }
         })
