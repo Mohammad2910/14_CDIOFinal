@@ -30,7 +30,7 @@ $(document).ready(function() {
             data: bruger,
             success: function (data) {
                 $.each(data, function (i, bruger) {
-                    $brugere.append('<li>Bruger CPR: ' + bruger.cprNr + ', Bruger navn: ' + bruger.brugerNavn + ', Bruger initialer: ' + bruger.ini + ', Bruger rolle: ' + bruger.rolle + ', Bruger status: ' + bruger.brugerStatus + '</li><br>');
+                    $brugere.append('<li class="ListStyle">CPR: ' + bruger.cprNr + '<br> - Navn: ' + bruger.brugerNavn + '<br> - Initialer: ' + bruger.ini + '<br> - Rolle: ' + bruger.rolle + '<br> - Status: ' + bruger.brugerStatus + '</li><br><br>');
                 });
             },
             error: function () {

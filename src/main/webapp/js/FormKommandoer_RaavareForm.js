@@ -20,7 +20,7 @@ $(document).ready(function() {
             data: raavare,
             success: function (data) {
                 $.each(data, function (i, raavare) {
-                    $raavarer.append('<li>Råvare navn: ' + raavare.raavareNavn + '\t Råvare ID: ' + raavare.raavareID + '</li><br>');
+                    $raavarer.append('<li class="ListStyle"> Råvare ID: ' + raavare.raavareID + ' | | Råvare navn: ' + raavare.raavareNavn + '</li><br><br>');
                 });
             },
             error: function () {
@@ -45,7 +45,7 @@ $(document).ready(function() {
             data: raavare,
             success: function () {
                 alert('Råvare oprettet!');
-                $raavarer.append('<li>Råvare navn: ' + raavare.raavareNavn + '\t Råvare ID: ' + raavare.raavareId + '</li>');
+                $raavarer.append('<li class="raavarer">Råvare navn: ' + raavare.raavareNavn + '&nbsp; Råvare ID: ' + raavare.raavareId + '</li>');
             },
             error: function () {
                 alert('Fejl ved oprettelse af råvare');

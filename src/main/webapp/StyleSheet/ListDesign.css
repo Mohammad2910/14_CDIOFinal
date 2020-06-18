@@ -1,0 +1,9 @@
+.ListStyle {
+    text-align: center;
+    color: white;
+    font-family: Cambria, serif;
+    list-style: none;
+}
+.ListStyle::before {
+    content: "🍁";
+}

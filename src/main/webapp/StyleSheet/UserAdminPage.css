@@ -56,4 +56,9 @@ li a:hover {
 .left{
     float: right;
 }
-
+#brugere {
+    text-align: center;
+    color: white;
+    font-family: Cambria, serif;
+    list-style: none;
+}
