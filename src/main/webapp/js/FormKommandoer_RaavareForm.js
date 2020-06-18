@@ -35,13 +35,10 @@ $(document).ready(function() {
             raavareId: $raavareId.val(),
             raavareNavn: $raavareNavn.val(),
         };
-
-
+        console.log(JSON.stringify(raavare));
         $.ajax({
             type: 'POST',
             url: 'api/raavare/opret',
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
             data: raavare,
             success: function () {
                 alert('Råvare oprettet!');

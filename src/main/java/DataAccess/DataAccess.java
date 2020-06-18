@@ -5,7 +5,7 @@ import java.sql.*;
 public class DataAccess implements IDataAccess {
     private final String url = "jdbc:mysql://" + "localhost:3306" + "/webshop" + "?characterEncoding=utf8&serverTimezone=UTC";
     private final String username = "root";
-    private final String password = "8471";
+    private final String password = "2910";
     public Connection connection;
     private Statement statement;
 
