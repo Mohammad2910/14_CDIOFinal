@@ -27,30 +27,53 @@
 
 <div id="opretRaavareBatch" class="center form" style="display: none;">
     <h2>Opret råvarebatch</h2>
-    <input class="center" type="number" placeholder="Råvarebatch nummer"><br>
-    <input class = "center" type="number" placeholder="Råvare-ID"><br>
-    <input class = "center" type="number" step="0.001" placeholder="Mængde (Angivet i kilo)"><br>
-    <input class = "center" type="text" placeholder="Leverandør"><br>
-    <button class = "center " onclick="<!-- Submit raavarebatch function -->">Gem</button>
+    <form>
+        <input id="raavarebatchNummer" class="center" type="number" placeholder="Råvarebatch nummer"><br>
+        <input id="raavarebatchRaavareID" class = "center" type="number" placeholder="Råvare-ID"><br>
+        <input id="raavarebatchMaengde" class = "center" type="number" step="0.001" placeholder="Mængde (Angivet i kilo)"><br>
+        <input id="raavarebatchLeverandoer" class = "center" type="text" placeholder="Leverandør"><br>
+        <button id="opret-raavarebatch" class = "center " type="button">Gem</button>
+    </form>
 </div>
 
 <div id="visRaavareBatch" class="center form" style="display: none">
     <h2>Liste over alle råvarebatch</h2>
-    <!-- her skal alle raavarebatches vises -->
+    <form>
+        <div id="raavareBatches">
+
+
+
+        </div>
+    </form>
 </div>
 
 <div id="opretProduktBatch" class="center form" style="display: none;">
-    <h2>Opret produktbatch</h2>
-    <input class="center" type="number" placeholder="Produktbatch nummer"><br>
-    <input class="center" type="number" placeholder="Recept nummer"><br>
-    <input class="center" type="text" placeholder="Bruger-ID"><br>
-    <input class="center" type="number" placeholder="Råvarebatch nummer"><br>
-    <button class = "center" onclick="<!-- Submit Produktbatch function -->">Gem</button>
+    <form>
+        <h2>Opret produktbatch</h2>
+        <input id="produktbatchNummer" class="center" type="number" placeholder="Produktbatch nummer"><br>
+        <input id="produktbatchReceptNummer" class="center" type="number" placeholder="Recept nummer"><br>
+        <button id="opret-produktbatch" type="button" class = "center">Gem</button>
+    </form>
 </div>
 
 <div id="visProduktBatch" class="center form" style="display: none">
-    <h2>Liste over alle produktbatch</h2>
-    <!-- her skal alle produktbatches vises -->
+    <h2>Liste over alle produktbatches</h2>
+    <form>
+        <div id="produktBatches">
+
+
+
+        </div>
+    </form>
+    <form>
+        <button id="vis-produktbatchRaavare" class="right" type="button">Søg</button>
+        <input id="produktbatchIDRaavare" class="right" type="text" placeholder="Indtast produktbatch ID">
+        <div id="produktbatchesRaavare" class="center">
+
+
+
+        </div>
+    </form>
 </div>
 
 
