@@ -10,7 +10,6 @@ public class DataAccess implements IDataAccess {
     private Statement statement;
 
 
-
     public DataAccess() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         this.connection = DriverManager.getConnection(url, username, password);
@@ -200,7 +199,6 @@ public class DataAccess implements IDataAccess {
         }
         return returnArray;
     }
-
 
     public static String rightPad(String stringToPad, int width){
         while(stringToPad.length() <= width){

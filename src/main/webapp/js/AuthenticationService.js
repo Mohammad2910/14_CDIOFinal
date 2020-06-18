@@ -11,7 +11,6 @@ $(document).ready(function() {
             rolle: 'admin',
             brugerStatus: 'aktiv',
         };
-        console.log(bruger);
         $.ajax({
             type: 'POST',
             url: 'api/authentication/login/' + $brugerCpr.val(),

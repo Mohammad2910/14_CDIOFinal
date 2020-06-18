@@ -28,18 +28,6 @@ public class AuthenticationService {
             System.out.println(input);
             returnBru = brugerBLL.visEnkelBruger(input);
 
-//            switch (returnBru.getRoller()){
-//                case "admin": jkaskjhf;
-//                break;
-//                case "produktionsleder": jdahfklajdhs;
-//                break;
-//                case "laborant": kjhafdjkhf;
-//                break;
-//                case "farmaceut": jahdsfh;
-//                break;
-//                default: lkjfalsj;
-//                break;
-//            }
         } catch (SQLException e) {
             return Response.status(400).entity("SQLException: " + e.getMessage()).build();
         }
