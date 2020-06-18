@@ -1,12 +1,37 @@
 $(document).ready(function() {
-    $('#submit').click(function () {
-        var cpr = document.getElementById('cpr').value;
+    var $brugerCpr = $('#cpr');
+
+
+
+    $('#submit').on('click', function () {
+        var bruger = {
+            cprNr: $brugerCpr.val(),
+            brugerNavn: 'a',
+            ini: 'a',
+            roller: 'admin',     // samme navn som i brugerDTO
+            brugerStatus: 'aktiv',
+        };
+        console.log(bruger);
         $.ajax({
-            url: "localhost:8080/webshop/",
-            type: "POST",
-            data: {'cpr': cpr},
-            success: function (result) {
-                console.log(result)
+            type: 'POST',
+            url: 'api/authentication/login/' + $brugerCpr.val(),
+            contentType: "application/json; charset=utf-8",
+            data: bruger,
+            success: function (data) {
+                if(data.roller === 'Admin') {
+                    window.location = "/UserAdminPage.html";
+                } else if (data.roller === 'Laborant') {
+                    window.location = "/LaborantAfvejning.html";
+                } else if (data.roller === 'Produktionsleder') {
+                    window.location = '/ProduktionslederLogin.html';
+                } else if (data.roller === 'Farmaceut') {
+                    window.location = '/FarmaceutLogin.html';
+                }
+                console.log(data)
+            },
+            error: function () {
+                alert('Ugyldigt cpr');
+
             }
         })
     });
