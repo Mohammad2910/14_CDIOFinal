@@ -8,7 +8,7 @@ $(document).ready(function() {
             cprNr: $brugerCpr.val(),
             brugerNavn: 'a',
             ini: 'a',
-            roller: 'admin',
+            rolle: 'admin',
             brugerStatus: 'aktiv',
         };
         console.log(bruger);
@@ -18,13 +18,13 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             data: bruger,
             success: function (data) {
-                if(data.roller === 'Admin') {
-                    window.location = "UserAdminPage.html";
-                } else if (data.roller === 'Laborant') {
-                    window.location = "LaborantAfvejning.html";
-                } else if (data.roller === 'Produktionsleder') {
+                if(data.rolle === 'Admin') {
+                    window.location = 'UserAdminPage.html';
+                } else if (data.rolle === 'Laborant') {
+                    window.location = 'LaborantAfvejning.html';
+                } else if (data.rolle === 'Produktionsleder') {
                     window.location = 'ProduktionslederLogin.html';
-                } else if (data.roller === 'Farmaceut') {
+                } else if (data.rolle === 'Farmaceut') {
                     window.location = 'FarmaceutLogin.html';
                 }
                 console.log(data)
