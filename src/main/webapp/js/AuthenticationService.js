@@ -8,7 +8,7 @@ $(document).ready(function() {
             cprNr: $brugerCpr.val(),
             brugerNavn: 'a',
             ini: 'a',
-            roller: 'admin',     // samme navn som i brugerDTO
+            roller: 'admin',
             brugerStatus: 'aktiv',
         };
         console.log(bruger);
@@ -19,13 +19,13 @@ $(document).ready(function() {
             data: bruger,
             success: function (data) {
                 if(data.roller === 'Admin') {
-                    window.location = "/UserAdminPage.html";
+                    window.location = "UserAdminPage.html";
                 } else if (data.roller === 'Laborant') {
-                    window.location = "/LaborantAfvejning.html";
+                    window.location = "LaborantAfvejning.html";
                 } else if (data.roller === 'Produktionsleder') {
-                    window.location = '/ProduktionslederLogin.html';
+                    window.location = 'ProduktionslederLogin.html';
                 } else if (data.roller === 'Farmaceut') {
-                    window.location = '/FarmaceutLogin.html';
+                    window.location = 'FarmaceutLogin.html';
                 }
                 console.log(data)
             },
