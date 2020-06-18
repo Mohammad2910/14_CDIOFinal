@@ -16,14 +16,14 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Path("raavare")
 
-public class Rest_Raavare implements I_Rest_Raavare {
+public class Rest_Raavare {
     I_BLLRaavare raavareBLL = new BLLRaavare();
 
     @Path("opret")
     @POST
-    public Response opretRaavare(String inputs) {
-        String[] strarray = inputs.split("&");
-        RaavareDTO raavareDTO = new RaavareDTO(Integer.parseInt(strarray[0].substring(10)),strarray[1].substring(12));
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response opretRaavare(@FormParam("raavareId") int raavareId,  @FormParam("raavareNavn") String raavareNavn) {
+        RaavareDTO raavareDTO = new RaavareDTO(raavareId,raavareNavn);
         RaavareDTO returnRaa;
         try{
             returnRaa = raavareBLL.opretEnkelRaavare(raavareDTO);
