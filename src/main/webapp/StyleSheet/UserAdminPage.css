@@ -56,26 +56,26 @@ li a:hover {
 .left{
     float: right;
 }
+
 #brugere {
     text-align: center;
     color: white;
     font-family: Cambria, serif;
     border-bottom: 1px solid black;
-
     }
+
 #brugere tr{
+    text-align: center;
+}
+#brugere td{
+    border-bottom: 1px solid aliceblue;
     padding: 15px;
-    text-align: left;
 }
-
-.brugerInfoTable{
-    border-bottom: 1px solid black;
-    color: aliceblue;
-}
-
-#userAdminTheadRow tr{
-    color: aliceblue;
-}
-#userAdminTheadRow tr:hover{
+#brugere tr:hover{
     background-color: crimson;
+}
+
+#userAdminThead th{
+    color: aliceblue;
+    border-bottom: 1px solid white;
 }
