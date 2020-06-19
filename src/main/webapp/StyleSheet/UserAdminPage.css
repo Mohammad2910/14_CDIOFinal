@@ -60,5 +60,22 @@ li a:hover {
     text-align: center;
     color: white;
     font-family: Cambria, serif;
-    list-style: none;
+    border-bottom: 1px solid black;
+
+    }
+#brugere tr{
+    padding: 15px;
+    text-align: left;
+}
+
+.brugerInfoTable{
+    border-bottom: 1px solid black;
+    color: aliceblue;
+}
+
+#userAdminTheadRow tr{
+    color: aliceblue;
+}
+#userAdminTheadRow tr:hover{
+    background-color: crimson;
 }
