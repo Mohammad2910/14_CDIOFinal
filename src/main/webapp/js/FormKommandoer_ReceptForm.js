@@ -8,8 +8,8 @@ $(document).ready(function() {
         receptNavn: $receptNavn.val(),
     };
     $('#vis-Alle-Recept').on('click', function () {
-
-
+        document.getElementById("recepterh2").innerHTML = 'Liste over alle recepter';
+        $('#receptRaavarer').html('');
         $('#recepter').html('');
 
         $.ajax({

@@ -79,19 +79,19 @@
 
 </div>
 
-<div id="visRecept" style="display: none" class="center form">
-    <h2>Liste over alle recepter</h2>
-        <form method="GET" action="api/recept/vis">
-            <div id="recepter" class="center">
-
-
-            </div>
-        </form>
+<div id="visRecept" style="display: none" class="form">
+    <h2 id="recepterh2">Liste over alle recepter</h2>
     <form method="POST" action="api/receptRaavare/vis">
         <button id="vis-ReceptRaavare" class="right" type="button">Søg</button>
         <input id="receptRaavareID" class="right" type="text" placeholder="Indtast recept ID">
         <div id="receptRaavarer" class="center">
 
+
+
+        </div>
+    </form>
+    <form method="GET" action="api/recept/vis">
+        <div id="recepter" class="center">
 
 
         </div>

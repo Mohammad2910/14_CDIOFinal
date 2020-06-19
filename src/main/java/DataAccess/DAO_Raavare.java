@@ -26,7 +26,7 @@ public class DAO_Raavare implements IDAO_Raavare {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
-            PreparedStatement preSt = conn.prepareStatement("INSERT INTO råvare VALUES(?,?)");
+            PreparedStatement preSt = conn.prepareStatement("INSERT INTO raavare VALUES(?,?)");
 
             setCreatePreparedStatement(preSt,enkelRaavare);
 
@@ -47,7 +47,7 @@ public class DAO_Raavare implements IDAO_Raavare {
         try{
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
-            PreparedStatement preSt = conn.prepareStatement("SELECT * FROM råvare WHERE råvareid = ?");
+            PreparedStatement preSt = conn.prepareStatement("SELECT * FROM raavare WHERE raavareid = ?");
 
             preSt.setInt(1,raavareId);
             ResultSet resultSet = preSt.executeQuery();
@@ -72,7 +72,7 @@ public class DAO_Raavare implements IDAO_Raavare {
         try{
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
-            PreparedStatement preSt = conn.prepareStatement("SELECT * FROM råvare");
+            PreparedStatement preSt = conn.prepareStatement("SELECT * FROM raavare");
 
             ResultSet resultSet = preSt.executeQuery();
             //Rykker pointeren til default række position foran Id, derefter til rækken med ID
@@ -94,7 +94,7 @@ public class DAO_Raavare implements IDAO_Raavare {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
-            PreparedStatement preSt = conn.prepareStatement("UPDATE råvare SET RåvareNavn = ? WHERE RåvareID = ?;");
+            PreparedStatement preSt = conn.prepareStatement("UPDATE raavare SET RaavareNavn = ? WHERE RaavareID = ?;");
 
            preSt.setInt(2,nyRaavare.getRaavareID());
            preSt.setString(1,nyRaavare.getRaavareNavn());
