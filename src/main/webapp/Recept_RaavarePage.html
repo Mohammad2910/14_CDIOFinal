@@ -59,9 +59,15 @@
 <div id = "visRaavare" class="center form" style ="display: none">
     <h2>Liste over alle råvare</h2>
     <form method="GET" action="api/raavare/vis">
-    <div id="raavarer" class="center">
-
-    </div>
+        <table id="raavareInfoTable" style="width:100%">
+            <thead id="raavarerThead">
+            <tr class="raavarerThead">
+                <th class="raavareThead">Råvare ID</th>
+                <th class="raavareThead">Råvare Navn</th>
+            </tr>
+            </thead>
+            <tbody id="raavarer"></tbody>
+        </table>
     </form>
 </div>
 
@@ -82,11 +88,18 @@
 <div id="visRecept" style="display: none" class="center form">
     <h2>Liste over alle recepter</h2>
         <form method="GET" action="api/recept/vis">
-            <div id="recepter" class="center">
-
-
-            </div>
+            <table id="recepterInfoTable" style="width:100%">
+                <thead id="recepterThead">
+                <tr class="recepterThead">
+                    <th class="recepterThead">Recept ID</th>
+                    <th class="recepterThead">Recept Navn</th>
+                </tr>
+                </thead>
+                <tbody id="recepter"></tbody>
+            </table>
         </form>
+</div>
+
     <form method="POST" action="api/receptRaavare/vis">
         <button id="vis-ReceptRaavare" class="right" type="button">Søg</button>
         <input id="receptRaavareID" class="right" type="text" placeholder="Indtast recept ID">
