@@ -33,7 +33,7 @@ public class DAO_Raavare implements IDAO_Raavare {
             preSt.executeUpdate();
 
             conn.close();
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return laesEnkelRaavareId(enkelRaavare.getRaavareID());

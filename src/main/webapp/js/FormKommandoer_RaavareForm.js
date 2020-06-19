@@ -20,8 +20,7 @@ $(document).ready(function() {
             data: raavare,
             success: function (data) {
                 $.each(data, function (i, raavare) {
-                    $raavarer.append('<tr><td>' + raavare.raavareID + '</td>' +
-                        '<td>' + raavare.raavareNavn + '</td></tr>');
+                    $raavarer.append('<li class="ListStyle"> Råvare ID: ' + raavare.raavareID + ' | | Råvare navn: ' + raavare.raavareNavn + '</li><br><br>');
                 });
             },
             error: function () {
@@ -43,7 +42,6 @@ $(document).ready(function() {
             data: raavare,
             success: function () {
                 alert('Råvare oprettet!');
-                $raavarer.append('<li>Råvare navn: ' + raavare.raavareNavn + '\t Råvare ID: ' + raavare.raavareId + '</li>');
             },
             error: function () {
                 alert('Fejl ved oprettelse af råvare');
@@ -72,3 +70,36 @@ $(document).ready(function() {
         });
     });
 });
+
+
+
+
+
+
+
+
+// function post(data,url,sFunk){
+//     $.ajax({
+//         type: 'POST',
+//         url: url,
+//         contentType: 'application/json',
+//         data: data,
+//         success: function (data){
+//             sFunk(data);
+//         }
+//     })
+//
+// }
+
+// REST Functions
+// function RaavareForm_REST_opretRaavare(row1,row2){
+//
+//     var RaavareDTO ={
+//         raavareID:$(row1).find('.raavareId'.val()),
+//         raavareNavn:$(row2).find('.raavareNavn'.val())
+//     };
+//     alert("raavareId : " + RaavareDTO.raavareID + " , raavareNavn : " + RaavareDTO.raavareNavn);
+//     post(JSON.stringify(RaavareDTO), "rest/raavare/opret", function(data) {
+//         alert("oprettet " + RaavareDTO.toString());
+//     });
+// }
