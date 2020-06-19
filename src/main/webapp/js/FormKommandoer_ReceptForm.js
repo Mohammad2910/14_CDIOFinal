@@ -12,7 +12,9 @@ $(document).ready(function() {
     };
     $('#vis-Alle-Recept').on('click', function () {
         document.getElementById("recepterh2").innerHTML = 'Liste over alle recepter';
-        $('#receptRaavarer').html('');
+        $('#recepterInfoTable').show();
+        $('#receptRaavareInfoTable').hide();
+        $('#receptRaavare').html('');
         $('#recepter').html('');
 
         $.ajax({

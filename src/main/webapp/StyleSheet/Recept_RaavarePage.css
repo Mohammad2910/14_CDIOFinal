@@ -97,3 +97,22 @@ li a:hover {
     border-bottom: 1px solid white;
 
 }
+#receptRaavare {
+    text-align: center;
+    color: white;
+    font-family: Cambria, serif;
+}
+#receptRaavare tr{
+    text-align: center;
+}
+#receptRaavare td{
+    border-bottom: 1px solid aliceblue;
+    padding: 15px;
+}
+#receptRaavare tr:hover{
+    background-color: crimson;
+}
+#receptRaavareThead th{
+    color: aliceblue;;
+    border-bottom: 1px solid white;
+}

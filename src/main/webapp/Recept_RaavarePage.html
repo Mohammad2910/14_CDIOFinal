@@ -5,7 +5,7 @@
     <title>RecepterOgRåvare</title>
     <link rel="StyleSheet" type="text/css" href="StyleSheet/Recept_RaavarePage.css">
     <link rel="StyleSheet" type="text/css" href="StyleSheet/index.css">
-    <link rel="StyleSheet" type="text/css" href="StyleSheet/ListDesign.css">
+    <link rel="StyleSheet" type="text/css" href="StyleSheet/TableDesign.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
     <script type="text/javascript" src="js/FormKommandoer_RaavareForm.js"></script>
@@ -90,8 +90,18 @@
     <form method="POST" action="api/receptRaavare/vis">
         <button id="vis-ReceptRaavare" class="right" type="button">Søg</button>
         <input id="receptRaavareID" class="right" type="text" placeholder="Indtast recept ID">
-        <div id="receptRaavarer" class="center">
-        </div>
+        <table id="receptRaavareInfoTable" style="width: 100%">
+            <thead id="receptRaavareThead">
+            <tr class="receptRaavareThead">
+                <th class="receptRaavareThead">Recept ID</th>
+                <th class="receptRaavareThead">Råvare ID</th>
+                <th class="receptRaavareThead">Netto vægt (kg)</th>
+                <th class="receptRaavareThead">Tolerance</th>
+
+            </tr>
+            </thead>
+            <tbody id="receptRaavare"></tbody>
+        </table>
     </form>
         <form method="GET" action="api/recept/vis">
             <table id="recepterInfoTable" style="width:100%">
