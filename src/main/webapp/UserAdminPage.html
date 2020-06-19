@@ -61,9 +61,19 @@ og vi bruger camelCase til content fx. "visBrugere" -->
 <div id="visBrugere" class="center form" style="display: none;">
     <h2>Liste over alle brugere</h2>
     <form method="GET" action="api/bruger/vis">
-        <div id="brugere" class="center">
-
-        </div>
+            <table id="brugerInfoTable" style="width:100%">
+                <thead id="userAdminThead">
+                <tr class="userAdminThead">
+                    <th class="userAdminThead">CPR Nr.</th>
+                    <th class="userAdminThead">Brugernavn</th>
+                    <th class="userAdminThead">Initialer</th>
+                    <th class="userAdminThead">Rolle</th>
+                    <th class="userAdminThead">Status</th>
+                </tr>
+                </thead>
+                <tbody id="brugere">
+                </tbody>
+            </table>
     </form>
 </div>
 

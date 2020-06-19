@@ -56,9 +56,26 @@ li a:hover {
 .left{
     float: right;
 }
+
 #brugere {
     text-align: center;
     color: white;
     font-family: Cambria, serif;
-    list-style: none;
+    border-bottom: 1px solid black;
+    }
+
+#brugere tr{
+    text-align: center;
+}
+#brugere td{
+    border-bottom: 1px solid aliceblue;
+    padding: 15px;
+}
+#brugere tr:hover{
+    background-color: crimson;
+}
+
+#userAdminThead th{
+    color: aliceblue;
+    border-bottom: 1px solid white;
 }

@@ -19,7 +19,8 @@ $(document).ready(function() {
             data: recept,
             success: function (data) {
                 $.each(data, function (i, recept) {
-                    $recepter.append('<li class="ListStyle">Recept ID: ' + recept.receptID + ' | | Recept navn: ' + recept.receptNavn + '</li><br><br>');
+                    $recepter.append('<tr><td>' + recept.receptID + '</td>' +
+                        '<td>' + recept.receptNavn + '</td></tr>');
                 });
             },
             error: function () {

@@ -61,12 +61,39 @@ li a:hover {
     text-align: center;
     color: white;
     font-family: Cambria, serif;
-    list-style: none;
 }
+#raavarer tr{
+    text-align: center;
+}
+#raavarer td{
+    border-bottom: 1px solid aliceblue;
+    padding: 15px;
+}
+#raavarer tr:hover{
+    background-color: crimson;
+}
+#raavarerThead th{
+    color: aliceblue;;
+    border-bottom: 1px solid white;
 
+}
 #recepter {
     text-align: center;
     color: white;
     font-family: Cambria, serif;
-    list-style: none;
+}
+#recepter tr{
+    text-align: center;
+}
+#recepter td{
+    border-bottom: 1px solid aliceblue;
+    padding: 15px;
+}
+#recepter tr:hover{
+    background-color: crimson;
+}
+#recepterThead th{
+    color: aliceblue;;
+    border-bottom: 1px solid white;
+
 }
