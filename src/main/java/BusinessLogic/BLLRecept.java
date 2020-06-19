@@ -11,8 +11,8 @@ public class BLLRecept implements I_BLLRecept {
     private IDAO_Recept idao_recept = new DAO_Recept();
 
     @Override
-    public void opretEnkelRecept(ReceptDTO enkelRecept) throws SQLException {
-        idao_recept.opretEnkelRecept(enkelRecept);
+    public void opretEnkelRecept(ReceptDTO enkelRecept, int raavareNavnIRecept, double maengde, double tolerance) throws SQLException {
+        idao_recept.opretEnkelRecept(enkelRecept, raavareNavnIRecept, maengde, tolerance);
     }
 
     @Override

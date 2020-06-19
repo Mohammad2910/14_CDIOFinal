@@ -2,6 +2,9 @@ $(document).ready(function() {
     var $recepter = $('#recepter');
     var $receptID = $('#receptID');
     var $receptNavn = $('#receptNavn');
+    var $raavareNavnRecept = $('#raavareNavnRecept');
+    var $raavareMaengde = $('#raavareMaengde');
+    var $tolerance = $('#tolerance');
 
     var recept = {
         receptID: $receptID.val(),
@@ -30,17 +33,20 @@ $(document).ready(function() {
     });
 
     $('#opret-Recept').on('click', function () {
-
-
+        var recept = {
+            receptID: $receptID.val(),
+            receptNavn: $receptNavn.val(),
+            raavareNavnRecept: $raavareNavnRecept.val(),
+            raavareMaengde: $raavareMaengde.val(),
+            tolerance: $tolerance.val(),
+        };
+        console.log(recept);
         $.ajax({
             type: 'POST',
             url: 'api/recept/opret',
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
             data: recept,
             success: function () {
                 alert('Recept oprettet!');
-                $recepter.append('<li>Recept navn: ' + recept.receptNavn + '\t Recept ID: ' + recept.receptID + '</li>');
             },
             error: function () {
                 alert('Fejl ved oprettelse af recept');

@@ -12,22 +12,48 @@ public class DAO_Recept implements IDAO_Recept {
         try{
             preSt.setInt(1, recept.getReceptID());
             preSt.setString(2,recept.getReceptNavn());
+
         }
         catch (SQLException e){
             throw new SQLException(e);
         }
         return preSt;
     }
+
+    private PreparedStatement setCreatePreparedStatement2(PreparedStatement preSt, double a, double b, int c, int d) throws SQLException{
+        try{
+            preSt.setDouble(1, a);
+            preSt.setDouble(2,b);
+            preSt.setInt(3,c);
+            preSt.setInt(4,d);
+
+        }
+        catch (SQLException e){
+            throw new SQLException(e);
+        }
+        return preSt;
+    }
+
     @Override
-    public void opretEnkelRecept(ReceptDTO enkelRecept) throws SQLException {
+    public void opretEnkelRecept(ReceptDTO enkelRecept, int a, double b, double c) throws SQLException {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
-            PreparedStatement preSt = conn.prepareStatement("INSERT INTO Recept VALUES(?,?)");
+            try {
+                PreparedStatement preSt = conn.prepareStatement("INSERT INTO Recept VALUES(?,?)");
 
-            setCreatePreparedStatement(preSt,enkelRecept);
+                setCreatePreparedStatement(preSt,enkelRecept);
 
-            preSt.executeUpdate();
+                preSt.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+            PreparedStatement preSt2 = conn.prepareStatement("INSERT INTO Receptraavare VALUES(?,?,?,?)");
+
+            setCreatePreparedStatement2(preSt2,b,c,enkelRecept.getReceptID(),a);
+
+            preSt2.executeUpdate();
 
             conn.close();
         } catch (SQLException | ClassNotFoundException e) {

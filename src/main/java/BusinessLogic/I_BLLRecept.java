@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface I_BLLRecept {
 
-    void opretEnkelRecept(ReceptDTO enkelRecept) throws SQLException;
+    public void opretEnkelRecept(ReceptDTO enkelRecept, int raavareNavnIRecept, double maengde, double tolerance) throws SQLException;
 
     List<ReceptDTO> visAlleRecepter() throws SQLException;
 
