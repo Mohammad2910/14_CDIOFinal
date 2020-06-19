@@ -53,8 +53,38 @@ button{
 }
 
 
-.logindiv {
-    height: 160px;
-    border: 20px;
-    padding: 70px;
+
+.form-popup {
+    border: 6px solid brown;
+    bottom: 0px;
+    width: 500px;
+    background-color: darkred;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+
+.ButtonStyle{
+
+    padding: 14px 50px;
+    background-color: crimson;
+    border: 3px solid aliceblue;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 300px;
+    font-size: 15px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+
+}
+
+
+.ButtonStyle:hover{
+    background-color: black;
+    color: white;
+}
+
+.inputStyler{
+    background-color: lightgray;
+    padding: 14px 50px;
+    border: none;
 }
