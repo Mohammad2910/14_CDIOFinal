@@ -30,7 +30,7 @@ public class DAO_RaavareBatch implements IDAO_RaavareBatch {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
-            PreparedStatement preSt = conn.prepareStatement("INSERT INTO Råvarebatch VALUES (?,?,?,?)");
+            PreparedStatement preSt = conn.prepareStatement("INSERT INTO Raavarebatch VALUES (?,?,?,?)");
 
             setCreatePreparedStatement(preSt,raavareBatchDTO);
 
@@ -51,7 +51,7 @@ public class DAO_RaavareBatch implements IDAO_RaavareBatch {
         try{
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
-            PreparedStatement preSt = conn.prepareStatement("SELECT * FROM Råvarebatch");
+            PreparedStatement preSt = conn.prepareStatement("SELECT * FROM Raavarebatch");
 
             ResultSet resultSet = preSt.executeQuery();
 

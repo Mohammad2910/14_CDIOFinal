@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var $raavareBatches = $('#raavareBatches');
+    var $raavareBatchesliste = $('#raavareBatchesliste');
     var $raavarebatchNummer = $('#raavarebatchNummer');
     var $raavarebatchMaengde = $('#raavarebatchMaengde');
     var $raavarebatchLeverandoer = $('#raavarebatchLeverandoer');
@@ -12,21 +12,23 @@ $(document).ready(function() {
         raavarebatchRaavareID:$raavarebatchRaavareID.val()
     };
 
-    $('#visRaavareBatch').on('click', function () {
-        $('#raavareBatches').html('');
+    $('#visRaavareBatches').on('click', function () {
+        $('#raavareBatchesliste').html('');
+        $('#raavarebatchesRaavare').html('');
 
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: 'api/raavarebatch/vis',
             contentType: "application/json; charset=utf-8",
             data: raavarebatch,
             success: function (data) {
                 $.each(data, function (i, raavarebatch) {
-                    $raavareBatches.append('<li>Råvarebatch ID: ' + raavarebatch.raavareBatchID + '\t Mængde: ' + raavarebatch.raavareMaengde + '</li><br>');
+                    console.log(raavarebatch);
+                    $raavareBatchesliste.append('<li>Råvarebatch ID: ' + raavarebatch.raavareBatchID + '\t Råvare mængde: ' + raavarebatch.raavareMaengde + '\t Leverandør: ' + raavarebatch.leverandoer + '\t Råvare ID: ' + raavarebatch.raavareID + '</li><br>');
                 });
             },
             error: function () {
-                alert('Fejl ved indlæsning af Råvarebatch');
+                alert('Fejl ved indlæsning af råvarebatch');
             }
         });
     });
@@ -44,18 +46,15 @@ $(document).ready(function() {
         $.ajax({
             type: 'POST',
             url: 'api/raavarebatch/opret',
-            dataType: "json",
             contentType: "application/json; charset=utf-8",
             data: raavarebatch,
             success: function () {
                 alert('Råvarebatch oprettet!');
                 document.getElementById("raavarebatchNummer").value = '';
-                document.getElementById("raavarebatchMaengde").value = '';
-                document.getElementById("raavarebatchLeverandoer").value = '';
-                document.getElementById("raavarebatchRaavareID").value = '';
+                document.getElementById("raavarebatchReceptNummer").value = '';
             },
             error: function () {
-                alert('Fejl ved oprettelse af Råvarebatch');
+                alert('Fejl ved oprettelse af råvarebatch');
             }
         });
     });
