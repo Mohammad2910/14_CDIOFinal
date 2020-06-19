@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    var $receptRaavarer = $('#receptRaavarer')
-    var $receptRaavareID = $('#receptRaavareID')
+    var $receptRaavarer = $('#receptRaavare');
+    var $receptRaavareID = $('#receptRaavareID');
 
     $('#vis-ReceptRaavare').on('click', function () {
 
@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 
         $('#recepter').html('');
-        $('#receptRaavarer').html('');
+        $('#receptRaavare').html('');
         $.ajax({
             type: 'POST',
             url: 'api/receptRaavare/vis',
@@ -24,8 +24,13 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             data: receptRaavare,
             success: function (data) {
+                $('#recepterInfoTable').hide();
+                $('#receptRaavareInfoTable').show();
                 $.each(data, function (i, receptRaavares) {
-                    $receptRaavarer.append('<li>Recept ID: ' + receptRaavares.receptID + ', Råvare ID: ' + receptRaavares.raavareID +  ', Netto vægt (i kg): ' + receptRaavares.nonNetto + ', Tolerance: ' + receptRaavares.tolerance + '</li><br>');
+                    $receptRaavarer.append('<tr><td>' + receptRaavares.receptID + '</td>' +
+                        '<td>' + receptRaavares.raavareID + '</td>' +
+                        '<td>' + receptRaavares.nonNetto + '</td>' +
+                        '<td>' + receptRaavares.tolerance + '</td></tr>');
                 });
             },
             error: function () {

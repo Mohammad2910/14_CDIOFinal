@@ -9,8 +9,9 @@ $(document).ready(function() {
     };
 
     $('#vis-Raavare').on('click', function () {
-
-
+        $('#recepterInfoTable').show();
+        $('#receptRaavareInfoTable').hide();
+        $('#receptRaavareThead').hide();
         $('#raavarer').html('');
 
         $.ajax({
