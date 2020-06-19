@@ -25,12 +25,14 @@ public class Rest_Recept {
     @Path("opret")
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Response opretRecept(@FormParam("receptID") int receptID,  @FormParam("receptNavn") String receptNavn) {
+    public Response opretRecept(@FormParam("receptID") int receptID,  @FormParam("receptNavn") String receptNavn,
+                                @FormParam("raavareNavnRecept") int raavareNavnRecept, @FormParam("raavareMaengde")
+                                double raavareMaengde, @FormParam("tolerance") double tolerance) {
 //        String[] strarray = inputs.split("&");
         ReceptDTO receptDTO = new ReceptDTO(receptID, receptNavn);
         System.out.println(receptID + receptNavn);
         try{
-            receptBLL.opretEnkelRecept(receptDTO);
+            receptBLL.opretEnkelRecept(receptDTO, raavareNavnRecept, raavareMaengde, tolerance);
         } catch (SQLException e) {
             return Response.status(400).entity("SQLException: " + e.getMessage()).build();
         }
