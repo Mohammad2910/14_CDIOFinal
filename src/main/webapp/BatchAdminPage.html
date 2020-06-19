@@ -18,7 +18,7 @@
 <div style="text-align: center;" >
     <ul>
         <li onclick="toggleDivContent('opretRaavareBatch')"><a>Opret råvarebatch</a></li>
-        <li onclick="toggleDivContent('visRaavareBatch')"><a>Vis råvarebatch</a></li>
+        <li id="visRaavareBatches" onclick="toggleDivContent('visRaavareBatch')"><a>Vis råvarebatch</a></li>
         <li onclick="toggleDivContent('opretProduktBatch')"><a>Opret produktbatch</a></li>
         <li id="visProduktBatches" onclick="toggleDivContent('visProduktBatch')"><a>Vis produktbatch</a></li>
         <li class="right" onclick="location.href='Frontpage.html'"><a>Log ud</a></li>
@@ -37,11 +37,10 @@
     </form>
 </div>
 
-<div id="visRaavareBatch" class="center form" style="display: none">
-    <h2>Liste over alle råvarebatch</h2>
-    <form>
-        <div id="raavareBatches">
-
+<div id="visRaavareBatch" style="display: none" class="form">
+    <h2>Liste over alle råvarebatches</h2>
+    <form method="GET" action="api/raavarebatch/vis">
+        <div id="raavareBatchesliste" class="center">
 
 
         </div>
@@ -71,10 +70,8 @@
         <div id="produktbatchesRaavare" class="center">
 
 
-
         </div>
     </form>
-
 </div>
 
 
