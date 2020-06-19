@@ -31,7 +31,7 @@ public class DAO_ReceptRaavare implements IDAO_ReceptRaavare {
         try{
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
-            PreparedStatement preSt = conn.prepareStatement("select ReceptID, nonNetto, Tolerance, RåvareID from recept natural join receptråvare where receptID = ?");
+            PreparedStatement preSt = conn.prepareStatement("select ReceptID, nonNetto, Tolerance, RaavareID from recept natural join receptraavare where receptID = ?");
 
             preSt.setInt(1, receptID);
             ResultSet resultSet = preSt.executeQuery();

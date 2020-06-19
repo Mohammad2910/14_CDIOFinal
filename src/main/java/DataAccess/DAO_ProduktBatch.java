@@ -74,14 +74,12 @@ public class DAO_ProduktBatch implements IDAO_ProduktBatch {
 
     @Override
     public List<ProduktBatchDTO> visEnkelProduktBatch(int produktBatchID) throws SQLException {
-
         List<ProduktBatchDTO> produktBatchArray = new ArrayList<>();
 
         try{
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
-            PreparedStatement preSt = conn.prepareStatement("SELECT produktbatchid, receptid, produktbatchstatus, cpr, råvarebatchid, tara, netto FROM ProduktBatch NATURAL JOIN Råvare NATURAL JOIN ReceptRåvare NATURAL JOIN Recept NATURAL JOIN brugere NATURAL JOIN ProduktBatchAfvejning WHERE ProduktBatchID = " + produktBatchID +" GROUP BY råvareID;\n");
-
+            PreparedStatement preSt = conn.prepareStatement("SELECT produktbatch.produktbatchid, recept.receptid, produktbatch.produktbatchstatus, brugere.cpr, raavarebatch.raavarebatchid, produktbatchafvejning.tara, produktbatchafvejning.netto FROM Produktbatch LEFT OUTER JOIN Recept on Produktbatch.receptid = recept.receptid LEFT OUTER JOIN produktbatchafvejning on produktbatch.produktbatchid = produktbatchafvejning.produktbatchid LEFT OUTER JOIN brugere on brugere.cpr = produktbatchafvejning.cpr LEFT OUTER JOIN raavarebatch ON raavarebatch.raavarebatchid = produktbatchafvejning.raavarebatchid WHERE produktbatch.produktbatchid = " + produktBatchID + ";" );
             ResultSet resultSet = preSt.executeQuery();
 
             //Rykker pointeren til default række position foran Id, derefter til rækken med ID

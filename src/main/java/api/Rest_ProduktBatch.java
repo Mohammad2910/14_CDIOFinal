@@ -20,7 +20,7 @@ public class Rest_ProduktBatch implements I_Rest_ProduktBatch{
     public Response opretProduktBatch(String inputs) throws SQLException {
         String[] strarray = inputs.split("&");
         //Lav JavaScripten først
-        ProduktBatchDTO produktBatchDTO = new ProduktBatchDTO(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),Integer.parseInt(strarray[1].substring(AttrCount(strarray[1]))),"","",1,1,1);
+        ProduktBatchDTO produktBatchDTO = new ProduktBatchDTO(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),Integer.parseInt(strarray[1].substring(AttrCount(strarray[1]))),"Ikke paabegyndt","",1,1,1);
         try{
             proBLL.opretProduktBatch(produktBatchDTO);
         } catch(SQLException e) {
@@ -45,7 +45,14 @@ public class Rest_ProduktBatch implements I_Rest_ProduktBatch{
     @Path("visEnkelt")
     @POST
     public Response visEnkelProduktBatch(String inputs) throws SQLException {
-        return null;
+        String[] str = inputs.split("&");
+        List<ProduktBatchDTO> returnRaa;
+        try{
+            returnRaa = proBLL.visEnkelProduktBatch(Integer.parseInt(str[0].substring(AttrCount(str[0]))));
+        } catch(SQLException e) {
+            return Response.status(400).entity("SQLException: " + e.getMessage()).build();
+        }
+        return Response.ok(returnRaa).build();
     }
 
     public static String checkForSpace(String str){

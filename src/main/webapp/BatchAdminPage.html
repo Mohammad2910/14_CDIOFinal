@@ -8,7 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript" src="js/DisplayFunctionality.js"></script>
     <script type="text/javascript" src="js/FormKommandoer_ProduktBatch.js"></script>
-    <script type="text/javascript" src="js/FormKommandoer_RaavareBatch.js.js"></script>
+    <script type="text/javascript" src="js/FormKommandoer_RaavareBatch.js"></script>
 </head>
 <!-- center kan fjernes, fra tagsne, kun til tekst, vi burde lave en de forskellige forms som div, som bliver synlige og usynlige naar knapperne trykkes paa -->
 
@@ -20,7 +20,7 @@
         <li onclick="toggleDivContent('opretRaavareBatch')"><a>Opret råvarebatch</a></li>
         <li onclick="toggleDivContent('visRaavareBatch')"><a>Vis råvarebatch</a></li>
         <li onclick="toggleDivContent('opretProduktBatch')"><a>Opret produktbatch</a></li>
-        <li onclick="toggleDivContent('visProduktBatch')"><a>Vis produktbatch</a></li>
+        <li id="visProduktBatches" onclick="toggleDivContent('visProduktBatch')"><a>Vis produktbatch</a></li>
         <li class="right" onclick="location.href='Frontpage.html'"><a>Log ud</a></li>
     </ul>
 </div>
@@ -57,24 +57,24 @@
     </form>
 </div>
 
-<div id="visProduktBatch" class="center form" style="display: none">
+<div id="visProduktBatch" style="display: none" class="form">
     <h2>Liste over alle produktbatches</h2>
-    <form>
-        <div id="produktBatches">
-
+    <form method="GET" action="api/produktbatch/vis">
+        <div id="produktBatchesliste" class="center">
 
 
         </div>
     </form>
-    <form>
+    <form method="POST" action="api/produktbatch/visEnkelt">
         <button id="vis-produktbatchRaavare" class="right" type="button">Søg</button>
-        <input id="produktbatchIDRaavare" class="right" type="text" placeholder="Indtast produktbatch ID">
+        <input id="produktbatchIDRaavare" class="right" type="text" placeholder="Indtast recept ID">
         <div id="produktbatchesRaavare" class="center">
 
 
 
         </div>
     </form>
+
 </div>
 
 
