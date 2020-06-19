@@ -29,13 +29,13 @@ $(document).ready(function() {
     });
 
     $('#opret-Recept').on('click', function () {
-
-
+        var recept = {
+            receptID: $receptID.val(),
+            receptNavn: $receptNavn.val(),
+        };
         $.ajax({
             type: 'POST',
             url: 'api/recept/opret',
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
             data: recept,
             success: function () {
                 alert('Recept oprettet!');

@@ -28,6 +28,7 @@ public class Rest_Recept {
     public Response opretRecept(@FormParam("receptID") int receptID,  @FormParam("receptNavn") String receptNavn) {
 //        String[] strarray = inputs.split("&");
         ReceptDTO receptDTO = new ReceptDTO(receptID, receptNavn);
+        System.out.println(receptID + receptNavn);
         try{
             receptBLL.opretEnkelRecept(receptDTO);
         } catch (SQLException e) {
