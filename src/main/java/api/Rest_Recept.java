@@ -36,7 +36,7 @@ public class Rest_Recept {
         } catch (SQLException e) {
             return Response.status(400).entity("SQLException: " + e.getMessage()).build();
         }
-        return Response.ok(receptBLL).build();
+        return Response.ok().build();
     }
 
     @Path("vis")

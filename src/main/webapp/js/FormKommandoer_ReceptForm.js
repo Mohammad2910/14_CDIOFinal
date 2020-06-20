@@ -51,7 +51,7 @@ $(document).ready(function() {
                 alert('Recept oprettet!');
             },
             error: function () {
-                alert('Fejl ved oprettelse af recept');
+                alert('Fejl ved oprettelse!');
             }
         });
     });

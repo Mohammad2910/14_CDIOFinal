@@ -58,11 +58,10 @@ $(document).ready(function() {
             raavareId: $retRaavareID.val(),
             raavareNavn: $retRaavareNavn.val(),
         };
-
+        console.log(raavare);
         $.ajax({
             type: 'POST',
             url: 'api/raavare/rediger',
-            contentType: "application/json; charset=utf-8",
             data: raavare,
             success: function () {
                 alert("Råvare ændret")

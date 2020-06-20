@@ -56,7 +56,7 @@ public class DAO_Recept implements IDAO_Recept {
             preSt2.executeUpdate();
 
             conn.close();
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 

@@ -63,18 +63,20 @@ public class Rest_Raavare {
 
     @Path("rediger")
     @POST
-    public void redigerRaavare(String inputs) {
-        String[] strarray = inputs.split("&");
-        RaavareDTO raavareDTO = new RaavareDTO(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),checkForSpace(strarray[1].substring(AttrCount(strarray[1]))));
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public void redigerRaavare(@FormParam("raavareId") int retRaavareID,  @FormParam("raavareNavn") String retRaavareNavn) {
+       // String[] strarray = inputs.split("&");
+        RaavareDTO raavareDTO = new RaavareDTO(retRaavareID, retRaavareNavn);
+        System.out.println(raavareDTO);
         RaavareDTO returnRaa;
         try{
             //returnRaa =
             raavareBLL.redigerRaavare(raavareDTO);
 
         } catch (SQLException e) {
-            //return Response.status(400).entity("SQLException: " + e.getMessage()).build();
+
         }
-        //return Response.ok(returnRaa).build();
+
     }
 
     public static String checkForSpace(String str){

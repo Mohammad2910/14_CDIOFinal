@@ -98,6 +98,7 @@ public class DAO_Raavare implements IDAO_Raavare {
 
            preSt.setInt(2,nyRaavare.getRaavareID());
            preSt.setString(1,nyRaavare.getRaavareNavn());
+            System.out.println(preSt);
 
             preSt.executeUpdate();
 
