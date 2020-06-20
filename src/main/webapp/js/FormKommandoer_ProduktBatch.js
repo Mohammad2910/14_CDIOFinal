@@ -30,7 +30,7 @@ $(document).ready(function() {
             data: produktbatch,
             success: function (data) {
                 $.each(data, function (i, produktbatch) {
-                    $produktBatchesliste.append('<tr><td>' + produktbatch.produktbatchID + '</td>' +
+                    $produktBatchesliste.append('<tr><td>' + produktbatch.produktBatchID + '</td>' +
                         '<td>' + produktbatch.receptID + '</td>' +
                         '<td>' + produktbatch.status + '</td></tr>');
                 });
@@ -107,7 +107,12 @@ $(document).ready(function() {
                             '<td>' + produktbatch.netto + '</td></tr>');
                     }
                     else{
-                        $produktbatchesRaavare.append('<li>Produktbatch ID: ' + produktbatch.produktBatchID + ' | Recept ID: ' + produktbatch.receptID + ' | Produktbatch status: ' + produktbatch.status + ' | CPR: Ikke påbegyndt' + ' | Råvarebatch ID: Ikke påbegyndt' + ' | Tara: Ikke påbegyndt' + ' | Netto: Ikke påbegyndt'+ '</li><br>');
+                        $produktbatchesRaavare.append('<tr><td>' + produktbatch.receptID + '</td>' +
+                            '<td>' + produktbatch.status + '</td>' +
+                            '<td>' + produktbatch.cpr + '</td>' +
+                            '<td>' + "Ikke påbegyndt" + '</td>' +
+                            '<td>' + "Ikke påbegyndt" + '</td>' +
+                            '<td>' + "Ikke påbegyndt" + '</td></tr>');
                     }
                 });
             },

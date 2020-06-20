@@ -14,7 +14,6 @@ $(document).ready(function() {
 
         document.getElementById("recepterh2").innerHTML = 'Liste over recept ' + $receptRaavareID.val();
 
-
         $('#recepter').html('');
         $('#receptRaavare').html('');
         $.ajax({
