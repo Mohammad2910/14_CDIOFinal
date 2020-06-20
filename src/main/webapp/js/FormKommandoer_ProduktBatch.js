@@ -17,6 +17,8 @@ $(document).ready(function() {
 
 
     $('#visProduktBatches').on('click', function () {
+        $('#produktBatchInfoTable').show();
+        $('#produktBatchRaavareInfoTable').hide();
         $('#produktBatchesliste').html('');
         $('#produktbatchesRaavare').html('');
         document.getElementById("produktbatchIDRaavare").value = '';
@@ -91,6 +93,8 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             data: produktbatch,
             success: function (data) {
+                $('#produktBatchInfoTable').hide();
+                $('#produktBatchRaavareInfoTable').show();
                 $.each(data, function (i, produktbatch) {
                     console.log(produktbatch);
                     document.getElementById("produktbatchIDRaavare").value = '';

@@ -82,3 +82,44 @@ li a:hover {
     border-bottom: 1px solid white;
 
 }
+
+#produktBatchesliste {
+    text-align: center;
+    color: white;
+    font-family: Cambria, serif;
+}
+#produktBatchesliste tr{
+    text-align: center;
+}
+#produktBatchesliste td{
+    border-bottom: 1px solid aliceblue;
+    padding: 15px;
+}
+#produktBatchesliste tr:hover{
+    background-color: crimson;
+}
+#produktBatchThead th{
+    color: aliceblue;;
+    border-bottom: 1px solid white;
+
+}
+#produktBatchesRaavare {
+    text-align: center;
+    color: white;
+    font-family: Cambria, serif;
+}
+#produktBatchesRaavare tr{
+    text-align: center;
+}
+#produktBatchesRaavare td{
+    border-bottom: 1px solid aliceblue;
+    padding: 15px;
+}
+#produktBatchesRaavare tr:hover{
+    background-color: crimson;
+}
+#produktBatchRaavareThead th{
+    color: aliceblue;;
+    border-bottom: 1px solid white;
+
+}
