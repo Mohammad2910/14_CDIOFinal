@@ -1,6 +1,6 @@
 package DataAccess;
 
-import Core.BrugerDTO;
+import Core.DTO_Bruger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DAO_Bruger implements IDAO_Bruger {
 
-    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, BrugerDTO opr) throws SQLException {
+    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, DTO_Bruger opr) throws SQLException {
         try {
             preSt.setString(1, opr.getCprNr());
             preSt.setString(2, opr.getBrugerNavn());
@@ -24,7 +24,7 @@ public class DAO_Bruger implements IDAO_Bruger {
         return preSt;
     }
     @Override
-    public BrugerDTO opretEnkelBruger(BrugerDTO enkelBruger) throws SQLException {
+    public DTO_Bruger opretEnkelBruger(DTO_Bruger enkelBruger) throws SQLException {
         try{
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
@@ -45,8 +45,8 @@ public class DAO_Bruger implements IDAO_Bruger {
     }
 
     @Override
-    public BrugerDTO laesEnkelBrugerId(String cprNr) throws SQLException {
-        BrugerDTO bru;
+    public DTO_Bruger laesEnkelBrugerId(String cprNr) throws SQLException {
+        DTO_Bruger bru;
 
         try{
             DataAccess dataAccess = new DataAccess();
@@ -60,7 +60,7 @@ public class DAO_Bruger implements IDAO_Bruger {
             resultSet.beforeFirst();
             resultSet.next();
 
-            bru = new BrugerDTO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),resultSet.getString(4),resultSet.getString(5));
+            bru = new DTO_Bruger(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),resultSet.getString(4),resultSet.getString(5));
 
             conn.close();
         }catch(ClassNotFoundException e){
@@ -70,8 +70,8 @@ public class DAO_Bruger implements IDAO_Bruger {
     }
 
     @Override
-    public List<BrugerDTO> visAlleBrugere() throws SQLException {
-        List<BrugerDTO> brugerArray = new ArrayList<>();
+    public List<DTO_Bruger> visAlleBrugere() throws SQLException {
+        List<DTO_Bruger> brugerArray = new ArrayList<>();
 
         try{
             DataAccess dataAccess = new DataAccess();
@@ -82,7 +82,7 @@ public class DAO_Bruger implements IDAO_Bruger {
             //Rykker pointeren til default række position foran Id, derefter til rækken med ID
             resultSet.beforeFirst();
             while (resultSet.next()) {
-                brugerArray.add(new BrugerDTO(resultSet.getString(1), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5)));
+                brugerArray.add(new DTO_Bruger(resultSet.getString(1), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5)));
             }
 
             conn.close();
@@ -94,7 +94,7 @@ public class DAO_Bruger implements IDAO_Bruger {
     }
 
     @Override
-    public void redigerBruger(BrugerDTO nyBruger) throws SQLException {
+    public void redigerBruger(DTO_Bruger nyBruger) throws SQLException {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;

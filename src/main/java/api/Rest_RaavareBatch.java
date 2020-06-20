@@ -1,8 +1,8 @@
 package api;
 
-import BusinessLogic.BLLRaavareBatch;
-import BusinessLogic.I_BLLRaavareBatch;
-import Core.RaavareBatchDTO;
+import BusinessLogic.BLL_RaavareBatch;
+import BusinessLogic.I_BLL_RaavareBatch;
+import Core.DTO_RaavareBatch;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -17,7 +17,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Path("raavarebatch")
 public class Rest_RaavareBatch{
-    I_BLLRaavareBatch raaBLL = new BLLRaavareBatch();
+    I_BLL_RaavareBatch raaBLL = new BLL_RaavareBatch();
 
 
     @Path("opret")
@@ -25,7 +25,7 @@ public class Rest_RaavareBatch{
     public Response opretRaavareBatch(String raa) throws SQLException {
         String[] strarray = raa.split("&");
         //Lav JavaScripten først
-        RaavareBatchDTO raavareBatchDTO = new RaavareBatchDTO(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),Double.parseDouble(strarray[1].substring(AttrCount(strarray[1]))),strarray[2].substring(AttrCount(strarray[2])),Integer.parseInt(strarray[3].substring(AttrCount(strarray[3]))));
+        DTO_RaavareBatch raavareBatchDTO = new DTO_RaavareBatch(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),Double.parseDouble(strarray[1].substring(AttrCount(strarray[1]))),strarray[2].substring(AttrCount(strarray[2])),Integer.parseInt(strarray[3].substring(AttrCount(strarray[3]))));
         try{
             raaBLL.opretRaavareBatch(raavareBatchDTO);
         } catch(SQLException e) {
@@ -37,7 +37,7 @@ public class Rest_RaavareBatch{
     @Path("vis")
     @POST
     public Response visAlleRaavareBatches() throws SQLException {
-        List<RaavareBatchDTO> returnRaa;
+        List<DTO_RaavareBatch> returnRaa;
         try{
             returnRaa = raaBLL.visAlleRaavareBatch();
         } catch(SQLException e) {

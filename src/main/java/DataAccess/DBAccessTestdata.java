@@ -1,11 +1,6 @@
 package DataAccess;
 
 import Core.BrugerDTO;
-import Core.ProduktBatchDTO;
-import Core.RaavareDTO;
-import Core.ReceptRaavareDTO;
-
-import java.util.List;
 //
 //public class DBAccessTestdata {
 //    public static void main(String[] args) {

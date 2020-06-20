@@ -1,8 +1,8 @@
 package api;
 
-import BusinessLogic.BLLBruger;
-import BusinessLogic.I_BLLBruger;
-import Core.BrugerDTO;
+import BusinessLogic.BLL_Bruger;
+import BusinessLogic.I_BLL_Bruger;
+import Core.DTO_Bruger;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -15,16 +15,16 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Path("bruger")
 public class Rest_Bruger {
-    I_BLLBruger brugerBLL = new BLLBruger();
+    I_BLL_Bruger brugerBLL = new BLL_Bruger();
 
     @Path("opret")
     @POST
     public Response opretBruger(String inputs) {
         String[] strarray = inputs.split("&");
        //Lav JavaScripten først
-        BrugerDTO brugerDTO = new BrugerDTO(strarray[0].substring(AttrCount(strarray[0])),checkForSpace(strarray[1].substring(AttrCount(strarray[1]))),strarray[2].substring(AttrCount(strarray[2])),strarray[3].substring(AttrCount(strarray[3])),strarray[4].substring(AttrCount(strarray[4])));
+        DTO_Bruger brugerDTO = new DTO_Bruger(strarray[0].substring(AttrCount(strarray[0])),checkForSpace(strarray[1].substring(AttrCount(strarray[1]))),strarray[2].substring(AttrCount(strarray[2])),strarray[3].substring(AttrCount(strarray[3])),strarray[4].substring(AttrCount(strarray[4])));
 
-        BrugerDTO returnBru;
+        DTO_Bruger returnBru;
         try{
             returnBru = brugerBLL.opretEnkelBruger(brugerDTO);
         } catch(SQLException e) {
@@ -36,7 +36,7 @@ public class Rest_Bruger {
     @Path("vis")
     @GET
     public Response visAlleBrugere(){
-        List<BrugerDTO> returnBru;
+        List<DTO_Bruger> returnBru;
         try{
             returnBru = brugerBLL.visAlleBrugere();
         }catch (SQLException e){
@@ -65,7 +65,7 @@ public class Rest_Bruger {
     public Response redigerBruger(String bru){
         System.out.println(bru);
         String[] strarray = bru.split("&");
-        BrugerDTO brugerDTO = new BrugerDTO(strarray[0].substring(AttrCount(strarray[0])),checkForSpace(strarray[1].substring(AttrCount(strarray[1]))),strarray[2].substring(AttrCount(strarray[2])),strarray[3].substring(AttrCount(strarray[3])),strarray[4].substring(AttrCount(strarray[4])));
+        DTO_Bruger brugerDTO = new DTO_Bruger(strarray[0].substring(AttrCount(strarray[0])),checkForSpace(strarray[1].substring(AttrCount(strarray[1]))),strarray[2].substring(AttrCount(strarray[2])),strarray[3].substring(AttrCount(strarray[3])),strarray[4].substring(AttrCount(strarray[4])));
         try{
             brugerBLL.redigerBruger(brugerDTO);
         } catch(SQLException e) {

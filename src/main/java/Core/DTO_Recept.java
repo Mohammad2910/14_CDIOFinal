@@ -1,10 +1,10 @@
 package Core;
 
-public class ReceptDTO {
+public class DTO_Recept {
     private int receptID;
     private String receptNavn;
 
-    public ReceptDTO(int receptID, String receptNavn){
+    public DTO_Recept(int receptID, String receptNavn){
         this.receptID = receptID;
         this.receptNavn = receptNavn;
     }

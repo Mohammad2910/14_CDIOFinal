@@ -1,6 +1,6 @@
 package Core;
 
-public class ProduktBatchDTO {
+public class DTO_ProduktBatch {
     int produktBatchID;
     int receptID;
     String status;
@@ -9,7 +9,7 @@ public class ProduktBatchDTO {
     double tara;
     double netto;
 
-    public ProduktBatchDTO(int produktBatchID, int receptID, String status, String CPR, int raavareBatchID, double tara, double netto) {
+    public DTO_ProduktBatch(int produktBatchID, int receptID, String status, String CPR, int raavareBatchID, double tara, double netto) {
         this.produktBatchID = produktBatchID;
         this.receptID = receptID;
         this.status = status;

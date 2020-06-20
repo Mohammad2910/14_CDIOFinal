@@ -1,5 +1,5 @@
 package DataAccess;
-import Core.ReceptDTO;
+import Core.DTO_Recept;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DAO_Recept implements IDAO_Recept {
-    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, ReceptDTO recept) throws SQLException{
+    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, DTO_Recept recept) throws SQLException{
         try{
             preSt.setInt(1, recept.getReceptID());
             preSt.setString(2,recept.getReceptNavn());
@@ -35,7 +35,7 @@ public class DAO_Recept implements IDAO_Recept {
     }
 
     @Override
-    public void opretEnkelRecept(ReceptDTO enkelRecept, int a, double b, double c) throws SQLException {
+    public void opretEnkelRecept(DTO_Recept enkelRecept, int a, double b, double c) throws SQLException {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
@@ -63,8 +63,8 @@ public class DAO_Recept implements IDAO_Recept {
     }
 
     @Override
-    public List<ReceptDTO> visAlleRecepter() throws SQLException {
-        List<ReceptDTO> receptArray = new ArrayList<>();
+    public List<DTO_Recept> visAlleRecepter() throws SQLException {
+        List<DTO_Recept> receptArray = new ArrayList<>();
 
         try{
             DataAccess dataAccess = new DataAccess();
@@ -76,7 +76,7 @@ public class DAO_Recept implements IDAO_Recept {
             //Rykker pointeren til default række position foran Id, derefter til rækken med ID
             resultSet.beforeFirst();
             while (resultSet.next()) {
-                receptArray.add(new ReceptDTO(resultSet.getInt(1), resultSet.getString(2)));
+                receptArray.add(new DTO_Recept(resultSet.getInt(1), resultSet.getString(2)));
             }
 
             conn.close();

@@ -1,6 +1,6 @@
 package DataAccess;
 
-import Core.RaavareDTO;
+import Core.DTO_Raavare;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DAO_Raavare implements IDAO_Raavare {
 
-    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, RaavareDTO raa) throws SQLException{
+    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, DTO_Raavare raa) throws SQLException{
         try{
             preSt.setInt(1, raa.getRaavareID());
             preSt.setString(2,raa.getRaavareNavn());
@@ -22,7 +22,7 @@ public class DAO_Raavare implements IDAO_Raavare {
         return preSt;
     }
     @Override
-    public RaavareDTO opretEnkelRaavare(RaavareDTO enkelRaavare) throws SQLException {
+    public DTO_Raavare opretEnkelRaavare(DTO_Raavare enkelRaavare) throws SQLException {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
@@ -41,8 +41,8 @@ public class DAO_Raavare implements IDAO_Raavare {
 
 
     @Override
-    public RaavareDTO laesEnkelRaavareId(int raavareId) throws SQLException{
-        RaavareDTO raa;
+    public DTO_Raavare laesEnkelRaavareId(int raavareId) throws SQLException{
+        DTO_Raavare raa;
 
         try{
             DataAccess dataAccess = new DataAccess();
@@ -56,7 +56,7 @@ public class DAO_Raavare implements IDAO_Raavare {
             resultSet.beforeFirst();
             resultSet.next();
 
-            raa = new RaavareDTO(resultSet.getInt(1), resultSet.getString(2));
+            raa = new DTO_Raavare(resultSet.getInt(1), resultSet.getString(2));
 
             conn.close();
         } catch(ClassNotFoundException e) {
@@ -66,8 +66,8 @@ public class DAO_Raavare implements IDAO_Raavare {
     }
 
     @Override
-    public List<RaavareDTO> visAlleRaavare() throws SQLException {
-        List<RaavareDTO> raavareArray = new ArrayList<>();
+    public List<DTO_Raavare> visAlleRaavare() throws SQLException {
+        List<DTO_Raavare> raavareArray = new ArrayList<>();
 
         try{
             DataAccess dataAccess = new DataAccess();
@@ -78,7 +78,7 @@ public class DAO_Raavare implements IDAO_Raavare {
             //Rykker pointeren til default række position foran Id, derefter til rækken med ID
             resultSet.beforeFirst();
             while (resultSet.next()) {
-                raavareArray.add(new RaavareDTO(resultSet.getInt(1), resultSet.getString(2)));
+                raavareArray.add(new DTO_Raavare(resultSet.getInt(1), resultSet.getString(2)));
             }
 
             conn.close();
@@ -90,7 +90,7 @@ public class DAO_Raavare implements IDAO_Raavare {
     }
 
     @Override
-    public void redigerRaavare(RaavareDTO nyRaavare) throws SQLException {
+    public void redigerRaavare(DTO_Raavare nyRaavare) throws SQLException {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;

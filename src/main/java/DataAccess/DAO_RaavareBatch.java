@@ -1,6 +1,6 @@
 package DataAccess;
 
-import Core.RaavareBatchDTO;
+import Core.DTO_RaavareBatch;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.util.List;
 public class DAO_RaavareBatch implements IDAO_RaavareBatch {
 
 
-    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, RaavareBatchDTO raBa) throws SQLException{
+    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, DTO_RaavareBatch raBa) throws SQLException{
         try{
             preSt.setInt(1, raBa.getRaavareBatchID());
             preSt.setDouble(2,raBa.getRaavareMaengde());
@@ -26,7 +26,7 @@ public class DAO_RaavareBatch implements IDAO_RaavareBatch {
     }
 
     @Override
-    public void opretRaavareBatch(RaavareBatchDTO raavareBatchDTO) throws SQLException {
+    public void opretRaavareBatch(DTO_RaavareBatch raavareBatchDTO) throws SQLException {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
@@ -45,8 +45,8 @@ public class DAO_RaavareBatch implements IDAO_RaavareBatch {
     }
 
     @Override
-    public List<RaavareBatchDTO> visAlleRaavareBatches() throws SQLException {
-        List<RaavareBatchDTO> raavareBatchArray = new ArrayList<>();
+    public List<DTO_RaavareBatch> visAlleRaavareBatches() throws SQLException {
+        List<DTO_RaavareBatch> raavareBatchArray = new ArrayList<>();
 
         try{
             DataAccess dataAccess = new DataAccess();
@@ -58,7 +58,7 @@ public class DAO_RaavareBatch implements IDAO_RaavareBatch {
             //Rykker pointeren til default række position foran Id, derefter til rækken med ID
             resultSet.beforeFirst();
             while (resultSet.next()) {
-                raavareBatchArray.add(new RaavareBatchDTO(resultSet.getInt(1), resultSet.getDouble(2), resultSet.getString(3), resultSet.getInt(4)));
+                raavareBatchArray.add(new DTO_RaavareBatch(resultSet.getInt(1), resultSet.getDouble(2), resultSet.getString(3), resultSet.getInt(4)));
             }
 
             conn.close();

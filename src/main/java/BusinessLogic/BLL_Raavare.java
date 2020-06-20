@@ -1,33 +1,33 @@
 package BusinessLogic;
 
-import Core.RaavareDTO;
+import Core.DTO_Raavare;
 import DataAccess.DAO_Raavare;
 import DataAccess.IDAO_Raavare;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class BLLRaavare implements I_BLLRaavare {
+public class BLL_Raavare implements I_BLL_Raavare {
     private IDAO_Raavare daoRaa = new DAO_Raavare();
 
     @Override
-    public RaavareDTO opretEnkelRaavare(RaavareDTO enkelRaavare) throws SQLException {
+    public DTO_Raavare opretEnkelRaavare(DTO_Raavare enkelRaavare) throws SQLException {
         return daoRaa.opretEnkelRaavare(enkelRaavare);
     }
 
 
     @Override
-    public void redigerRaavare(RaavareDTO enkelRaavare) throws SQLException {
+    public void redigerRaavare(DTO_Raavare enkelRaavare) throws SQLException {
         daoRaa.redigerRaavare(enkelRaavare);
     }
 
     @Override
-    public List<RaavareDTO> visAlleRaavare() throws SQLException {
+    public List<DTO_Raavare> visAlleRaavare() throws SQLException {
         return daoRaa.visAlleRaavare();
     }
 
     @Override
-    public RaavareDTO visEnkelRaavareId(int raavareId) throws SQLException {
+    public DTO_Raavare visEnkelRaavareId(int raavareId) throws SQLException {
         return daoRaa.laesEnkelRaavareId(raavareId);
     }
 }

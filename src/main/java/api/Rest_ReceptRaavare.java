@@ -1,8 +1,8 @@
 package api;
 
-import BusinessLogic.BLLReceptRaavare;
-import BusinessLogic.I_BLLReceptRaavare;
-import Core.ReceptRaavareDTO;
+import BusinessLogic.BLL_ReceptRaavare;
+import BusinessLogic.I_BLL_ReceptRaavare;
+import Core.DTO_ReceptRaavare;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -15,13 +15,13 @@ import java.util.List;
 @Path("receptRaavare")
 
 public class Rest_ReceptRaavare{
-    private I_BLLReceptRaavare receptRaavareBLL = new BLLReceptRaavare();
+    private I_BLL_ReceptRaavare receptRaavareBLL = new BLL_ReceptRaavare();
 
     @Path("vis")
     @POST
     public Response visReceptRaavare(String inputs) {
         String[] str = inputs.split("&");
-        List<ReceptRaavareDTO> returnRaa;
+        List<DTO_ReceptRaavare> returnRaa;
         try{
             returnRaa = receptRaavareBLL.visReceptRaavare(Integer.parseInt(str[2].substring(AttrCount(str[2]))));
         } catch (SQLException e){

@@ -1,12 +1,12 @@
 package Core;
 
-public class RaavareBatchDTO {
+public class DTO_RaavareBatch {
     int raavareBatchID;
     double raavareMaengde;
     String leverandoer;
     int raavareID;
 
-    public RaavareBatchDTO(int raavareBatchID, double raavareMaengde, String leverandoer, int raavareID) {
+    public DTO_RaavareBatch(int raavareBatchID, double raavareMaengde, String leverandoer, int raavareID) {
         this.raavareBatchID = raavareBatchID;
         this.raavareMaengde = raavareMaengde;
         this.leverandoer = leverandoer;

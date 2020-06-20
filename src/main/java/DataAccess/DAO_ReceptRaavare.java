@@ -1,6 +1,6 @@
 package DataAccess;
 
-import Core.ReceptRaavareDTO;
+import Core.DTO_ReceptRaavare;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DAO_ReceptRaavare implements IDAO_ReceptRaavare {
 
-    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, ReceptRaavareDTO recRaa) throws SQLException{
+    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, DTO_ReceptRaavare recRaa) throws SQLException{
         try{
             preSt.setInt(1, recRaa.getReceptID());
             preSt.setDouble(2,recRaa.getNonNetto());
@@ -25,8 +25,8 @@ public class DAO_ReceptRaavare implements IDAO_ReceptRaavare {
     }
 
     @Override
-    public List<ReceptRaavareDTO> visReceptRaavare(int receptID) throws SQLException {
-        List<ReceptRaavareDTO> recRaaArray = new ArrayList<>();
+    public List<DTO_ReceptRaavare> visReceptRaavare(int receptID) throws SQLException {
+        List<DTO_ReceptRaavare> recRaaArray = new ArrayList<>();
 
         try{
             DataAccess dataAccess = new DataAccess();
@@ -38,7 +38,7 @@ public class DAO_ReceptRaavare implements IDAO_ReceptRaavare {
             //Rykker pointeren til default række position foran Id, derefter til rækken med ID
             resultSet.beforeFirst();
             while (resultSet.next()) {
-                recRaaArray.add(new ReceptRaavareDTO(resultSet.getInt(1), resultSet.getDouble(2),resultSet.getDouble(3),resultSet.getInt(4)));
+                recRaaArray.add(new DTO_ReceptRaavare(resultSet.getInt(1), resultSet.getDouble(2),resultSet.getDouble(3),resultSet.getInt(4)));
             }
             conn.close();
 

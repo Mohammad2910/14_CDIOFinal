@@ -1,6 +1,6 @@
 package Core;
 
-public class ReceptRaavareDTO {
+public class DTO_ReceptRaavare {
     int receptID;
     double nonNetto;
     double tolerance;
@@ -16,7 +16,7 @@ public class ReceptRaavareDTO {
                 '}';
     }
 
-    public ReceptRaavareDTO(int receptID, double nonNetto, double tolerance, int raavareID) {
+    public DTO_ReceptRaavare(int receptID, double nonNetto, double tolerance, int raavareID) {
         this.receptID = receptID;
         this.nonNetto = nonNetto;
         this.tolerance = tolerance;

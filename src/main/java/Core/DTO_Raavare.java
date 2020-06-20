@@ -1,10 +1,10 @@
 package Core;
 
-public class RaavareDTO {
+public class DTO_Raavare {
     private int raavareID;
     private String raavareNavn;
 
-    public RaavareDTO(int raavareID, String raavareNavn){
+    public DTO_Raavare(int raavareID, String raavareNavn){
         this.raavareID = raavareID;
         this.raavareNavn = raavareNavn;
     }

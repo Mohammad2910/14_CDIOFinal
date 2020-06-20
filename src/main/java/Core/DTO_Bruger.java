@@ -2,7 +2,7 @@ package Core;
 
 import java.util.List;
 
-public class BrugerDTO {
+public class DTO_Bruger {
 
     private String cprNr;
     private String brugerNavn;
@@ -10,7 +10,7 @@ public class BrugerDTO {
     private String rolle;
     private String brugerStatus;
 
-    public BrugerDTO(String cprNr, String brugerNavn, String ini, String rolle, String brugerStatus) {
+    public DTO_Bruger(String cprNr, String brugerNavn, String ini, String rolle, String brugerStatus) {
         this.cprNr = cprNr;
         this.brugerNavn = brugerNavn;
         this.ini = ini;

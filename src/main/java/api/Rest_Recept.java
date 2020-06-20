@@ -1,17 +1,13 @@
 package api;
 
-import BusinessLogic.BLLRaavare;
-import BusinessLogic.BLLRecept;
-import BusinessLogic.I_BLLRaavare;
-import BusinessLogic.I_BLLRecept;
-import Core.RaavareDTO;
-import Core.ReceptDTO;
+import BusinessLogic.BLL_Recept;
+import BusinessLogic.I_BLL_Recept;
+import Core.DTO_Recept;
 
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.Console;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -20,7 +16,7 @@ import java.util.List;
 @Path("recept")
 
 public class Rest_Recept {
-    I_BLLRecept receptBLL = new BLLRecept();
+    I_BLL_Recept receptBLL = new BLL_Recept();
 
     @Path("opret")
     @POST
@@ -29,7 +25,7 @@ public class Rest_Recept {
                                 @FormParam("raavareNavnRecept") int raavareNavnRecept, @FormParam("raavareMaengde")
                                 double raavareMaengde, @FormParam("tolerance") double tolerance) {
 //        String[] strarray = inputs.split("&");
-        ReceptDTO receptDTO = new ReceptDTO(receptID, receptNavn);
+        DTO_Recept receptDTO = new DTO_Recept(receptID, receptNavn);
         System.out.println(receptID + receptNavn);
         try{
             receptBLL.opretEnkelRecept(receptDTO, raavareNavnRecept, raavareMaengde, tolerance);
@@ -42,7 +38,7 @@ public class Rest_Recept {
     @Path("vis")
     @GET
     public Response visAlleRecepter() {
-        List<ReceptDTO> returnRaa;
+        List<DTO_Recept> returnRaa;
         try{
             returnRaa = receptBLL.visAlleRecepter();
         } catch (SQLException e){

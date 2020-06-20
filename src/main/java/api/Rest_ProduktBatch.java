@@ -1,7 +1,7 @@
 package api;
-import BusinessLogic.BLLProduktBatch;
-import BusinessLogic.I_BLLProduktBatch;
-import Core.ProduktBatchDTO;
+import BusinessLogic.BLL_ProduktBatch;
+import BusinessLogic.I_BLL_ProduktBatch;
+import Core.DTO_ProduktBatch;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -13,14 +13,14 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Path("produktbatch")
 public class Rest_ProduktBatch{
-    I_BLLProduktBatch proBLL = new BLLProduktBatch();
+    I_BLL_ProduktBatch proBLL = new BLL_ProduktBatch();
 
     @Path("opret")
     @POST
     public Response opretProduktBatch(String inputs) throws SQLException {
         String[] strarray = inputs.split("&");
         //Lav JavaScripten først
-        ProduktBatchDTO produktBatchDTO = new ProduktBatchDTO(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),Integer.parseInt(strarray[1].substring(AttrCount(strarray[1]))),"Ikke paabegyndt","",1,1,1);
+        DTO_ProduktBatch produktBatchDTO = new DTO_ProduktBatch(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),Integer.parseInt(strarray[1].substring(AttrCount(strarray[1]))),"Ikke paabegyndt","",1,1,1);
         try{
             proBLL.opretProduktBatch(produktBatchDTO);
         } catch(SQLException e) {
@@ -32,7 +32,7 @@ public class Rest_ProduktBatch{
     @Path("vis")
     @POST
     public Response visAlleProduktBatches() throws SQLException {
-        List<ProduktBatchDTO> returnRaa;
+        List<DTO_ProduktBatch> returnRaa;
 
         try{
             returnRaa = proBLL.visAlleProduktBatches();
@@ -46,7 +46,7 @@ public class Rest_ProduktBatch{
     @POST
     public Response visEnkelProduktBatch(String inputs) throws SQLException {
         String[] str = inputs.split("&");
-        List<ProduktBatchDTO> returnRaa;
+        List<DTO_ProduktBatch> returnRaa;
         try{
             returnRaa = proBLL.visEnkelProduktBatch(Integer.parseInt(str[0].substring(AttrCount(str[0]))));
         } catch(SQLException e) {

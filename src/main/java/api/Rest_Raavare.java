@@ -1,14 +1,13 @@
 package api;
 
-import BusinessLogic.BLLRaavare;
-import BusinessLogic.I_BLLRaavare;
-import Core.RaavareDTO;
+import BusinessLogic.BLL_Raavare;
+import BusinessLogic.I_BLL_Raavare;
+import Core.DTO_Raavare;
 
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.Console;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,14 +16,14 @@ import java.util.List;
 @Path("raavare")
 
 public class Rest_Raavare {
-    I_BLLRaavare raavareBLL = new BLLRaavare();
+    I_BLL_Raavare raavareBLL = new BLL_Raavare();
 
     @Path("opret")
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response opretRaavare(@FormParam("raavareId") int raavareId,  @FormParam("raavareNavn") String raavareNavn) {
-        RaavareDTO raavareDTO = new RaavareDTO(raavareId,raavareNavn);
-        RaavareDTO returnRaa;
+        DTO_Raavare raavareDTO = new DTO_Raavare(raavareId,raavareNavn);
+        DTO_Raavare returnRaa;
         try{
             returnRaa = raavareBLL.opretEnkelRaavare(raavareDTO);
 
@@ -37,7 +36,7 @@ public class Rest_Raavare {
     @Path("vis")
     @GET
     public Response visAlleRaavare() {
-        List<RaavareDTO> returnRaa;
+        List<DTO_Raavare> returnRaa;
 
         try{
             returnRaa = raavareBLL.visAlleRaavare();
@@ -51,7 +50,7 @@ public class Rest_Raavare {
     @GET
     public Response visRaavare(@PathParam("id") int raavareId) {
         System.out.println(raavareId);
-        RaavareDTO returnRaa;
+        DTO_Raavare returnRaa;
         try{
             returnRaa = raavareBLL.visEnkelRaavareId(raavareId);
 
@@ -66,8 +65,8 @@ public class Rest_Raavare {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public void redigerRaavare(@FormParam("raavareId") int retRaavareID,  @FormParam("raavareNavn") String retRaavareNavn) {
        // String[] strarray = inputs.split("&");
-        RaavareDTO raavareDTO = new RaavareDTO(retRaavareID, retRaavareNavn);
-        RaavareDTO returnRaa;
+        DTO_Raavare raavareDTO = new DTO_Raavare(retRaavareID, retRaavareNavn);
+        DTO_Raavare returnRaa;
         try{
             //returnRaa =
             raavareBLL.redigerRaavare(raavareDTO);

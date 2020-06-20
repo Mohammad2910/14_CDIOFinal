@@ -1,22 +1,22 @@
 package BusinessLogic;
 
-import Core.RaavareBatchDTO;
+import Core.DTO_RaavareBatch;
 import DataAccess.DAO_RaavareBatch;
 import DataAccess.IDAO_RaavareBatch;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class BLLRaavareBatch implements I_BLLRaavareBatch {
+public class BLL_RaavareBatch implements I_BLL_RaavareBatch {
     private IDAO_RaavareBatch daoRaaB = new DAO_RaavareBatch();
 
     @Override
-    public void opretRaavareBatch(RaavareBatchDTO enkelRaavareBatch) throws SQLException {
+    public void opretRaavareBatch(DTO_RaavareBatch enkelRaavareBatch) throws SQLException {
         daoRaaB.opretRaavareBatch(enkelRaavareBatch);
     }
 
     @Override
-    public List<RaavareBatchDTO> visAlleRaavareBatch() throws SQLException {
+    public List<DTO_RaavareBatch> visAlleRaavareBatch() throws SQLException {
         return daoRaaB.visAlleRaavareBatches();
     }
 }
