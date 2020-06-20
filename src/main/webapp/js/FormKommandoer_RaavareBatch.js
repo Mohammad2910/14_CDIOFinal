@@ -24,7 +24,10 @@ $(document).ready(function() {
             success: function (data) {
                 $.each(data, function (i, raavarebatch) {
                     console.log(raavarebatch);
-                    $raavareBatchesliste.append('<li>Råvarebatch ID: ' + raavarebatch.raavareBatchID + '\t Råvare mængde: ' + raavarebatch.raavareMaengde + '\t Leverandør: ' + raavarebatch.leverandoer + '\t Råvare ID: ' + raavarebatch.raavareID + '</li><br>');
+                    $raavareBatchesliste.append('<tr><td>' + raavarebatch.raavareBatchID + '</td>' +
+                        '<td>' + raavarebatch.raavareMaengde + '</td>' +
+                        '<td>' + raavarebatch.leverandoer + '</td>' +
+                        '<td>' + raavarebatch.raavareID + '</td></tr>');
                 });
             },
             error: function () {

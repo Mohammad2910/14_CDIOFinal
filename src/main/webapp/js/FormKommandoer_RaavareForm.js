@@ -21,7 +21,8 @@ $(document).ready(function() {
             data: raavare,
             success: function (data) {
                 $.each(data, function (i, raavare) {
-                    $raavarer.append('<li class="ListStyle"> Råvare ID: ' + raavare.raavareID + ' | | Råvare navn: ' + raavare.raavareNavn + '</li><br><br>');
+                    $raavarer.append('<tr><td>' + raavare.raavareID + '</td>' +
+                        '<td>' + raavare.raavareNavn + '</td></tr>');
                 });
             },
             error: function () {

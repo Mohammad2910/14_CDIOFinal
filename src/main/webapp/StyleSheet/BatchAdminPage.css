@@ -62,3 +62,23 @@ li a:hover {
     float: right;
 }
 
+#raavareBatchesliste {
+    text-align: center;
+    color: white;
+    font-family: Cambria, serif;
+}
+#raavareBatchesliste tr{
+    text-align: center;
+}
+#raavareBatchesliste td{
+    border-bottom: 1px solid aliceblue;
+    padding: 15px;
+}
+#raavareBatchesliste tr:hover{
+    background-color: crimson;
+}
+#raavareBatchThead th{
+    color: aliceblue;;
+    border-bottom: 1px solid white;
+
+}

@@ -28,7 +28,9 @@ $(document).ready(function() {
             data: produktbatch,
             success: function (data) {
                 $.each(data, function (i, produktbatch) {
-                    $produktBatchesliste.append('<li>Produktbatch ID: ' + produktbatch.produktBatchID + '\t Recept ID: ' + produktbatch.receptID + '\t Produktbatch status: ' + produktbatch.status + '</li><br>');
+                    $produktBatchesliste.append('<tr><td>' + produktbatch.produktbatchID + '</td>' +
+                        '<td>' + produktbatch.receptID + '</td>' +
+                        '<td>' + produktbatch.status + '</td></tr>');
                 });
             },
             error: function () {
@@ -93,7 +95,12 @@ $(document).ready(function() {
                     console.log(produktbatch);
                     document.getElementById("produktbatchIDRaavare").value = '';
                     if (!(produktbatch.raavareBatchID === 0)) {
-                        $produktbatchesRaavare.append('<li>Produktbatch ID: ' + produktbatch.produktBatchID + ' | Recept ID: ' + produktbatch.receptID + ' | Produktbatch status: ' + produktbatch.status + ' | CPR: ' + produktbatch.cpr + ' | Råvarebatch ID: ' + produktbatch.raavareBatchID + ' | Tara: ' + produktbatch.tara + ' | Netto: ' + produktbatch.netto + '</li><br>');
+                        $produktbatchesRaavare.append('<tr><td>' + produktbatch.receptID + '</td>' +
+                            '<td>' + produktbatch.status + '</td>' +
+                            '<td>' + produktbatch.cpr + '</td>' +
+                            '<td>' + produktbatch.raavareBatchID + '</td>' +
+                            '<td>' + produktbatch.tara + '</td>' +
+                            '<td>' + produktbatch.netto + '</td></tr>');
                     }
                     else{
                         $produktbatchesRaavare.append('<li>Produktbatch ID: ' + produktbatch.produktBatchID + ' | Recept ID: ' + produktbatch.receptID + ' | Produktbatch status: ' + produktbatch.status + ' | CPR: Ikke påbegyndt' + ' | Råvarebatch ID: Ikke påbegyndt' + ' | Tara: Ikke påbegyndt' + ' | Netto: Ikke påbegyndt'+ '</li><br>');

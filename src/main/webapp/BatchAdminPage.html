@@ -40,10 +40,17 @@
 <div id="visRaavareBatch" style="display: none" class="form">
     <h2>Liste over alle råvarebatches</h2>
     <form method="GET" action="api/raavarebatch/vis">
-        <div id="raavareBatchesliste" class="center">
-
-
-        </div>
+        <table id="raavareBatchInfoTable" style="width:100%">
+            <thead id="raavareBatchThead">
+            <tr class="raavareBatchThead">
+                <th class="raavareBatchThead">Råvarebatch ID</th>
+                <th class="raavareBatchThead">Råvare mængde</th>
+                <th class="raavareBatchThead">Leverandør</th>
+                <th class="raavareBatchThead">Råvare ID</th>
+            </tr>
+            </thead>
+            <tbody id="raavareBatchesliste"></tbody>
+        </table>
     </form>
 </div>
 
