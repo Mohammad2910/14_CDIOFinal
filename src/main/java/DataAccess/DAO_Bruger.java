@@ -103,6 +103,7 @@ public class DAO_Bruger implements IDAO_Bruger {
             preSt.setString(2, nyBruger.getIni());
             preSt.setString(3, nyBruger.getRolle());
             preSt.setString(4, nyBruger.getCprNr());
+            System.out.println(preSt);
 
 
             preSt.executeUpdate();

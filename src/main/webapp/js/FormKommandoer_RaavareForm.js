@@ -58,7 +58,6 @@ $(document).ready(function() {
             raavareId: $retRaavareID.val(),
             raavareNavn: $retRaavareNavn.val(),
         };
-        console.log(raavare);
         $.ajax({
             type: 'POST',
             url: 'api/raavare/rediger',

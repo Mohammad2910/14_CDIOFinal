@@ -67,7 +67,6 @@ public class Rest_Raavare {
     public void redigerRaavare(@FormParam("raavareId") int retRaavareID,  @FormParam("raavareNavn") String retRaavareNavn) {
        // String[] strarray = inputs.split("&");
         RaavareDTO raavareDTO = new RaavareDTO(retRaavareID, retRaavareNavn);
-        System.out.println(raavareDTO);
         RaavareDTO returnRaa;
         try{
             //returnRaa =
