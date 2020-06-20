@@ -14,7 +14,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Path("receptRaavare")
 
-public class Rest_ReceptRaavare implements I_Rest_ReceptRaavare{
+public class Rest_ReceptRaavare{
     private I_BLLReceptRaavare receptRaavareBLL = new BLLReceptRaavare();
 
     @Path("vis")

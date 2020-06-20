@@ -37,7 +37,7 @@ public class DAO_RaavareBatch implements IDAO_RaavareBatch {
             preSt.executeUpdate();
 
             conn.close();
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -62,7 +62,7 @@ public class DAO_RaavareBatch implements IDAO_RaavareBatch {
             }
 
             conn.close();
-        } catch(SQLException | ClassNotFoundException e) {
+        } catch(ClassNotFoundException e) {
             throw new SQLException(e);
         }
 

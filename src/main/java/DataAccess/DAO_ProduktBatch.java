@@ -39,7 +39,7 @@ public class DAO_ProduktBatch implements IDAO_ProduktBatch {
             preSt.executeUpdate();
 
             conn.close();
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -64,7 +64,7 @@ public class DAO_ProduktBatch implements IDAO_ProduktBatch {
 
 
             conn.close();
-        } catch(SQLException | ClassNotFoundException e) {
+        } catch(ClassNotFoundException e) {
             throw new SQLException(e);
         }
 
@@ -89,7 +89,7 @@ public class DAO_ProduktBatch implements IDAO_ProduktBatch {
             }
 
             conn.close();
-        } catch(SQLException | ClassNotFoundException e) {
+        } catch(ClassNotFoundException e) {
             throw new SQLException(e);
         }
 

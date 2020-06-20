@@ -31,13 +31,14 @@ public class DAO_Bruger implements IDAO_Bruger {
             PreparedStatement preSt = conn.prepareStatement("INSERT INTO brugere VALUES(?,?,?,?,?)");
 
             setCreatePreparedStatement(preSt,enkelBruger);
+            System.out.println(preSt);
 
             preSt.executeUpdate();
 
 
             conn.close();
 
-        } catch (SQLException | ClassNotFoundException e){
+        } catch (ClassNotFoundException e){
             e.printStackTrace();
         }
         return laesEnkelBrugerId(enkelBruger.getCprNr());
@@ -62,7 +63,7 @@ public class DAO_Bruger implements IDAO_Bruger {
             bru = new BrugerDTO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),resultSet.getString(4),resultSet.getString(5));
 
             conn.close();
-        }catch(SQLException | ClassNotFoundException e){
+        }catch(ClassNotFoundException e){
             throw new SQLException(e);
         }
         return bru;
@@ -85,7 +86,7 @@ public class DAO_Bruger implements IDAO_Bruger {
             }
 
             conn.close();
-        } catch(SQLException | ClassNotFoundException e) {
+        } catch(ClassNotFoundException e) {
             throw new SQLException(e);
         }
 
@@ -109,7 +110,7 @@ public class DAO_Bruger implements IDAO_Bruger {
             preSt.executeUpdate();
             conn.close();
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -126,7 +127,7 @@ public class DAO_Bruger implements IDAO_Bruger {
             preSt.executeUpdate();
 
             conn.close();
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 

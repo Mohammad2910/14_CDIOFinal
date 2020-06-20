@@ -12,7 +12,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("produktbatch")
-public class Rest_ProduktBatch implements I_Rest_ProduktBatch{
+public class Rest_ProduktBatch{
     I_BLLProduktBatch proBLL = new BLLProduktBatch();
 
     @Path("opret")

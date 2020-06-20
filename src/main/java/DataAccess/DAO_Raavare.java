@@ -59,7 +59,7 @@ public class DAO_Raavare implements IDAO_Raavare {
             raa = new RaavareDTO(resultSet.getInt(1), resultSet.getString(2));
 
             conn.close();
-        } catch(SQLException | ClassNotFoundException e) {
+        } catch(ClassNotFoundException e) {
             throw new SQLException(e);
         }
         return raa;
@@ -82,7 +82,7 @@ public class DAO_Raavare implements IDAO_Raavare {
             }
 
             conn.close();
-        } catch(SQLException | ClassNotFoundException e) {
+        } catch(ClassNotFoundException e) {
             throw new SQLException(e);
         }
 
@@ -105,7 +105,7 @@ public class DAO_Raavare implements IDAO_Raavare {
 
 
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

@@ -80,7 +80,7 @@ public class DAO_Recept implements IDAO_Recept {
             }
 
             conn.close();
-        } catch(SQLException | ClassNotFoundException e) {
+        } catch(ClassNotFoundException e) {
             throw new SQLException(e);
         }
 

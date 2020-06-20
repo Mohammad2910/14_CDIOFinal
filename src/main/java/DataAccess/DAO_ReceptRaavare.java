@@ -42,7 +42,7 @@ public class DAO_ReceptRaavare implements IDAO_ReceptRaavare {
             }
             conn.close();
 
-        }catch(SQLException | ClassNotFoundException e){
+        }catch(ClassNotFoundException e){
             throw new SQLException(e);
         }
         return recRaaArray;

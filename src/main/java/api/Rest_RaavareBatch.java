@@ -16,7 +16,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("raavarebatch")
-public class Rest_RaavareBatch implements I_Rest_RaavareBatch {
+public class Rest_RaavareBatch{
     I_BLLRaavareBatch raaBLL = new BLLRaavareBatch();
 
 

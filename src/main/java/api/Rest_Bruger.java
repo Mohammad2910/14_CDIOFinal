@@ -14,7 +14,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("bruger")
-public class Rest_Bruger implements I_Rest_Bruger {
+public class Rest_Bruger {
     I_BLLBruger brugerBLL = new BLLBruger();
 
     @Path("opret")
