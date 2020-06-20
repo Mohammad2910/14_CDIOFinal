@@ -21,7 +21,7 @@
 
     <ul class="topMenu">
         <li onclick="toggleDivContent('opretRaavare')"><a>Opret råvare</a></li>
-        <li onclick="toggleDivContent('Ret_raavare')"><a>Ret råvare</a></li>
+        <li onclick="toggleDivContent('retRaavare')"><a>Ret råvare</a></li>
         <li id ="vis-Raavare" onclick="toggleDivContent('visRaavare')" ><a>Se alle råvarer</a></li>
         <li onclick="toggleDivContent('opretRecept')"><a>Opret recept</a></li>
 
@@ -43,15 +43,14 @@
     </form>
 </div>
 
-<div id="Ret_raavare" style="display: none" class="center form" >
+<div id="retRaavare" style="display: none" class="center form" >
     <h2>Ret råvare</h2>
     <form method="POST">
 
-        <input type="number" placeholder="Råvare ID" class = "center"><br>
+        <input id="retRaavareID" type="number" placeholder="Indtast råvare ID" class = "center"><br>
         <br>
-        <input type="text" placeholder="Råvare navn" class = "center"><br>
-        <input type="number" placeholder="Råvare ID" class = "center"><br>
-        <button onclick="<!-- Gem råvare -->" class = "center">Gem</button>
+        <input id="retRaavareNavn" type="text" placeholder="Indtast nyt navn" class = "center"><br>
+        <button id="ret-Raavare" type="button" class = "center">Gem</button>
 
     </form>
 </div>

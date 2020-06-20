@@ -10,7 +10,7 @@ public interface I_BLLRaavare {
 
     RaavareDTO visEnkelRaavareId(int raavareId) throws SQLException;
 
-    RaavareDTO redigerRaavare(RaavareDTO raavareDTO) throws SQLException;
+    void redigerRaavare(RaavareDTO raavareDTO) throws SQLException;
 
     List<RaavareDTO> visAlleRaavare() throws  SQLException;
 

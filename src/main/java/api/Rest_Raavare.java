@@ -65,7 +65,7 @@ public class Rest_Raavare {
     @POST
     public void redigerRaavare(String inputs) {
         String[] strarray = inputs.split("&");
-        RaavareDTO raavareDTO = new RaavareDTO(Integer.parseInt(strarray[0].substring(10)),strarray[1].substring(12));
+        RaavareDTO raavareDTO = new RaavareDTO(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),checkForSpace(strarray[1].substring(AttrCount(strarray[1]))));
         RaavareDTO returnRaa;
         try{
             //returnRaa =
@@ -75,5 +75,20 @@ public class Rest_Raavare {
             //return Response.status(400).entity("SQLException: " + e.getMessage()).build();
         }
         //return Response.ok(returnRaa).build();
+    }
+
+    public static String checkForSpace(String str){
+        return str.replace("%20"," ");
+    }
+
+    public static int AttrCount(String attr){
+        int count = 0;
+        for (int i = 0; i < attr.length(); i++) {
+            if(attr.charAt(i) == '='){
+                break;
+            }
+            count++;
+        }
+        return ++count;
     }
 }

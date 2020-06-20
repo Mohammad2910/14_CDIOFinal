@@ -2,6 +2,8 @@ $(document).ready(function() {
     var $raavarer = $('#raavarer');
     var $raavareId = $('#raavareId');
     var $raavareNavn = $('#raavareNavn');
+    var $retRaavareID = $('#retRaavareID');
+    var $retRaavareNavn = $('#retRaavareNavn');
 
     var raavare = {
         raavareId: $raavareId.val(),
@@ -51,57 +53,23 @@ $(document).ready(function() {
         });
     });
 
-    $('#rediger-Raavare').on('click', function () {
-
+    $('#ret-Raavare').on('click', function () {
+        var raavare = {
+            raavareId: $retRaavareID.val(),
+            raavareNavn: $retRaavareNavn.val(),
+        };
 
         $.ajax({
             type: 'POST',
             url: 'api/raavare/rediger',
             contentType: "application/json; charset=utf-8",
-            success: function (raavarer) {
-                $.each(raavarer, function (i, raavares) {
-                    if (raavares.raavareId == raavare.raavareId) {
-                        raavares.raavareNavn = raavare.raavareId;
-
-                    }
-                });
+            data: raavare,
+            success: function () {
+                alert("Råvare ændret")
             },
-            error: function (data) {
-                alert('Fejl ved indlæsning af råvarer');
+            error: function () {
+                alert('Fejl ved rettelse af råvare');
             }
         });
     });
 });
-
-
-
-
-
-
-
-
-// function post(data,url,sFunk){
-//     $.ajax({
-//         type: 'POST',
-//         url: url,
-//         contentType: 'application/json',
-//         data: data,
-//         success: function (data){
-//             sFunk(data);
-//         }
-//     })
-//
-// }
-
-// REST Functions
-// function RaavareForm_REST_opretRaavare(row1,row2){
-//
-//     var RaavareDTO ={
-//         raavareID:$(row1).find('.raavareId'.val()),
-//         raavareNavn:$(row2).find('.raavareNavn'.val())
-//     };
-//     alert("raavareId : " + RaavareDTO.raavareID + " , raavareNavn : " + RaavareDTO.raavareNavn);
-//     post(JSON.stringify(RaavareDTO), "rest/raavare/opret", function(data) {
-//         alert("oprettet " + RaavareDTO.toString());
-//     });
-// }
