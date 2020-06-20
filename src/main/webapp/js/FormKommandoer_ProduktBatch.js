@@ -72,10 +72,6 @@ $(document).ready(function() {
 
     $('#vis-produktbatchRaavare').on('click', function () {
 
-        $('#produktBatchesliste').html('');
-        $('#produktbatchesRaavare').html('');
-
-
         var produktbatch = {
             produktbatchID: $produktbatchIDRaavare.val(),
             produktbatchReceptNummer: '',
@@ -86,6 +82,10 @@ $(document).ready(function() {
             netto:''
         };
 
+        document.getElementById("produktbatchh2").innerHTML = 'Liste over produktbatch ' + $produktbatchIDRaavare.val();
+
+        $('#produktBatchesliste').html('');
+        $('#produktbatchesRaavare').html('');
         $.ajax({
             type: 'POST',
             url: 'api/produktbatch/visEnkelt',
@@ -99,7 +99,8 @@ $(document).ready(function() {
                     console.log(produktbatch);
                     document.getElementById("produktbatchIDRaavare").value = '';
                     if (!(produktbatch.raavareBatchID === 0)) {
-                        $produktbatchesRaavare.append('<tr><td>' + produktbatch.receptID + '</td>' +
+                        $produktbatchesRaavare.append('<tr><td>' + produktbatch.produktBatchID + '</td>' +
+                            '<td>' + produktbatch.receptID + '</td>' +
                             '<td>' + produktbatch.status + '</td>' +
                             '<td>' + produktbatch.cpr + '</td>' +
                             '<td>' + produktbatch.raavareBatchID + '</td>' +

@@ -103,19 +103,19 @@ li a:hover {
     border-bottom: 1px solid white;
 
 }
-#produktBatchesRaavare {
+#produktbatchesRaavare {
     text-align: center;
     color: white;
     font-family: Cambria, serif;
 }
-#produktBatchesRaavare tr{
+#produktbatchesRaavare tr{
     text-align: center;
 }
-#produktBatchesRaavare td{
+#produktbatchesRaavare td{
     border-bottom: 1px solid aliceblue;
     padding: 15px;
 }
-#produktBatchesRaavare tr:hover{
+#produktbatchesRaavare tr:hover{
     background-color: crimson;
 }
 #produktBatchRaavareThead th{
