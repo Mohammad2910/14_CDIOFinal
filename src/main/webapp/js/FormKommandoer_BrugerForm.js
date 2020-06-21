@@ -68,7 +68,7 @@ $(document).ready(function() {
                     $brugere.append('<li>Bruger CPR: ' + bruger.brugerCpr + ', Bruger navn: ' + bruger.brugerNavn + ', Bruger initialer: ' + bruger.brugerIni + ', Bruger rolle: ' + bruger.brugerRolle + ', Bruger status: ' + bruger.brugerStatus + '</li>');
                 },
                 error: function () {
-                    alert('Fejl ved oprettelse af bruger');
+                    alert('Fejl ved oprettelse af bruger' + '\nAngiv et cpr der ikke findes i systemet og/eller initialer uden mellemrum');
                 }
             });
         } else {

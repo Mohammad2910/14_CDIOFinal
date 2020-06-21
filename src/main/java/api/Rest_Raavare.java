@@ -63,7 +63,7 @@ public class Rest_Raavare {
     @Path("rediger")
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public void redigerRaavare(@FormParam("raavareId") int retRaavareID,  @FormParam("raavareNavn") String retRaavareNavn) {
+    public Response redigerRaavare(@FormParam("raavareId") int retRaavareID,  @FormParam("raavareNavn") String retRaavareNavn) {
        // String[] strarray = inputs.split("&");
         DTO_Raavare raavareDTO = new DTO_Raavare(retRaavareID, retRaavareNavn);
         DTO_Raavare returnRaa;
@@ -72,9 +72,10 @@ public class Rest_Raavare {
             raavareBLL.redigerRaavare(raavareDTO);
 
         } catch (SQLException e) {
-
+            return Response.status(400).entity("SQLException: " + e.getMessage()).build();
         }
 
+        return Response.ok().build();
     }
 
     public static String checkForSpace(String str){

@@ -1,6 +1,7 @@
 package DataAccess;
 
 import Core.DTO_Bruger;
+import com.mysql.cj.protocol.Resultset;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,6 +33,9 @@ public class DAO_Bruger implements IDAO_Bruger {
 
             setCreatePreparedStatement(preSt,enkelBruger);
             System.out.println(preSt);
+//            if (Integer.parseInt(enkelBruger.getCprNr().substring(2,3)) == 1) {
+//
+//            }
             if (enkelBruger.getIni().indexOf('%') != -1) {
                 throw new SQLException();
             } else {
@@ -108,8 +112,16 @@ public class DAO_Bruger implements IDAO_Bruger {
             preSt.setString(4, nyBruger.getCprNr());
             System.out.println(preSt);
 
+            PreparedStatement preSt2 = conn.prepareStatement("SELECT * from brugere WHERE Cpr = ?;");
 
-            preSt.executeUpdate();
+            preSt2.setString(1, nyBruger.getCprNr());
+            ResultSet resultSet = preSt2.executeQuery();
+            resultSet.beforeFirst();
+            if (!resultSet.next()) {
+                throw new SQLException();
+            } else {
+                preSt.executeUpdate();
+            }
             conn.close();
 
         } catch (ClassNotFoundException e) {

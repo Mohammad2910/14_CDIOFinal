@@ -29,9 +29,11 @@ public class DAO_Raavare implements IDAO_Raavare {
             PreparedStatement preSt = conn.prepareStatement("INSERT INTO raavare VALUES(?,?)");
 
             setCreatePreparedStatement(preSt,enkelRaavare);
-
-            preSt.executeUpdate();
-
+            if(enkelRaavare.getRaavareID() == 0) {
+                throw new SQLException();
+            } else {
+                preSt.executeUpdate();
+            }
             conn.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -95,12 +97,20 @@ public class DAO_Raavare implements IDAO_Raavare {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
             PreparedStatement preSt = conn.prepareStatement("UPDATE raavare SET RaavareNavn = ? WHERE RaavareID = ?;");
-
            preSt.setInt(2,nyRaavare.getRaavareID());
            preSt.setString(1,nyRaavare.getRaavareNavn());
+            System.out.println(preSt);
 
-            preSt.executeUpdate();
+            PreparedStatement preSt2 = conn.prepareStatement("SELECT * from raavare WHERE RaavareID = ?;");
 
+            preSt2.setInt(1, nyRaavare.getRaavareID());
+            ResultSet resultSet = preSt2.executeQuery();
+            resultSet.beforeFirst();
+            if (!resultSet.next()) {
+                throw new SQLException();
+            } else {
+                preSt.executeUpdate();
+            }
             conn.close();
 
 

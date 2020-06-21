@@ -48,7 +48,8 @@ $(document).ready(function() {
                 alert('Råvare oprettet!');
             },
             error: function () {
-                alert('Fejl ved oprettelse af råvare');
+                alert('Fejl ved oprettelse af råvare' +
+                '\nDer findes allerede en råvare med pågældende råvare ID ellers så er ID\'et for langt');
             }
         });
     });
