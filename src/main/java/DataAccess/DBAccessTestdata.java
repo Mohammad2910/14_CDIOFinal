@@ -1,6 +1,5 @@
 package DataAccess;
 
-import Core.BrugerDTO;
 //
 //public class DBAccessTestdata {
 //    public static void main(String[] args) {

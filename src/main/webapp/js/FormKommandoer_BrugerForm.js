@@ -72,7 +72,7 @@ $(document).ready(function() {
                 }
             });
         } else {
-            alert('CPR-nummer er for kort')
+            alert('Fejl! CPR nummeret skal være 10 lang');
         }
     });
 

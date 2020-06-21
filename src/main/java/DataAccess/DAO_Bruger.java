@@ -32,9 +32,11 @@ public class DAO_Bruger implements IDAO_Bruger {
 
             setCreatePreparedStatement(preSt,enkelBruger);
             System.out.println(preSt);
-
-            preSt.executeUpdate();
-
+            if (enkelBruger.getIni().indexOf('%') != -1) {
+                throw new SQLException();
+            } else {
+                preSt.executeUpdate();
+            }
 
             conn.close();
 
