@@ -13,7 +13,7 @@ $(document).ready(function() {
         };
 
         document.getElementById("recepterh2").innerHTML = 'Liste over recept ' + $receptRaavareID.val();
-
+        $('#receptRaavareThead').show();
         $('#recepter').html('');
         $('#receptRaavare').html('');
         $.ajax({
