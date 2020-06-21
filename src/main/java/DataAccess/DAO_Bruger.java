@@ -12,26 +12,17 @@ import java.util.List;
 
 public class DAO_Bruger implements IDAO_Bruger {
 
-    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, DTO_Bruger opr) throws SQLException {
-        try {
-            preSt.setString(1, opr.getCprNr());
-            preSt.setString(2, opr.getBrugerNavn());
-            preSt.setString(3, opr.getIni());
-            preSt.setString(4, opr.getRolle());
-            preSt.setString(5, opr.getBrugerStatus());
-        } catch (SQLException e) {
-            throw new SQLException(e);
-        }
-        return preSt;
-    }
     @Override
     public DTO_Bruger opretEnkelBruger(DTO_Bruger enkelBruger) throws SQLException {
         try{
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
             PreparedStatement preSt = conn.prepareStatement("INSERT INTO brugere VALUES(?,?,?,?,?)");
-
-            setCreatePreparedStatement(preSt,enkelBruger);
+            preSt.setString(1, enkelBruger.getCprNr());
+            preSt.setString(2, enkelBruger.getBrugerNavn());
+            preSt.setString(3, enkelBruger.getIni());
+            preSt.setString(4, enkelBruger.getRolle());
+            preSt.setString(5, enkelBruger.getBrugerStatus());
             System.out.println(preSt);
 //            if (Integer.parseInt(enkelBruger.getCprNr().substring(2,3)) == 1) {
 //

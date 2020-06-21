@@ -11,28 +11,16 @@ import java.util.List;
 
 public class DAO_RaavareBatch implements IDAO_RaavareBatch {
 
-
-    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, DTO_RaavareBatch raBa) throws SQLException{
-        try{
-            preSt.setInt(1, raBa.getRaavareBatchID());
-            preSt.setDouble(2,raBa.getRaavareMaengde());
-            preSt.setString(3,raBa.getLeverandoer());
-            preSt.setInt(4,raBa.getRaavareID());
-        }
-        catch (SQLException e){
-            throw new SQLException(e);
-        }
-        return preSt;
-    }
-
     @Override
     public void opretRaavareBatch(DTO_RaavareBatch raavareBatchDTO) throws SQLException {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
             PreparedStatement preSt = conn.prepareStatement("INSERT INTO Raavarebatch VALUES (?,?,?,?)");
-
-            setCreatePreparedStatement(preSt,raavareBatchDTO);
+            preSt.setInt(1, raavareBatchDTO.getRaavareBatchID());
+            preSt.setDouble(2,raavareBatchDTO.getRaavareMaengde());
+            preSt.setString(3,raavareBatchDTO.getLeverandoer());
+            preSt.setInt(4,raavareBatchDTO.getRaavareID());
 
             preSt.executeUpdate();
 

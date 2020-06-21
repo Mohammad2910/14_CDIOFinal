@@ -11,30 +11,16 @@ import java.util.List;
 
 public class DAO_ProduktBatch implements IDAO_ProduktBatch {
 
-
-    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, DTO_ProduktBatch prBa) throws SQLException{
-        try{
-            preSt.setInt(1, prBa.getProduktBatchID());
-            preSt.setString(2,prBa.getStatus());
-            preSt.setInt(3, prBa.getReceptID());
-
-        }
-        catch (SQLException e){
-            throw new SQLException(e);
-        }
-        return preSt;
-
-    }
-
-
     @Override
     public void opretProduktBatch(DTO_ProduktBatch produktBatchDTO) throws SQLException {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
             PreparedStatement preSt = conn.prepareStatement("INSERT INTO ProduktBatch VALUES (?,?,?)");
-
-            setCreatePreparedStatement(preSt,produktBatchDTO);
+            preSt.setInt(1, produktBatchDTO.getProduktBatchID());
+            preSt.setString(2,produktBatchDTO.getStatus());
+            preSt.setInt(3, produktBatchDTO.getReceptID());
+//            setCreatePreparedStatement(preSt,produktBatchDTO);
 
             preSt.executeUpdate();
 

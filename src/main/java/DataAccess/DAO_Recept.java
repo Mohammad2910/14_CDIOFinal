@@ -8,31 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DAO_Recept implements IDAO_Recept {
-    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, DTO_Recept recept) throws SQLException{
-        try{
-            preSt.setInt(1, recept.getReceptID());
-            preSt.setString(2,recept.getReceptNavn());
-
-        }
-        catch (SQLException e){
-            throw new SQLException(e);
-        }
-        return preSt;
-    }
-
-    private PreparedStatement setCreatePreparedStatement2(PreparedStatement preSt, double a, double b, int c, int d) throws SQLException{
-        try{
-            preSt.setDouble(1, a);
-            preSt.setDouble(2,b);
-            preSt.setInt(3,c);
-            preSt.setInt(4,d);
-
-        }
-        catch (SQLException e){
-            throw new SQLException(e);
-        }
-        return preSt;
-    }
 
     @Override
     public void opretEnkelRecept(DTO_Recept enkelRecept, int a, double b, double c) throws SQLException {
@@ -41,8 +16,8 @@ public class DAO_Recept implements IDAO_Recept {
             Connection conn = dataAccess.connection;
             try {
                 PreparedStatement preSt = conn.prepareStatement("INSERT INTO Recept VALUES(?,?)");
-
-                setCreatePreparedStatement(preSt,enkelRecept);
+                preSt.setInt(1, enkelRecept.getReceptID());
+                preSt.setString(2,enkelRecept.getReceptNavn());
 
                 preSt.executeUpdate();
             } catch (Exception e) {
@@ -50,8 +25,10 @@ public class DAO_Recept implements IDAO_Recept {
             }
 
             PreparedStatement preSt2 = conn.prepareStatement("INSERT INTO Receptraavare VALUES(?,?,?,?)");
-
-            setCreatePreparedStatement2(preSt2,b,c,enkelRecept.getReceptID(),a);
+            preSt2.setDouble(1, b);
+            preSt2.setDouble(2,c);
+            preSt2.setInt(3,enkelRecept.getReceptID());
+            preSt2.setInt(4,a);
 
             preSt2.executeUpdate();
 

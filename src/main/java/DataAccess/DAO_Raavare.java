@@ -11,24 +11,14 @@ import java.util.List;
 
 public class DAO_Raavare implements IDAO_Raavare {
 
-    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, DTO_Raavare raa) throws SQLException{
-        try{
-            preSt.setInt(1, raa.getRaavareID());
-            preSt.setString(2,raa.getRaavareNavn());
-        }
-        catch (SQLException e){
-            throw new SQLException(e);
-        }
-        return preSt;
-    }
     @Override
     public DTO_Raavare opretEnkelRaavare(DTO_Raavare enkelRaavare) throws SQLException {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
             PreparedStatement preSt = conn.prepareStatement("INSERT INTO raavare VALUES(?,?)");
-
-            setCreatePreparedStatement(preSt,enkelRaavare);
+            preSt.setInt(1, enkelRaavare.getRaavareID());
+            preSt.setString(2,enkelRaavare.getRaavareNavn());
             if(enkelRaavare.getRaavareID() == 0) {
                 throw new SQLException();
             } else {
