@@ -67,7 +67,7 @@ $(document).ready(function() {
                 alert("Råvare ændret")
             },
             error: function () {
-                alert('Fejl ved rettelse af råvare');
+                alert('Fejl ved rettelse af råvare \nAngiv et gyldigt råvare ID');
             }
         });
     });
