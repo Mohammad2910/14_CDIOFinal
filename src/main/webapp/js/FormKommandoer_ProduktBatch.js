@@ -108,7 +108,8 @@ $(document).ready(function() {
                             '<td>' + produktbatch.netto + '</td></tr>');
                     }
                     else{
-                        $produktbatchesRaavare.append('<tr><td>' + produktbatch.receptID + '</td>' +
+                        $produktbatchesRaavare.append('<tr><td>' + produktbatch.produktBatchID + '</td>' +
+                            '<td>' + produktbatch.receptID + '</td>' +
                             '<td>' + produktbatch.status + '</td>' +
                             '<td>' + produktbatch.cpr + '</td>' +
                             '<td>' + "Ikke påbegyndt" + '</td>' +
