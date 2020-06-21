@@ -11,27 +11,19 @@ import java.util.List;
 
 public class DAO_Raavare implements IDAO_Raavare {
 
-    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, DTO_Raavare raa) throws SQLException{
-        try{
-            preSt.setInt(1, raa.getRaavareID());
-            preSt.setString(2,raa.getRaavareNavn());
-        }
-        catch (SQLException e){
-            throw new SQLException(e);
-        }
-        return preSt;
-    }
     @Override
     public DTO_Raavare opretEnkelRaavare(DTO_Raavare enkelRaavare) throws SQLException {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
             PreparedStatement preSt = conn.prepareStatement("INSERT INTO raavare VALUES(?,?)");
-
-            setCreatePreparedStatement(preSt,enkelRaavare);
-
-            preSt.executeUpdate();
-
+            preSt.setInt(1, enkelRaavare.getRaavareID());
+            preSt.setString(2,enkelRaavare.getRaavareNavn());
+            if(enkelRaavare.getRaavareID() == 0) {
+                throw new SQLException();
+            } else {
+                preSt.executeUpdate();
+            }
             conn.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -95,12 +87,20 @@ public class DAO_Raavare implements IDAO_Raavare {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
             PreparedStatement preSt = conn.prepareStatement("UPDATE raavare SET RaavareNavn = ? WHERE RaavareID = ?;");
-
            preSt.setInt(2,nyRaavare.getRaavareID());
            preSt.setString(1,nyRaavare.getRaavareNavn());
+            System.out.println(preSt);
 
-            preSt.executeUpdate();
+            PreparedStatement preSt2 = conn.prepareStatement("SELECT * from raavare WHERE RaavareID = ?;");
 
+            preSt2.setInt(1, nyRaavare.getRaavareID());
+            ResultSet resultSet = preSt2.executeQuery();
+            resultSet.beforeFirst();
+            if (!resultSet.next()) {
+                throw new SQLException();
+            } else {
+                preSt.executeUpdate();
+            }
             conn.close();
 
 

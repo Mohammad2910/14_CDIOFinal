@@ -11,18 +11,6 @@ import java.util.List;
 
 public class DAO_ReceptRaavare implements IDAO_ReceptRaavare {
 
-    private PreparedStatement setCreatePreparedStatement(PreparedStatement preSt, DTO_ReceptRaavare recRaa) throws SQLException{
-        try{
-            preSt.setInt(1, recRaa.getReceptID());
-            preSt.setDouble(2,recRaa.getNonNetto());
-            preSt.setDouble(3,recRaa.getTolerance());
-            preSt.setInt(4, recRaa.getRaavareID());
-        }
-        catch (SQLException e){
-            throw new SQLException(e);
-        }
-        return preSt;
-    }
 
     @Override
     public List<DTO_ReceptRaavare> visReceptRaavare(int receptID) throws SQLException {
