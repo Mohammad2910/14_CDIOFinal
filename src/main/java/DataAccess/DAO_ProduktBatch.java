@@ -20,28 +20,8 @@ public class DAO_ProduktBatch implements IDAO_ProduktBatch {
             preSt.setInt(1, produktBatchDTO.getProduktBatchID());
             preSt.setString(2,produktBatchDTO.getStatus());
             preSt.setInt(3, produktBatchDTO.getReceptID());
-//            setCreatePreparedStatement(preSt,produktBatchDTO);
             preSt.executeUpdate();
             System.out.println(preSt);
-
-            PreparedStatement preSt2 = conn.prepareStatement("SELECT count(*) from receptraavare where receptid = ?");
-            preSt2.setInt(1, produktBatchDTO.getReceptID());
-            System.out.println(preSt2);
-            ResultSet resultSet = preSt2.executeQuery();
-            System.out.println(1);
-            resultSet.beforeFirst();
-            resultSet.next();
-            int antal = resultSet.getInt(1);
-            System.out.println(antal);
-
-            PreparedStatement preSt3 = conn.prepareStatement("insert into produktbatchAfvejning value (null, null, null, null,?,null)");
-            System.out.println(preSt3);
-            preSt3.setInt(1, produktBatchDTO.getProduktBatchID());
-            System.out.println(preSt3);
-            for (int i = 0; i < antal; i++) {
-                preSt3.executeUpdate();
-                System.out.println(preSt3);
-            }
 
             conn.close();
         } catch (ClassNotFoundException e) {

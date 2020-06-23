@@ -19,11 +19,9 @@ public class Rest_Bruger {
 
     @Path("opret")
     @POST
-    public Response opretBruger(String inputs) {
-        String[] strarray = inputs.split("&");
-       //Lav JavaScripten først
-        DTO_Bruger brugerDTO = new DTO_Bruger(strarray[0].substring(AttrCount(strarray[0])),checkForSpace(strarray[1].substring(AttrCount(strarray[1]))),strarray[2].substring(AttrCount(strarray[2])),strarray[3].substring(AttrCount(strarray[3])),strarray[4].substring(AttrCount(strarray[4])));
-        System.out.println(brugerDTO.getCprNr());
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response opretBruger(@FormParam("brugerCpr") String brugerCpr, @FormParam("brugerNavn") String brugerNavn,@FormParam("brugerIni") String brugerIni,@FormParam("brugerRolle") String brugerRolle,@FormParam("brugerStatus") String brugerStatus) {
+        DTO_Bruger brugerDTO = new DTO_Bruger(brugerCpr, brugerNavn, brugerIni, brugerRolle, brugerStatus);
         DTO_Bruger returnBru;
         try{
             returnBru = brugerBLL.opretEnkelBruger(brugerDTO);

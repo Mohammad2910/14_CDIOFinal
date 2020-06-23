@@ -51,13 +51,11 @@ $(document).ready(function() {
             brugerRolle: $brugerRolle.val(),
             brugerStatus: 'Aktiv',
         };
-
         if (bruger.brugerCpr.length === 10) {
+            console.log(JSON.stringify(bruger));
             $.ajax({
                 type: 'POST',
                 url: 'api/bruger/opret',
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
                 data: bruger,
                 success: function () {
                     alert('Bruger oprettet!');
@@ -68,7 +66,7 @@ $(document).ready(function() {
                     $brugere.append('<li>Bruger CPR: ' + bruger.brugerCpr + ', Bruger navn: ' + bruger.brugerNavn + ', Bruger initialer: ' + bruger.brugerIni + ', Bruger rolle: ' + bruger.brugerRolle + ', Bruger status: ' + bruger.brugerStatus + '</li>');
                 },
                 error: function () {
-                    alert('Fejl ved oprettelse af bruger' + '\nAngiv et cpr der ikke findes i systemet og/eller initialer uden mellemrum');
+                    alert('Fejl ved oprettelse af bruger' + '\nAngiv et gyldigt cpr og/eller angiv initialer uden mellemrum');
                 }
             });
         } else {
