@@ -66,6 +66,8 @@
 <div id="visProduktBatch" style="display: none" class="form">
     <h2 id="produktbatchh2">Liste over alle produktbatches</h2>
     <form method="GET" action="api/produktbatch/vis">
+        <button id="vis-produktbatchRaavare" class="right" type="button">Søg</button>
+        <input id="produktbatchIDRaavare" class="right" type="text" placeholder="Indtast produktbatch ID">
         <table id="produktBatchInfoTable" style="width:100%">
             <thead id="produktBatchThead">
             <tr class="produktBatchThead">
@@ -78,8 +80,6 @@
         </table>
     </form>
     <form method="POST" action="api/produktbatch/visEnkelt">
-        <button id="vis-produktbatchRaavare" class="right" type="button">Søg</button>
-        <input id="produktbatchIDRaavare" class="right" type="text" placeholder="Indtast produktbatch ID">
         <table id="produktBatchRaavareInfoTable" style="width:100%">
             <thead id="produktBatchRaavareThead">
             <tr class="produktBatchRaavareThead">
