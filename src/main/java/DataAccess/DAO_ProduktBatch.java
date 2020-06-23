@@ -20,9 +20,8 @@ public class DAO_ProduktBatch implements IDAO_ProduktBatch {
             preSt.setInt(1, produktBatchDTO.getProduktBatchID());
             preSt.setString(2,produktBatchDTO.getStatus());
             preSt.setInt(3, produktBatchDTO.getReceptID());
-//            setCreatePreparedStatement(preSt,produktBatchDTO);
-
             preSt.executeUpdate();
+            System.out.println(preSt);
 
             conn.close();
         } catch (ClassNotFoundException e) {

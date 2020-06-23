@@ -23,16 +23,8 @@ public class DAO_Bruger implements IDAO_Bruger {
             preSt.setString(3, enkelBruger.getIni());
             preSt.setString(4, enkelBruger.getRolle());
             preSt.setString(5, enkelBruger.getBrugerStatus());
-            System.out.println(preSt);
-//            if (Integer.parseInt(enkelBruger.getCprNr().substring(2,3)) == 1) {
-//
-//            }
-            if (enkelBruger.getIni().indexOf('%') != -1) {
-                throw new SQLException();
-            } else {
-                preSt.executeUpdate();
-            }
-
+            
+            preSt.executeUpdate();
             conn.close();
 
         } catch (ClassNotFoundException e){
