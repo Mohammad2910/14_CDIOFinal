@@ -3,13 +3,14 @@ $(document).ready(function() {
     var $produktBatchID = $('#afvejningProduktBatchID');
     var antal = 0;
 
-    $('#afvejningmenu').on('click',function() {
+    $('#afvejningmenu').on('click', function () {
         document.getElementById("afvejningh2").innerHTML = 'Angiv produktbatch';
         $('#afvejningProduktBatchID').show();
         $('#visAfvejning').show();
         document.getElementById("afvejninger").innerHTML = "";
         document.getElementById("afvejningProduktBatchID").value = '';
         $('#opret-afvejning').show();
+        $('#cprNummer').show();
 
     });
 
@@ -36,8 +37,7 @@ $(document).ready(function() {
                 $.each(data, function (i, produktbatch) {
                     if (produktbatch.tara !== 0) {
                         $afvejninger.append('<li> Tara: ' + produktbatch.tara + ' Netto: ' + produktbatch.netto + ' Råvarebatch ID: ' + produktbatch.raavareBatchID + 'CPR: ' + produktbatch.cpr + ' Produktbatch ID: ' + produktbatch.produktBatchID + ' Tidspunkt: ' + produktbatch.timestamp + '')
-                    }
-                    else{
+                    } else {
                         var tomBatch = {
                             produktBatchID: $produktBatchID.val(),
                             raavareNavn: '',
@@ -80,33 +80,47 @@ $(document).ready(function() {
 
 
     $('#opret-afvejning').on('click', function () {
-        for (let i = 0; i < antal; i++) {
-            var $netto = $('#netto');
-            var $batchnummer = $('#batchNummer');
-            var $tara = $('#tara');
+        var $brugerCpr = $('#cprNummer');
 
-            var afvejning = {
-                produktBatchID: $produktBatchID.val(),
-                tara: $tara.val(),
-                raavaereBatchNummer: $batchnummer.val(),
-                netto: $netto.val(),
-            };
+        if ($brugerCpr.val().length === 10) {
+            for (let i = 0; i < antal; i++) {
+                var $netto = $('#netto');
+                var $batchnummer = $('#batchNummer');
+                var $tara = $('#tara');
+                var $brugerCpr = $('#cprNummer');
 
-            $.ajax({
-                type: 'POST',
-                url: 'api/afvejning/opret',
-                contentType: "application/json; charset=utf-8",
-                data: afvejning,
-                success: function () {
-                    document.getElementById("afvejningh2").innerHTML = 'Afvejning gemt'
-                },
-                error: function () {
-                    alert('Fejl ved at gemme afvejning' + '\nIndtast venligst alle oplysninger i felterne');
-                }
-            });
-            document.getElementById('afvejninger').removeChild(document.getElementById('afvejninger').childNodes[(0)])
-            document.getElementById('afvejninger').removeChild(document.getElementById('afvejninger').childNodes[(0)])
+                var afvejning = {
+                    produktBatchID: $produktBatchID.val(),
+                    tara: $tara.val(),
+                    raavaereBatchNummer: $batchnummer.val(),
+                    netto: $netto.val(),
+                    cpr: $brugerCpr.val(),
+                };
+
+                console.log(afvejning)
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'api/afvejning/opret',
+                    contentType: "application/json; charset=utf-8",
+                    data: afvejning,
+                    success: function () {
+                        if (i === antal - 1) {
+                            alert("Afvejning gemt")
+                            window.location = 'LaborantAfvejning.html'
+                        }
+                    },
+                    error: function () {
+                        alert('Fejl ved at gemme afvejning' + '\nIndtast venligst alle oplysninger i felterne');
+                    }
+                });
+                document.getElementById('afvejninger').removeChild(document.getElementById('afvejninger').childNodes[(0)])
+                document.getElementById('afvejninger').removeChild(document.getElementById('afvejninger').childNodes[(0)])
+            }
+            $('#opret-afvejning').hide();
+            $('#cprNummer').hide();
+        } else {
+            alert("CPR for kort")
         }
-        $('#opret-afvejning').hide();
     });
 });

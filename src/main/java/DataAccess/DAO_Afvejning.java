@@ -41,7 +41,6 @@ public class DAO_Afvejning implements IDAO_Afvejning {
                 Connection conn = dataAccess.connection;
                 PreparedStatement preSt = conn.prepareStatement("INSERT INTO produktbatchafvejning VALUES(?,?,?,?,?,now())");
                 setCreatePreparedStatement(preSt, afvejning);
-                System.out.println(preSt);
                 preSt.executeUpdate();
 
 
