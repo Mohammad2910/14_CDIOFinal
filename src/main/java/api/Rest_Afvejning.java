@@ -26,7 +26,8 @@ public class Rest_Afvejning {
     public Response opretEnkeltAfvejning(String inputs) {
         String[] strarray = inputs.split("&");
         //Lav JavaScripten først
-        DTO_Afvejning dto_afvejning = new DTO_Afvejning(0,0,0,"",0,"");
+        DTO_Afvejning dto_afvejning = new DTO_Afvejning(Integer.parseInt(strarray[1].substring(AttrCount(strarray[1]))),Integer.parseInt(strarray[3].substring(AttrCount(strarray[3]))),Integer.parseInt(strarray[2].substring(AttrCount(strarray[2]))),"1010101010",Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),"");
+        System.out.println(dto_afvejning);
         try{
             afvejningBLL.opretEnkeltAfvejning(dto_afvejning);
         } catch(SQLException e) {
