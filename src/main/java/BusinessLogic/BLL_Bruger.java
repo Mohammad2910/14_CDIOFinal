@@ -18,7 +18,7 @@ public class BLL_Bruger implements I_BLL_Bruger {
         int år = Integer.parseInt(enkelBruger.getCprNr().substring(4,6));
 
 
-        if (enkelBruger.getIni().indexOf('%') != -1) {
+        if (enkelBruger.getIni().indexOf(' ') != -1) {
             throw new SQLException();
         } else {
             if (måned == 1 | måned == 3 | måned == 5 | måned == 7 | måned == 8 | måned == 10 | måned == 12) {
@@ -52,7 +52,11 @@ public class BLL_Bruger implements I_BLL_Bruger {
 
     @Override
     public void redigerBruger(DTO_Bruger nyeBruger) throws SQLException {
-        daoBru.redigerBruger(nyeBruger);
+        if (nyeBruger.getIni().indexOf(' ') != -1) {
+            throw new SQLException();
+        } else {
+            daoBru.redigerBruger(nyeBruger);
+        }
     }
 
     @Override
