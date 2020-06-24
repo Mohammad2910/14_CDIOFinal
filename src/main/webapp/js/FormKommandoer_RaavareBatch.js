@@ -49,7 +49,6 @@ $(document).ready(function() {
         $.ajax({
             type: 'POST',
             url: 'api/raavarebatch/opret',
-            contentType: "application/json; charset=utf-8",
             data: raavarebatch,
             success: function () {
                 alert('Råvarebatch oprettet!');

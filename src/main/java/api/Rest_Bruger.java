@@ -60,10 +60,9 @@ public class Rest_Bruger {
 
     @Path("rediger")
     @POST
-    public Response redigerBruger(String bru){
-        System.out.println(bru);
-        String[] strarray = bru.split("&");
-        DTO_Bruger brugerDTO = new DTO_Bruger(strarray[0].substring(AttrCount(strarray[0])),checkForSpace(strarray[1].substring(AttrCount(strarray[1]))),strarray[2].substring(AttrCount(strarray[2])),strarray[3].substring(AttrCount(strarray[3])),strarray[4].substring(AttrCount(strarray[4])));
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response redigerBruger(@FormParam("brugerCpr") String brugerCpr, @FormParam("brugerNavn") String brugerNavn,@FormParam("brugerIni") String brugerIni,@FormParam("brugerRolle") String brugerRolle,@FormParam("brugerStatus") String brugerStatus){
+        DTO_Bruger brugerDTO = new DTO_Bruger(brugerCpr,brugerNavn,brugerIni,brugerRolle,brugerStatus);
         try{
             brugerBLL.redigerBruger(brugerDTO);
         } catch(SQLException e) {

@@ -115,7 +115,6 @@ $(document).ready(function() {
         $.ajax({
             type: 'POST',
             url: 'api/bruger/rediger',
-            contentType: "application/json; charset=utf-8",
             data: redigerbruger,
             success: function () {
                 alert('Bruger redigeret!');

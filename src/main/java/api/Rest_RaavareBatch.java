@@ -4,10 +4,7 @@ import BusinessLogic.BLL_RaavareBatch;
 import BusinessLogic.I_BLL_RaavareBatch;
 import Core.DTO_RaavareBatch;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.sql.SQLException;
@@ -22,10 +19,9 @@ public class Rest_RaavareBatch{
 
     @Path("opret")
     @POST
-    public Response opretRaavareBatch(String raa) throws SQLException {
-        String[] strarray = raa.split("&");
-        //Lav JavaScripten først
-        DTO_RaavareBatch raavareBatchDTO = new DTO_RaavareBatch(Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),Double.parseDouble(strarray[1].substring(AttrCount(strarray[1]))),strarray[2].substring(AttrCount(strarray[2])),Integer.parseInt(strarray[3].substring(AttrCount(strarray[3]))));
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response opretRaavareBatch(@FormParam("raavarebatchNummer") int raavarebatchNummer, @FormParam("raavarebatchMaengde") double raavarebatchMaengde, @FormParam("raavarebatchLeverandoer") String raavarebatchLeverandoer, @FormParam("raavarebatchRaavareID") int raavarebatchRaavareID) throws SQLException {
+        DTO_RaavareBatch raavareBatchDTO = new DTO_RaavareBatch(raavarebatchNummer,raavarebatchMaengde,raavarebatchLeverandoer,raavarebatchRaavareID);
         try{
             raaBLL.opretRaavareBatch(raavareBatchDTO);
         } catch(SQLException e) {

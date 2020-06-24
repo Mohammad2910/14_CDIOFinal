@@ -21,7 +21,7 @@ public class DAO_RaavareBatch implements IDAO_RaavareBatch {
             preSt.setDouble(2,raavareBatchDTO.getRaavareMaengde());
             preSt.setString(3,raavareBatchDTO.getLeverandoer());
             preSt.setInt(4,raavareBatchDTO.getRaavareID());
-
+            System.out.println(preSt);
             preSt.executeUpdate();
 
             conn.close();
