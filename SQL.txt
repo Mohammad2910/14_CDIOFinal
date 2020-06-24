@@ -4,33 +4,34 @@ USE webshop;
 
 -- MySQL Workbench Forward Engineering
 
+SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Table `webshop`.`Råvare`
+-- Table `webshop`.`Raavare`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `webshop`.`Råvare` (
-  `RåvareID` INT NOT NULL,
-  `RåvareNavn` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`RåvareID`))
+CREATE TABLE IF NOT EXISTS `webshop`.`Raavare` (
+  `RaavareID` INT NOT NULL,
+  `RaavareNavn` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`RaavareID`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `webshop`.`RåvareBatch`
+-- Table `webshop`.`RaavareBatch`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `webshop`.`RåvareBatch` (
-  `RåvareBatchID` INT NOT NULL,
-  `Mængde` DECIMAL(10,4) NOT NULL,
-  `Leverandør` VARCHAR(50) NOT NULL,
-  `RåvareID` INT NOT NULL,
-  PRIMARY KEY (`RåvareBatchID`),
-  INDEX `fk_RåvareBatch_Råvare1_idx` (`RåvareID` ASC) VISIBLE,
-  CONSTRAINT `fk_RåvareBatch_Råvare1`
-    FOREIGN KEY (`RåvareID`)
-    REFERENCES `webshop`.`Råvare` (`RåvareID`)
+CREATE TABLE IF NOT EXISTS `webshop`.`RaavareBatch` (
+  `RaavareBatchID` INT NOT NULL,
+  `Maengde` DECIMAL(10,4) NOT NULL,
+  `Leverandoer` VARCHAR(50) NOT NULL,
+  `RaavareID` INT NOT NULL,
+  PRIMARY KEY (`RaavareBatchID`),
+  INDEX `fk_RaavareBatch_Raavare1_idx` (`RaavareID` ASC) VISIBLE,
+  CONSTRAINT `fk_RaavareBatch_Raavare1`
+    FOREIGN KEY (`RaavareID`)
+    REFERENCES `webshop`.`Raavare` (`RaavareID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -47,23 +48,23 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `webshop`.`ReceptRåvare`
+-- Table `webshop`.`ReceptRaavare`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `webshop`.`ReceptRåvare` (
+CREATE TABLE IF NOT EXISTS `webshop`.`ReceptRaavare` (
   `nonNetto` DECIMAL(10,4) NOT NULL,
   `Tolerance` DECIMAL(3,1) NOT NULL,
   `ReceptID` INT NOT NULL,
-  `RåvareID` INT NOT NULL,
-  PRIMARY KEY (`ReceptID`, `RåvareID`),
-  INDEX `fk_ReceptRåvare_Råvare1_idx` (`RåvareID` ASC) VISIBLE,
-  CONSTRAINT `fk_ReceptRåvare_Recept1`
+  `RaavareID` INT NOT NULL,
+  PRIMARY KEY (`ReceptID`, `RaavareID`),
+  INDEX `fk_ReceptRaavare_Raavare1_idx` (`RaavareID` ASC) VISIBLE,
+  CONSTRAINT `fk_ReceptRaavare_Recept1`
     FOREIGN KEY (`ReceptID`)
     REFERENCES `webshop`.`Recept` (`ReceptID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ReceptRåvare_Råvare1`
-    FOREIGN KEY (`RåvareID`)
-    REFERENCES `webshop`.`Råvare` (`RåvareID`)
+  CONSTRAINT `fk_ReceptRaavare_Raavare1`
+    FOREIGN KEY (`RaavareID`)
+    REFERENCES `webshop`.`Raavare` (`RaavareID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -74,7 +75,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `webshop`.`ProduktBatch` (
   `ProduktBatchID` INT NOT NULL,
-  `ProduktBatchStatus` ENUM('Ikke påbegyndt', 'Under produktion', 'Afsluttet') NOT NULL,
+  `ProduktBatchStatus` ENUM('Ikke paabegyndt', 'Under produktion', 'Afsluttet') NOT NULL,
   `ReceptID` INT NOT NULL,
   PRIMARY KEY (`ProduktBatchID`),
   INDEX `fk_ProduktBatch_Recept_idx` (`ReceptID` ASC) VISIBLE,
@@ -105,16 +106,16 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `webshop`.`ProduktBatchAfvejning` (
   `Tara` DECIMAL(10,4) NOT NULL,
   `Netto` DECIMAL(10,4) NOT NULL,
-  `RåvareBatchID` INT NOT NULL,
+  `RaavareBatchID` INT NOT NULL,
   `CPR` VARCHAR(10) NOT NULL,
   `ProduktBatchID` INT NOT NULL,
   `AfvejetTidspunkt` TIMESTAMP DEFAULT NOW() NOT NULL,
-  PRIMARY KEY (`RåvareBatchID`, `CPR`, `ProduktBatchID`),
+  PRIMARY KEY (`RaavareBatchID`, `CPR`, `ProduktBatchID`),
   INDEX `fk_ProduktBatchAfvejning_Brugere1_idx` (`CPR` ASC) VISIBLE,
   INDEX `fk_ProduktBatchAfvejning_ProduktBatch1_idx` (`ProduktBatchID` ASC) VISIBLE,
-  CONSTRAINT `fk_ProduktBatchAfvejning_RåvareBatch1`
-    FOREIGN KEY (`RåvareBatchID`)
-    REFERENCES `webshop`.`RåvareBatch` (`RåvareBatchID`)
+  CONSTRAINT `fk_ProduktBatchAfvejning_RaavareBatch1`
+    FOREIGN KEY (`RaavareBatchID`)
+    REFERENCES `webshop`.`RaavareBatch` (`RaavareBatchID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_ProduktBatchAfvejning_Brugere1`
@@ -134,6 +135,7 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+
 -- TRIGGERS --
 DROP TRIGGER IF EXISTS `webshop`.`ProduktBatchAfvejning_AFTER_INSERT`;
 
@@ -141,33 +143,39 @@ DELIMITER $$
 USE `webshop`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `webshop`.`ProduktBatchAfvejning_AFTER_INSERT` AFTER INSERT ON `ProduktBatchAfvejning` FOR EACH ROW
 BEGIN
-DECLARE vRåvareAntal integer;
+DECLARE vRaavareAntal integer;
 DECLARE vAfvejningAntal integer;
-SELECT COUNT(*) INTO vRåvareAntal FROM Recept NATURAL JOIN ReceptRåvare WHERE Recept.ReceptID = ReceptRåvare.ReceptID && Recept.ReceptID = (SELECT ProduktBatch.ReceptID FROM ProduktBatch); -- && (SELECT ProduktBatch.ProduktBatchID FROM ProduktBatch) = new.ProduktBatchID;
-SELECT COUNT(*) INTO vAfvejningAntal FROM ProduktBatchAfvejning GROUP BY ProduktBatchAfvejning.ProduktBatchID;
-IF vRåvareAntal = vAfvejningAntal THEN UPDATE ProduktBatch SET ProduktBatchStatus = 'Afsluttet' WHERE ProduktBatchID = new.ProduktBatchID;
+SELECT COUNT(*) INTO vRaavareAntal FROM Recept NATURAL JOIN ReceptRaavare WHERE Recept.ReceptID = ReceptRaavare.ReceptID && Recept.ReceptID = (SELECT ProduktBatch.ReceptID FROM ProduktBatch WHERE produktbatchid = new.produktbatchid); -- && (SELECT ProduktBatch.ProduktBatchID FROM ProduktBatch) = new.ProduktBatchID;
+SELECT COUNT(*) INTO vAfvejningAntal FROM ProduktBatchAfvejning WHERE ProduktBatchAfvejning.ProduktBatchID = new.produktbatchid;
+IF vRaavareAntal = vAfvejningAntal THEN UPDATE ProduktBatch SET ProduktBatchStatus = 'Afsluttet' WHERE ProduktBatchID = new.ProduktBatchID;
 ELSE UPDATE ProduktBatch SET ProduktBatchStatus = 'Under produktion' WHERE ProduktBatchID = new.ProduktBatchID;
 END IF;
-UPDATE RåvareBatch SET Mængde = Mængde - NEW.Netto WHERE NEW.RåvareBatchID = RåvareBatchID;
+UPDATE RaavareBatch SET Maengde = Maengde - NEW.Netto WHERE NEW.RaavareBatchID = RaavareBatchID;
 END$$
 DELIMITER ;
 
 -- INSERTS --
-INSERT INTO Råvare VALUES (1,'Æg'), (2, 'Mælk'), (3, 'Salt'),(4,'Ost');
-INSERT INTO Brugere VALUES ('1212993113','Johnny Hitler','JH','Admin','Aktiv'),('2004891337','Adolf Hitler','AH','Laborant','Ikke aktiv');
-INSERT INTO Recept VALUES (1,'Fiskefillet'), (2, 'Kage'), (3,'Ostemad');
-INSERT INTO ReceptRåvare VALUES (5.0,1.0,2,1), (3.0,0.5,2,2), (3.0,0.5,2,3);
-INSERT INTO ProduktBatch VALUES (1,'Ikke påbegyndt',2);
-INSERT INTO RåvareBatch VALUES (1,5.0,'Mærsk',1), (2,3.0,'Mærsk',2), (3,1.0,'Mærsk',3);
-INSERT INTO ProduktBatchAfvejning VALUES (0.5,5.0,1,2004891337,1,NOW());
-INSERT INTO ProduktBatchAfvejning VALUES (0.5,5.0,2,2004891337,1,NOW());
-INSERT INTO ProduktBatchAfvejning VALUES (0.5,5.0,3,2004891337,1,NOW());
-
-
--- SELECT * FROM BRUGERE;
-
--- SELECT * FROM ProduktBatchAfvejning;
--- SELECT * FROM ProduktBatch;
--- SELECT * FROM Recept;
--- SELECT * FROM ReceptRåvare;
--- SELECT * FROM RåvareBatch;
+INSERT INTO Raavare VALUES (1,'Paracetamol'), (2, 'Fentanyl'), (3, 'Methylfenidat'),(4,'Laktose'), (5, 'Salt'), (6, 'Vand');
+INSERT INTO Brugere VALUES ('1212993113','Karsten','KK','Admin','Aktiv'),('2004891337','Kirsten','KI','Laborant','Aktiv');
+INSERT INTO brugere VALUES('0000000000','Knud','KN','Produktionsleder','Aktiv');
+INSERT INTO brugere VALUES('1234567890','Kenny','KE','Farmaceut','Aktiv');
+INSERT INTO Recept VALUES (1,'Smertestillende'), (2, 'Sovemedicin'), (3, 'Saltvand');
+INSERT INTO ReceptRaavare VALUES (0.004,10,2,2), (0.005,1,2,4), (0.5,5,2,6);
+INSERT INTO ReceptRaavare VALUES (0.04,4,1,1), (0.05,2,1,3), (5,5,1,5), (10,5,1,6);
+INSERT INTO ReceptRaavare VALUES (1,5,3,5), (100,10,3,6);
+INSERT INTO ProduktBatch VALUES (1,'Ikke paabegyndt',2);
+INSERT INTO ProduktBatch VALUES (2,'Ikke paabegyndt',1);
+INSERT INTO ProduktBatch VALUES (3,'Ikke paabegyndt',3);
+INSERT INTO RaavareBatch VALUES (1,5,'Orifarm',1), (2,50,'El Chapo farma',2), (3,10,'Actavis',3), (4,10,'Saudi farma',4), (5,100,'Himalaya salt',5),(6,1500,'Øresund',6);
+INSERT INTO Raavare VALUES (1,'Paracetamol'), (2, 'Fentanyl'), (3, 'Methylfenidat'),(4,'Laktose'), (5, 'Salt'), (6, 'Vand');
+INSERT INTO Brugere VALUES ('1212993113','Karsten','KK','Admin','Aktiv'),('2004891337','Kirsten','KI','Laborant','Aktiv');
+INSERT INTO brugere VALUES('0000000000','Knud','KN','Produktionsleder','Aktiv');
+INSERT INTO brugere VALUES('1234567890','Kenny','KE','Farmaceut','Aktiv');
+INSERT INTO Recept VALUES (1,'Smertestillende'), (2, 'Sovemedicin'), (3, 'Saltvand');
+INSERT INTO ReceptRaavare VALUES (0.004,10,2,2), (0.005,1,2,4), (0.5,5,2,6);
+INSERT INTO ReceptRaavare VALUES (0.04,4,1,1), (0.05,2,1,3), (5,5,1,5), (10,5,1,6);
+INSERT INTO ReceptRaavare VALUES (1,5,3,5), (100,10,3,6);
+INSERT INTO ProduktBatch VALUES (1,'Ikke paabegyndt',2);
+INSERT INTO ProduktBatch VALUES (2,'Ikke paabegyndt',1);
+INSERT INTO ProduktBatch VALUES (3,'Ikke paabegyndt',3);
+INSERT INTO RaavareBatch VALUES (1,5,'Orifarm',1), (2,50,'El Chapo farma',2), (3,10,'Actavis',3), (4,10,'Saudi farma',4), (5,100,'Himalaya salt',5),(6,1500,'Øresund',6);
