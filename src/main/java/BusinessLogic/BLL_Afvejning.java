@@ -13,7 +13,7 @@ public class BLL_Afvejning implements I_BLL_Afvejning {
     private IDAO_Afvejning daoAfvejning = new DAO_Afvejning();
 
     @Override
-    public void opretEnkeltAfvejning(DTO_Afvejning afvejning, int kontrol) throws SQLException {
+    public void opretEnkeltAfvejning(DTO_Afvejning afvejning, double kontrol) throws SQLException {
         if (kontrol-afvejning.getTara() > 0.2){throw new SQLException();}
         daoAfvejning.opretEnkeltAfvejning(afvejning);
     }
