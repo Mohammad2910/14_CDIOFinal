@@ -28,7 +28,7 @@ public class Rest_Afvejning {
         //Lav JavaScripten først
         DTO_Afvejning dto_afvejning = new DTO_Afvejning(Integer.parseInt(strarray[1].substring(AttrCount(strarray[1]))),Integer.parseInt(strarray[3].substring(AttrCount(strarray[3]))),Integer.parseInt(strarray[2].substring(AttrCount(strarray[2]))),strarray[4].substring(AttrCount(strarray[4])),Integer.parseInt(strarray[0].substring(AttrCount(strarray[0]))),"");
         try{
-            afvejningBLL.opretEnkeltAfvejning(dto_afvejning);
+            afvejningBLL.opretEnkeltAfvejning(dto_afvejning, Integer.parseInt(strarray[5].substring(AttrCount(strarray[5]))));
         } catch(SQLException e) {
             return Response.status(400).entity("SQLException: " + e.getMessage()).build();
         }
