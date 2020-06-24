@@ -87,19 +87,18 @@ public class DAO_Bruger implements IDAO_Bruger {
         try {
             DataAccess dataAccess = new DataAccess();
             Connection conn = dataAccess.connection;
-            PreparedStatement preSt = conn.prepareStatement("UPDATE brugere SET BrugerNavn = ?, Initialer = ?, Rolle = ? WHERE Cpr = ?;");
+            PreparedStatement preSt = conn.prepareStatement("UPDATE brugere SET BrugerNavn = ?, Initialer = ?, Rolle = ?, BrugerStatus='Aktiv' WHERE Cpr = ?;");
 
             preSt.setString(1, nyBruger.getBrugerNavn());
             preSt.setString(2, nyBruger.getIni());
             preSt.setString(3, nyBruger.getRolle());
             preSt.setString(4, nyBruger.getCprNr());
-            System.out.println(preSt);
 
             PreparedStatement preSt2 = conn.prepareStatement("SELECT * from brugere WHERE Cpr = ?;");
-
             preSt2.setString(1, nyBruger.getCprNr());
             ResultSet resultSet = preSt2.executeQuery();
             resultSet.beforeFirst();
+
             if (!resultSet.next()) {
                 throw new SQLException();
             } else {
