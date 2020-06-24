@@ -58,7 +58,8 @@ $(document).ready(function() {
                                     $afvejninger.append('<li> ProduktbatchID: ' + tombatch.produktBatchID + '\xa0\xa0\xa0\xa0\xa0\xa0\xa0 Råvarenavn: ' + tombatch.raavareNavn + '\xa0\xa0\xa0\xa0\xa0\xa0\xa0 Netto: ' + tombatch.nonNetto + 'kg\xa0\xa0\xa0\xa0\xa0\xa0\xa0 Tolerance: ' + tombatch.tolerance + '\%');
                                     $afvejninger.append('<li> <input id="tara" type="number" step="0.001" placeholder="Indtast tara vægten">' +
                                         '        <input id="batchNummer" type="number" placeholder="Raavarebatch nummer">' +
-                                        '        <input id="netto" type="number" placeholder="Raavare vægt (Netto)"><br><br><br>');
+                                        '        <input id="netto" type="number" placeholder="Raavare vægt (Netto)">' +
+                                        '        <input id="kontrol" type="number" placeholder="Kontrol vægt"><br><br><br>');
                                     antal++;
                                 });
                                 if (antal !== 0) {
@@ -87,6 +88,7 @@ $(document).ready(function() {
                 var $netto = $('#netto');
                 var $batchnummer = $('#batchNummer');
                 var $tara = $('#tara');
+                var $kontrol = $('#kontrol');
                 var $brugerCpr = $('#cprNummer');
 
                 var afvejning = {
@@ -95,6 +97,7 @@ $(document).ready(function() {
                     raavaereBatchNummer: $batchnummer.val(),
                     netto: $netto.val(),
                     cpr: $brugerCpr.val(),
+                    kontrol: $kontrol.val(),
                 };
 
                 console.log(afvejning)
